@@ -1,9 +1,41 @@
 <!DOCTYPE html>
-<html>
-    <head>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Free Soul Horsemanship</title>
+    <link rel="icon" href="assets/horse_icon.png">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-brand">Free Soul Horsemanship</div>
+        
+        <!-- Desktop Menu -->
+        <ul class="navbar-menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#programs">Programs</a></li>
+            <li><a href="#project-horses">Project Horses</a></li>
+            <li><a href="#team">Team</a></li>
+        </ul>
+        
+        <!-- Hamburger Menu Button -->
+        <div class="hamburger" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
 
-    </head>
-    <body>
-        <h1>Test</h1>>
-    </body>
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" id="mobileMenu">
+        <a href="#home">Home</a>
+        <a href="#programs">Programs</a>
+        <a href="#project-horses">Project Horses</a>
+        <a href="#team">Team</a>
+    </div>
+
+    <script src="script.js"></script>
+</body>
 </html>

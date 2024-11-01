@@ -1,0 +1,87 @@
+/* Basic styling for the navbar, menu, and hamburger button */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+}
+
+.navbar-brand {
+    font-size: 1.5em;
+}
+
+.navbar-menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+}
+
+.navbar-menu li a {
+    color: white;
+    text-decoration: none;
+}
+
+/* Hamburger menu styling */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    width: 30px;
+    height: 30px;
+    justify-content: space-between;
+}
+
+.hamburger span {
+    display: block;
+    height: 5px;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+@media (max-width: 768px) {
+    .navbar-menu {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+    }
+}
+
+/* Animation for 'X' shape */
+.hamburger.active span:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 10px);
+}
+
+.hamburger.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -10px);
+}
+
+/* Mobile menu */
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background-color: #333;
+    position: absolute;
+    top: 60px;
+    width: 100%;
+}
+
+.mobile-menu a {
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+}
+
+.mobile-menu a:hover {
+    background-color: #555;
+}
+
+.mobile-menu.active {
+    display: flex;
+}
