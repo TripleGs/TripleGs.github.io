@@ -1,30 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <!-- Defines Screen Rendering -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <!-- Defines Page Properties -->
-    <title>ImagineTTRPG</title>
-    <link rel="icon" href="assets/horse_icon.png">
-    <link rel="stylesheet" href="./styles/style.css">
-
-    <!-- Loads the Navbar and Navbar Logic -->
-    <script src="src/loaders/navbar_loader.js" defer></script>
-    <script src="src/logic/navbar_logic.js"></script>
-    <script src="src/loaders/mobile_menu_loader.js" defer></script>
-</head>
+    <head>
+        <!-- Defines Screen Rendering -->
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+        <!-- Defines Page Properties -->
+        <title>ImagineTTRPG</title>
+        <link rel="icon" href="assets/horse_icon.png">
+    
+        <!-- Defines Styles -->
+        <link rel="stylesheet" href="./styles/style.css">
+        <link rel="stylesheet" href="./styles/footer.css">
+        <link rel="stylesheet" href="./styles/content_body.css">
+    
+        <!-- Loads the Navbar and Navbar Logic -->
+        <script src="src/loaders/navbar_loader.js" defer></script>
+        <script src="src/logic/navbar_logic.js"></script>
+        <script src="src/loaders/mobile_menu_loader.js" defer></script>
+    
+        <!-- Loads the Footer -->
+        <script src= "src/loaders/footer_loader.js" defer></script>
+    
+        <!-- Loads the Carousel and Carousel Logic-->
+    </head>
 <body>
     <!-- Navbar and Mobile Menu-->
     <nav class="navbar"></nav>
     <div class="mobile-menu" id="mobileMenu"></div>
 
-    <center>
-        <div id="title">content</div>
-        <div id="featured">Featured</div>
-    </center>
+    <div class="content-body">
+    <h1>Content</h1>
+    <p>Search and filter through our content to find content.</p>
+    <div>Search Bar Code</div>
+    </div>
 
-    <div id="footer">Footer w/ socials</div>
+    <div class="footer"></div>
 </body>
 </html>
