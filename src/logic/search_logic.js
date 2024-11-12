@@ -8,7 +8,7 @@ const batchSize = 10; // Number of items to load at a time
 function initializeIndex() {
     searchIndex = new FlexSearch.Document({
         tokenize: "forward",
-        threshold: 1,        // Controls typo tolerance
+        threshold: 5,        // Controls typo tolerance
         depth: 3,            // Depth of fuzzy matching
         document: {
             id: "file",

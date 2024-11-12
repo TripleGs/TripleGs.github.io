@@ -33,16 +33,22 @@
     display: none;
     flex-direction: column;
     cursor: pointer;
-    width: 30px;
+    width: 5px;
     height: 30px;
     justify-content: space-between;
 }
 
-.hamburger span {
+.hamburger img {
     display: block;
-    height: 5px;
-    background: white;
-    transition: all 0.3s ease;
+    transform: rotate(270deg); /* Default rotation */
+    transition: all 0.3s ease; /* Smooth rotation effect */
+    margin: -10px; /* Remove margin between images */
+    height: 100%; /* Set fixed height for icons if needed */
+    width: 10px; /* Make images fill the width of the container */
+}
+
+.hamburger img:nth-child(2){
+    transform:rotate(90deg);
 }
 
 @media (max-width: 768px) {
@@ -55,16 +61,16 @@
 }
 
 /* Animation for 'X' shape */
-.hamburger.active span:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 10px);
+.hamburger.active img:nth-child(1) {
+    transform: rotate(45deg) translate(8px, 4px);
 }
 
-.hamburger.active span:nth-child(2) {
+.hamburger.active img:nth-child(2) {
     opacity: 0;
 }
 
-.hamburger.active span:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -10px);
+.hamburger.active img:nth-child(3) {
+    transform: rotate(-45deg) translate(8px, -8px);
 }
 
 /* Mobile menu */
