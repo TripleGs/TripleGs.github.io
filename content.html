@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="./styles/style.css">
         <link rel="stylesheet" href="./styles/footer.css">
         <link rel="stylesheet" href="./styles/content_body.css">
-    
+        <link rel="stylesheet" href="./styles/search.css">
         <!-- Loads the Navbar and Navbar Logic -->
         <script src="src/loaders/navbar_loader.js" defer></script>
         <script src="src/logic/navbar_logic.js"></script>
@@ -23,6 +23,11 @@
         <script src= "src/loaders/footer_loader.js" defer></script>
     
         <!-- Loads the Carousel and Carousel Logic-->
+
+        <!-- Search Logic -->
+        <script src = "src/logic/search_logic.js" defer></script>
+        <script src="https://cdn.jsdelivr.net/npm/flexsearch@0.7.31/dist/flexsearch.bundle.js"></script>
+
     </head>
 <body>
     <!-- Navbar and Mobile Menu-->
@@ -32,7 +37,11 @@
     <div class="content-body">
     <h1>Content</h1>
     <p>Search and filter through our content to find content.</p>
-    <div>Search Bar Code</div>
+    
+    <h1>Search for HTML Files</h1>
+    <input type="text" id="searchInput" placeholder="Enter tags to search..." />
+
+    <ul id="results"></ul>
     </div>
 
     <div class="footer"></div>

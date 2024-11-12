@@ -1,0 +1,38 @@
+/* styles/content_body.css */
+
+.result-block {
+    background-color: #f9f9f9;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 12px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.result-block:hover {
+    transform: scale(1.02);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.result-block h2 {
+    font-size: 1.5em;
+    margin: 0;
+    color: #333;
+}
+
+.result-block p {
+    font-size: 1em;
+    color: #666;
+    margin: 8px 0 16px;
+}
+
+.result-block a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.result-block a:hover {
+    text-decoration: underline;
+}
