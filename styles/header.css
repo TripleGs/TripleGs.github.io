@@ -4,10 +4,11 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
+    background-color: #1B2D4F;
+    color: #2066a0;
     font-family: 'Itim';
     font-weight: 'bold';
+    text-shadow: 1px 1px 1px #e4e1e1, -1px -1px 0px #e4e1e1;
 }
 
 .navbar-brand {
@@ -102,10 +103,21 @@
 
 @font-face {
     font-family: 'Itim';
-    src: url('../assets/fonts/MedievalSharp/MedievalSharp-Regular.ttf') format('truetype');
+    src: url('../assets/fonts/Cinzel_Decorative/CinzelDecorative-Regular.ttf') format('truetype');
   }
 
 .title {
     font-family: "Itim";
     font-weight: 'bold';
+}
+
+.hamburger {
+    -webkit-tap-highlight-color: transparent; /* For Safari */
+    outline: none; /* For Chrome, Firefox, and others */
+}
+
+.hamburger:focus,
+.hamburger:active {
+    outline: none;
+    box-shadow: none; /* Removes any potential shadow effect */
 }
