@@ -4,48 +4,50 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #1B2D4F;
-    color: #2066a0;
+    background: linear-gradient(45deg,#2e4b71, #1B2D4F, black);
+    color: black;
     font-family: 'Itim';
     font-weight: 'bold';
-    text-shadow: 1px 1px 1px #e4e1e1, -1px -1px 0px #e4e1e1;
+    text-shadow: 1px 1px 1px white, -1px -1px 0px white;
+    border-radius: 100px;
+    border: 1.5px solid #c0c0c0;
 }
 
 .navbar-brand {
-    font-size: 1.5em;
-    font-family: 'Itim';
+    font-size: 1.75em;
+    font-family: 'Cinzel';
     font-weight: bold;
 }
 
 .navbar-menu {
-    display: flex;
+    display: none;
     list-style: none;
     gap: 20px;
 }
 
 .navbar-menu li a {
-    color: white;
+    color: #2066a0;
     text-decoration: none;
-    font-family: 'Itim';
+    font-family: 'Uncial';
     font-weight: 'bold';
+    text-shadow: .5px .5px .5px #c0c0c0, -.5px -.5px 0px #e4e1e1;
+
 }
 
 .hamburger {
-    display: none;
+    display: flex;
     flex-direction: column;
     cursor: pointer;
-    width: 5px;
-    height: 30px;
+    width: 15px;
     justify-content: space-between;
 }
 
 .hamburger img {
     display: block;
     transform: rotate(270deg); /* Default rotation */
-    transition: all 0.3s ease; /* Smooth rotation effect */
-    margin: -10px; /* Remove margin between images */
-    height: 100%; /* Set fixed height for icons if needed */
-    width: 10px; /* Make images fill the width of the container */
+    transition: all 0.4s ease; /* Smooth rotation effect */
+    margin: -13px; /* Remove margin between images */
+    width: 13px; /* Make images fill the width of the container */
 }
 
 .hamburger img:nth-child(2){
@@ -63,7 +65,7 @@
 
 /* Animation for 'X' shape */
 .hamburger.active img:nth-child(1) {
-    transform: rotate(45deg) translate(8px, 4px);
+    transform: rotate(45deg) translate(14px, 12px);
 }
 
 .hamburger.active img:nth-child(2) {
@@ -71,29 +73,33 @@
 }
 
 .hamburger.active img:nth-child(3) {
-    transform: rotate(-45deg) translate(8px, -8px);
+    transform: rotate(-45deg) translate(14px, -12px);
 }
 
 /* Mobile menu */
 .mobile-menu {
     display: none;
     flex-direction: column;
-    background-color: #333;
+    background-color: black;
+    border-radius:30px;
+    border: 1.5px solid #c0c0c0;
     position: absolute;
-    top: 60px;
-    width: 100%;
+    top: 90px;
+    width: 98%;
 }
 
 .mobile-menu a {
     padding: 15px 20px;
-    color: white;
+    border-radius:30px;
+    color: #c0c0c0;
     text-decoration: none;
-    font-family: 'Itim';
+    font-family: 'Cinzel';
     font-weight: 'bold';
+    text-shadow: .5px .5px .5px white, -.5px -.5px 0px white;
 }
 
 .mobile-menu a:hover {
-    background-color: #555;
+    background: linear-gradient(45deg,#111b28, #050910, black);
     font-weight: 'bolder';
 }
 
@@ -102,9 +108,9 @@
 }
 
 @font-face {
-    font-family: 'Itim';
+    font-family: 'Cinzel';
     src: url('../assets/fonts/Cinzel_Decorative/CinzelDecorative-Regular.ttf') format('truetype');
-  }
+}
 
 .title {
     font-family: "Itim";
@@ -120,4 +126,10 @@
 .hamburger:active {
     outline: none;
     box-shadow: none; /* Removes any potential shadow effect */
+}
+
+.icon {
+    height:50px;
+    border: 1px solid #c0c0c0;
+    border-radius: 100px;
 }
