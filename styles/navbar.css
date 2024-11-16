@@ -5,10 +5,10 @@
     align-items: center;
     padding: 10px 20px;
     background: linear-gradient(45deg,#2e4b71, #1B2D4F, black);
-    color: black;
+    color: white;
     font-family: 'Itim';
     font-weight: 'bold';
-    text-shadow: 1px 1px 1px white, -1px -1px 0px white;
+    text-shadow: 1px 1px 1px #c0c0c0, -1px -1px 0px #c0c0c0;
     border-radius: 100px;
     border: 1.5px solid #c0c0c0;
 }
@@ -100,8 +100,10 @@
 }
 
 .mobile-menu a:hover {
-    background: linear-gradient(45deg,#111b28, #050910, black);
+    background: linear-gradient(45deg,#2e4b71, #1B2D4F, black);
     font-weight: 'bolder';
+    -webkit-tap-highlight-color: transparent; /* For Safari */
+    outline: none; /* For Chrome, Firefox, and others */
 }
 
 .mobile-menu.active {
