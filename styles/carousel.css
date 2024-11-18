@@ -6,25 +6,67 @@
     margin: auto;
     border: 2px solid #ddd;
     border-radius: 10px;
+    background-color: linear-gradient(45deg,#2e4b71, #1B2D4F, black);
 }
 
 .carousel-slide {
     display: flex;
     transition: transform 0.5s ease-in-out;
+    background-color: linear-gradient(45deg,#2e4b71, #1B2D4F, black);
 }
 
-.carousel-slide img {
-    width: 100%;
+.carousel-item {
+    flex: 0 0 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow:hidden;
+    background-color: linear-gradient(45deg,#2e4b71, #1B2D4F, black);
+}
+
+.carousel-item img {
+    max-width: 100%;
+    max-height: 100%;
     border-radius: 10px;
+    display: block;
+}
+
+.carousel-indicators {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 10;
+}
+
+.carousel-indicators .indicator {
+    width: 12px;
+    height: 12px;
+    background-color: white;
+    border: 2px solid #c0c0c0c0;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.carousel-indicators .indicator:hover,.carousel-indicators .indicator.active:hover  {
+    background-color: #2e4b71;
+}
+
+.carousel-indicators .indicator.active {
+    background-color: #1B2D4F;
+    border: 2px solid #c0c0c0c0;
 }
 
 .prev-btn, .next-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
+    background-color: #1B2D4F;
+    color: #c0c0c0c0;
+    border: 2px solid #c0c0c0c0;
     cursor: pointer;
     padding: 10px;
     border-radius: 50%;
@@ -32,13 +74,14 @@
 }
 
 .prev-btn {
-    left: 10px;
+    left: 5px;
 }
 
 .next-btn {
-    right: 10px;
+    right: 5px;
 }
 
 .prev-btn:hover, .next-btn:hover {
-    background-color: rgba(0, 0, 0, 0.8);
+    background-color: #2e4b71;
 }
+

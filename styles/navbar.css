@@ -87,6 +87,7 @@
     position: absolute;
     top: 90px;
     width: 98%;
+    z-index: 1000;
 }
 
 .mobile-menu a {
