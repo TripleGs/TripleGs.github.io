@@ -19,7 +19,9 @@ function initializeCarousel() {
     const indicatorsContainer = document.querySelector('.carousel-indicators');
 
     let counter = 0;
-    let slideInterval;
+    let slideInterval = null;
+    const intervalTime = 3000; // Change slides every 3 seconds
+    let isTransitioning = false; // Track if the carousel is transitioning
 
     // Create indicator dots dynamically
     items.forEach((_, index) => {
@@ -32,6 +34,7 @@ function initializeCarousel() {
     const indicators = document.querySelectorAll('.indicator');
 
     const updateSlidePosition = () => {
+        slide.style.transition = "transform 0.5s ease-in-out";
         slide.style.transform = `translateX(${-counter * 100}%)`;
         updateIndicators();
     };
@@ -43,6 +46,8 @@ function initializeCarousel() {
     };
 
     const nextSlide = () => {
+        if (isTransitioning) return;
+        isTransitioning = true;
         if (counter >= items.length - 1) {
             counter = 0; // Reset to first slide
         } else {
@@ -52,6 +57,8 @@ function initializeCarousel() {
     };
 
     const prevSlide = () => {
+        if (isTransitioning) return;
+        isTransitioning = true;
         if (counter <= 0) {
             counter = items.length - 1; // Go to the last slide
         } else {
@@ -60,11 +67,18 @@ function initializeCarousel() {
         updateSlidePosition();
     };
 
-    // Reset the autoplay timer
+    // Reset the autoplay timer without stacking intervals
     const resetAutoplay = () => {
         clearInterval(slideInterval);
-        slideInterval = setInterval(nextSlide, intervalTime);
+        slideInterval = setInterval(() => {
+            nextSlide();
+        }, intervalTime);
     };
+
+    // Remove transition lock when animation ends
+    slide.addEventListener('transitionend', () => {
+        isTransitioning = false;
+    });
 
     // Add event listeners for navigation
     nextBtn.addEventListener('click', () => {
@@ -80,6 +94,7 @@ function initializeCarousel() {
     // Add click event to indicators
     indicators.forEach((indicator, index) => {
         indicator.addEventListener('click', () => {
+            if (isTransitioning) return;
             counter = index;
             updateSlidePosition();
             resetAutoplay();
@@ -87,12 +102,15 @@ function initializeCarousel() {
     });
 
     // Auto-play slides
-    const intervalTime = 5000; // Change slides every 3 seconds
-    slideInterval = setInterval(nextSlide, intervalTime);
+    const startAutoplay = () => {
+        slideInterval = setInterval(nextSlide, intervalTime);
+    };
+
+    startAutoplay();
 
     // Pause and resume autoplay on button hover
     const pauseAutoPlay = () => clearInterval(slideInterval);
-    const resumeAutoPlay = () => slideInterval = setInterval(nextSlide, intervalTime);
+    const resumeAutoPlay = () => resetAutoplay();
 
     prevBtn.addEventListener('mouseenter', pauseAutoPlay);
     nextBtn.addEventListener('mouseenter', pauseAutoPlay);
