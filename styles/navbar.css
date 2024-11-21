@@ -1,0 +1,137 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 10px;
+    background: linear-gradient(45deg,#2e7152, #1b4f2f, black);
+    color: white;
+    font-family: 'Poppins';
+    font-weight: 'bold';
+    text-shadow: 1px 1px 1px #c0c0c0, -1px -1px 0px #c0c0c0;
+    border-radius: 100px;
+    border: 1.5px solid #c0c0c0;
+    width: 65%;
+    justify-self: center;
+}
+
+.navbar-brand {
+    font-size: 25px;
+    font-family: 'Poppins';
+    font-weight: bold;
+}
+
+.icon {
+    height:50px;
+    border: 1px solid #c0c0c0;
+    border-radius: 100px;
+    margin-left: 10px;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    width: 15px;
+    justify-content: space-between;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.hamburger img {
+    display: block;
+    transform: rotate(270deg);
+    transition: all 0.4s ease;
+    margin: -13px;
+    width: 13px;
+}
+
+.hamburger img:nth-child(2){
+    transform:rotate(90deg);
+}
+
+@media (max-width: 768px) {
+    .navbar-menu {
+        display: none;
+    }
+    .hamburger {
+        display: flex;
+    }
+}
+
+.hamburger.active img:nth-child(1) {
+    transform: rotate(45deg) translate(14px, 12px);
+}
+
+.hamburger.active img:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger.active img:nth-child(3) {
+    transform: rotate(-45deg) translate(14px, -12px);
+}
+
+/* Mobile menu */
+.mobile-menu {
+    display: none;
+    flex-direction: column;
+    background-color: black;
+    position: absolute;
+    border-radius:30px;
+    border: 1.5px solid #c0c0c0;
+    top: 90px;
+    width: 66%;
+    z-index: 1000;
+    left:50%;
+    transform: translateX(-50%)
+}
+
+.mobile-menu a {
+    padding: 15px 20px;
+    border-radius:30px;
+    color: #c0c0c0;
+    text-decoration: none;
+    font-family: 'Cinzel';
+    font-weight: 'bold';
+    text-shadow: .5px .5px .5px white, -.5px -.5px 0px white;
+}
+
+.mobile-menu a:hover {
+    background: linear-gradient(45deg,#2e7152, #1b4f2f, black);
+    font-weight: 'bolder';
+    -webkit-tap-highlight-color: transparent; /* For Safari */
+    outline: none; /* For Chrome, Firefox, and others */
+}
+
+.mobile-menu.active {
+    display: flex;
+}
+
+@font-face {
+    font-family: 'Poppins';
+    src: url('../assets/fonts/Poppins/Poppins-Regular.ttf') format('truetype');
+}
+
+.title {
+    font-family: "Poppins";
+    font-weight: 'bold';
+}
+
+.hamburger {
+    -webkit-tap-highlight-color: transparent; /* For Safari */
+    outline: none; /* For Chrome, Firefox, and others */
+}
+
+.hamburger:focus,
+.hamburger:active {
+    outline: none;
+    box-shadow: none; /* Removes any potential shadow effect */
+}
+
+@media (max-width: 768px) {
+    .navbar{
+        width: 96%;
+    }
+    .mobile-menu{
+        width: 98%;
+    }
+}
