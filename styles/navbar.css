@@ -1,9 +1,8 @@
-/* Basic styling for the navbar, menu, and hamburger button */
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px 10px;
     background: linear-gradient(45deg,#2e4b71, #1B2D4F, black);
     color: white;
     font-family: 'Itim';
@@ -11,6 +10,8 @@
     text-shadow: 1px 1px 1px #c0c0c0, -1px -1px 0px #c0c0c0;
     border-radius: 100px;
     border: 1.5px solid #c0c0c0;
+    width: 65%;
+    justify-self: center;
 }
 
 .navbar-brand {
@@ -19,19 +20,11 @@
     font-weight: bold;
 }
 
-.navbar-menu {
-    display: none;
-    list-style: none;
-    gap: 20px;
-}
-
-.navbar-menu li a {
-    color: #2066a0;
-    text-decoration: none;
-    font-family: 'Uncial';
-    font-weight: 'bold';
-    text-shadow: .5px .5px .5px #c0c0c0, -.5px -.5px 0px #e4e1e1;
-
+.icon {
+    height:50px;
+    border: 1px solid #c0c0c0;
+    border-radius: 100px;
+    margin-left: 10px;
 }
 
 .hamburger {
@@ -41,14 +34,15 @@
     width: 15px;
     justify-content: space-between;
     padding-left: 15px;
+    padding-right: 15px;
 }
 
 .hamburger img {
     display: block;
-    transform: rotate(270deg); /* Default rotation */
-    transition: all 0.4s ease; /* Smooth rotation effect */
-    margin: -13px; /* Remove margin between images */
-    width: 13px; /* Make images fill the width of the container */
+    transform: rotate(270deg);
+    transition: all 0.4s ease;
+    margin: -13px;
+    width: 13px;
 }
 
 .hamburger img:nth-child(2){
@@ -64,7 +58,6 @@
     }
 }
 
-/* Animation for 'X' shape */
 .hamburger.active img:nth-child(1) {
     transform: rotate(45deg) translate(14px, 12px);
 }
@@ -82,12 +75,14 @@
     display: none;
     flex-direction: column;
     background-color: black;
+    position: absolute;
     border-radius:30px;
     border: 1.5px solid #c0c0c0;
-    position: absolute;
     top: 90px;
-    width: 98%;
+    width: 66%;
     z-index: 1000;
+    left:50%;
+    transform: translateX(-50%)
 }
 
 .mobile-menu a {
@@ -132,8 +127,11 @@
     box-shadow: none; /* Removes any potential shadow effect */
 }
 
-.icon {
-    height:50px;
-    border: 1px solid #c0c0c0;
-    border-radius: 100px;
+@media (max-width: 768px) {
+    .navbar{
+        width: auto;
+    }
+    .mobile-menu{
+        width: 98%;
+    }
 }

@@ -1,0 +1,41 @@
+#field {
+    background-color: black;
+    border-radius: 30px;
+    width: 65%;
+    color: #fff;
+    padding: 10px 10px 10px 10px;
+    border: 1.5px solid #c0c0c0;
+    font-family: Libre;
+    font-size: 12px;
+}
+
+#button {
+    background-color: black;
+    border-radius: 30px;
+    width: 20%;
+    color: #fff;
+    padding: 10px 10px 10px 10px;
+    border: 1.5px solid #c0c0c0;
+    font-family: Libre;
+    font-size: 12px;
+}
+
+#button:hover {
+    background: linear-gradient(45deg,#2e4b71, #1B2D4F, black);
+}
+
+@font-face {
+    font-family: 'Cinzel';
+    src: url('../assets/fonts/Cinzel_Decorative/CinzelDecorative-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Libre';
+    src: url('../assets/fonts/Libre_Baskerville/LibreBaskerville-Bold.ttf') format('truetype');
+}
+
+@media (max-width: 768px) {
+    .content-body {
+        width: auto;
+    }
+}

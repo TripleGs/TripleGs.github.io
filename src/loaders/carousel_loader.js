@@ -116,7 +116,4 @@ function initializeCarousel() {
     nextBtn.addEventListener('mouseenter', pauseAutoPlay);
     prevBtn.addEventListener('mouseleave', resumeAutoPlay);
     nextBtn.addEventListener('mouseleave', resumeAutoPlay);
-
-    console.log('Carousel Initialized');
-    console.log('Number of items:', items.length);
 }
