@@ -129,7 +129,7 @@
 
 @media (max-width: 768px) {
     .navbar{
-        width: auto;
+        width: 96%;
     }
     .mobile-menu{
         width: 98%;
