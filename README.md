@@ -1,1 +1,0 @@
-# TripleGs.github.io
