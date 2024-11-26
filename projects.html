@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="./styles/content_body.css">
     <link rel="stylesheet" href="./styles/content.css">
     <link rel="stylesheet" href="./styles/overall.css">
+    <link rel="stylesheet" href="./styles/projects.css">
 
     <!-- Loads the Navbar and Navbar Logic -->
     <script src="src/loaders/navbar_loader.js" defer></script>
@@ -40,11 +41,17 @@
 
     <div class="content-body">
         <center>
-            <h1>Content</h1>
-            <p>Search and filter through content to see content
-                relevant to you!</p>
+            <h1>Projects/Papers</h1>
+            <p>Use the search/filter tool to view specific content, or
+                browse all the content. Enjoy, and I hope you find what
+                you are looking for!
+            </p>
             <input type="text" id="field" placeholder="Search...">
             <input type="button" id="button" value="Filter">
+            <div id="filterMenu" class="filter-menu" style="display: none;">
+                <!-- Filter buttons will be dynamically added here -->
+            </div>
+            <div id="results" class="results-container"></div>
         </center>
     </div>
 

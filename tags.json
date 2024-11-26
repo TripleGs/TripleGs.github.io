@@ -1,0 +1,36 @@
+{
+    "imaginettrpg_website.html": {
+        "tags": [
+            "dnd",
+            "website",
+            "html",
+            "css",
+            "javascript",
+            "jquery",
+            "project"
+        ],
+        "description": "A personal website created to post free TTRPG content.",
+        "header": "ImagineTTRPGs Website"
+    },
+    "custom_hershey_bar_app.html": {
+        "tags": [
+            "dart",
+            "flutter",
+            "dart and flutter",
+            "project",
+            "website",
+            "app"
+        ],
+        "description": "An app to customize a Hershey's Choclate Bar wrapper.",
+        "header": "Custom Hershey Bar App"
+    },
+    "file3.html": {
+        "tags": [
+            "css",
+            "styling",
+            "basics"
+        ],
+        "description": "Learn the basics of CSS styling.",
+        "header": "CSS Styling Basics"
+    }
+}

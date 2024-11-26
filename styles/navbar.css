@@ -3,11 +3,11 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 10px;
-    background: linear-gradient(45deg,#2e7152, #1b4f2f, black);
-    color: white;
+    background: linear-gradient(45deg, #2e7152, #1b4f2f, black);
+    color: #fff;
     font-family: 'Poppins';
     font-weight: 'bold';
-    text-shadow: 1px 1px 1px #c0c0c0, -1px -1px 0px #c0c0c0;
+    text-shadow: 1px 1px 1px #c0c0, -1px -1px 0px #c0c0;
     border-radius: 100px;
     border: 1.5px solid #c0c0c0;
     width: 65%;
@@ -21,8 +21,8 @@
 }
 
 .icon {
-    height:50px;
-    border: 1px solid #c0c0c0;
+    height: 50px;
+    border: 2px solid #fff;
     border-radius: 100px;
     margin-left: 10px;
 }
@@ -33,41 +33,40 @@
     cursor: pointer;
     width: 15px;
     justify-content: space-between;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding-right: 40px;
 }
 
-.hamburger img {
+.hamburger div {
     display: block;
-    transform: rotate(270deg);
     transition: all 0.4s ease;
-    margin: -13px;
-    width: 13px;
-}
-
-.hamburger img:nth-child(2){
-    transform:rotate(90deg);
+    height: 8px;
+    width: 40px;
+    border-radius: 100px;
+    margin: 2px 2px 2px 2px;
+    border: 1px solid black;
+    background-color: #fff;
 }
 
 @media (max-width: 768px) {
     .navbar-menu {
         display: none;
     }
+
     .hamburger {
         display: flex;
     }
 }
 
-.hamburger.active img:nth-child(1) {
-    transform: rotate(45deg) translate(14px, 12px);
+.hamburger.active div:nth-child(1) {
+    transform: rotate(45deg) translate(11px, 8px);
 }
 
-.hamburger.active img:nth-child(2) {
+.hamburger.active div:nth-child(2) {
     opacity: 0;
 }
 
-.hamburger.active img:nth-child(3) {
-    transform: rotate(-45deg) translate(14px, -12px);
+.hamburger.active div:nth-child(3) {
+    transform: rotate(-45deg) translate(11px, -8px);
 }
 
 /* Mobile menu */
@@ -76,30 +75,32 @@
     flex-direction: column;
     background-color: black;
     position: absolute;
-    border-radius:30px;
+    border-radius: 30px;
     border: 1.5px solid #c0c0c0;
     top: 90px;
     width: 66%;
     z-index: 1000;
-    left:50%;
+    left: 50%;
     transform: translateX(-50%)
 }
 
 .mobile-menu a {
     padding: 15px 20px;
-    border-radius:30px;
-    color: #c0c0c0;
+    border-radius: 30px;
+    color: #fff;
     text-decoration: none;
-    font-family: 'Cinzel';
+    font-family: 'Poppins';
     font-weight: 'bold';
-    text-shadow: .5px .5px .5px white, -.5px -.5px 0px white;
+    text-shadow: .5px .5px .5px #c0c0, -.5px -.5px 0px #c0c0;
 }
 
 .mobile-menu a:hover {
-    background: linear-gradient(45deg,#2e7152, #1b4f2f, black);
+    background: linear-gradient(45deg, #2e7152, #1b4f2f, black);
     font-weight: 'bolder';
-    -webkit-tap-highlight-color: transparent; /* For Safari */
-    outline: none; /* For Chrome, Firefox, and others */
+    -webkit-tap-highlight-color: transparent;
+    /* For Safari */
+    outline: none;
+    /* For Chrome, Firefox, and others */
 }
 
 .mobile-menu.active {
@@ -117,21 +118,25 @@
 }
 
 .hamburger {
-    -webkit-tap-highlight-color: transparent; /* For Safari */
-    outline: none; /* For Chrome, Firefox, and others */
+    -webkit-tap-highlight-color: transparent;
+    /* For Safari */
+    outline: none;
+    /* For Chrome, Firefox, and others */
 }
 
 .hamburger:focus,
 .hamburger:active {
     outline: none;
-    box-shadow: none; /* Removes any potential shadow effect */
+    box-shadow: none;
+    /* Removes any potential shadow effect */
 }
 
 @media (max-width: 768px) {
-    .navbar{
+    .navbar {
         width: 96%;
     }
-    .mobile-menu{
+
+    .mobile-menu {
         width: 98%;
     }
 }
