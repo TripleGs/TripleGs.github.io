@@ -1,5 +1,5 @@
 document.addEventListener("DOMContentLoaded", () => {
-    fetch("src/elements/navbar.html")
+    fetch("/src/elements/navbar.html")
         .then(response => response.text())
         .then(data => {
             document.querySelector(".navbar").innerHTML = data;
