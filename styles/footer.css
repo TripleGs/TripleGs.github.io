@@ -1,11 +1,11 @@
 footer {
     text-align: center;
     padding: 20px;
-    background-color: #333;
-    background: linear-gradient(45deg,#2e7152, #1b4f2f, black);
+    background-color: black;
+    background: linear-gradient(45deg, #7495cf, #87CEEB, #e6f7ac);
     border-radius: 30px;
-    border: 1.5px solid #c0c0c0;
-    width: 65%;
+    border: 2px solid white;
+    width: 63%;
     justify-self: center;
 }
 
@@ -22,7 +22,7 @@ footer {
     display: inline-block;
     border-radius: 50%;
     overflow: hidden;
-    border: 2px solid #fff;
+    border: 2px solid black;
     text-decoration: none;
 }
 
@@ -35,7 +35,7 @@ footer {
 .last-edited {
     margin-top: 10px;
     font-size: 0.9em;
-    color: #ccc;
+    color: black;
 }
 
 @media (max-width: 768px) {

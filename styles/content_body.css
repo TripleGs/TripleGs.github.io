@@ -1,13 +1,13 @@
 .content-body {
     margin-top: 10px;
     margin-bottom: 10px;
-    color: #fff;
+    color: black;
     padding: 0px 10px 10px 10px;
-    background: linear-gradient(45deg, #2e7152, #1b4f2f, black);
+    background: linear-gradient(45deg, #7495cf, #87CEEB, #e6f7ac);
     background-color: black;
     border-radius: 30px;
     width: 65%;
-    border: 1.5px solid #c0c0c0;
+    border: 2px solid white;
     justify-self: center;
 }
 
@@ -19,7 +19,6 @@ h5,
 h6 {
     font-family: Poppins;
     font-weight: bold;
-    text-shadow: .5px .5px .5px black, -.5px -.5px 0px black;
     text-decoration: underline;
 }
 
@@ -51,6 +50,7 @@ h6 {
 p {
     font-family: Poppins;
     font-size: 12px;
+    font-weight: bold;
 }
 
 a {

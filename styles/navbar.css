@@ -3,13 +3,12 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 10px;
-    background: linear-gradient(45deg, #2e7152, #1b4f2f, black);
-    color: #fff;
+    background: linear-gradient(45deg, #7495cf, #87CEEB, #e6f7ac);
+    color: black;
     font-family: 'Poppins';
     font-weight: 'bold';
-    text-shadow: 1px 1px 1px #c0c0, -1px -1px 0px #c0c0;
     border-radius: 100px;
-    border: 1.5px solid #c0c0c0;
+    border: 2px solid white;
     width: 65%;
     justify-self: center;
 }
@@ -22,7 +21,7 @@
 
 .icon {
     height: 50px;
-    border: 2px solid #fff;
+    border: 2px solid black;
     border-radius: 100px;
     margin-left: 10px;
 }
@@ -44,7 +43,7 @@
     border-radius: 100px;
     margin: 2px 2px 2px 2px;
     border: 1px solid black;
-    background-color: #fff;
+    background-color: black;
 }
 
 @media (max-width: 768px) {
@@ -95,8 +94,9 @@
 }
 
 .mobile-menu a:hover {
-    background: linear-gradient(45deg, #2e7152, #1b4f2f, black);
+    background: linear-gradient(45deg, #7495cf, #87CEEB, #e6f7ac);
     font-weight: 'bolder';
+    color:black;
     -webkit-tap-highlight-color: transparent;
     /* For Safari */
     outline: none;
