@@ -1,14 +1,3 @@
-footer {
-    text-align: center;
-    padding: 20px;
-    background-color: black;
-    background: linear-gradient(45deg, #7495cf, #87CEEB, #e6f7ac);
-    border-radius: 30px;
-    border: 2px solid white;
-    width: 63%;
-    justify-self: center;
-}
-
 .social-icons {
     display: flex;
     justify-content: center;
@@ -36,10 +25,4 @@ footer {
     margin-top: 10px;
     font-size: 0.9em;
     color: black;
-}
-
-@media (max-width: 768px) {
-    footer {
-        width: 92%;
-    }
 }
