@@ -63,6 +63,6 @@ a {
 
 @media (max-width: 768px) {
     .content-body {
-        width: auto;
+        width: 95%;
     }
 }
