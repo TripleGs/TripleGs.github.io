@@ -26,3 +26,9 @@
     font-size: 0.9em;
     color: black;
 }
+
+@media (max-width: 768px) {
+    .footer {
+        width: auto;
+    }
+}
