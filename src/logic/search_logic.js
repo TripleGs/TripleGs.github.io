@@ -99,6 +99,8 @@ function loadMoreResults() {
     // Get the next batch of files
     const nextBatch = filteredFiles.slice(currentIndex, currentIndex + batchSize);
     nextBatch.forEach(({ file, description, header }) => {
+        const link = document.createElement("a");
+        link.href = `content/${file}`;
         const resultBlock = document.createElement("div");
         resultBlock.classList.add("result-block");
 
@@ -108,14 +110,10 @@ function loadMoreResults() {
         const desc = document.createElement("p");
         desc.textContent = description;
 
-        const link = document.createElement("a");
-        link.href = `content/${file}`;
-        link.textContent = "Read More";
-
         resultBlock.appendChild(title);
         resultBlock.appendChild(desc);
-        resultBlock.appendChild(link);
-        resultsContainer.appendChild(resultBlock);
+        link.appendChild(resultBlock)
+        resultsContainer.appendChild(link);
     });
 
     // Update the current index
