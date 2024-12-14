@@ -10,6 +10,28 @@
             "project"
         ],
         "description": "A personal website created to post free TTRPG content.",
-        "header": "ImagineTTRPGs Website"
+        "header": "ImagineTTRPGs Website",
+        "image": "imagine_ttrpg.png"
+    },
+    "custom_hershey_bar_app.html": {
+        "tags": [
+            "project",
+            "website",
+            "dart",
+            "flutter"
+        ],
+        "description": "A freelance project to allow customers to customize and purchase hershey chocolate bars.",
+        "header": "Custom Hershey Bar App",
+        "image": ""
+    },
+    "ai_art_theory.html": {
+        "tags": [
+            "ai",
+            "art",
+            "paper"
+        ],
+        "description": "A paper on debating the positions on AI art.",
+        "header": "Ethics of Ai Art",
+        "image": ""
     }
 }

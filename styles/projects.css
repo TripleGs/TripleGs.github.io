@@ -14,6 +14,18 @@
     transform: scale(1.075);
 }
 
+.result-block p,
+h2 {
+    color: black;
+    background-color: rgba(230, 230, 230, 0.75);
+    border-radius: 30px;
+    padding: 5px 10px;
+}
+
+.result-block h2 {
+    width: 50%;
+}
+
 #field {
     background-color: black;
     border-radius: 30px;

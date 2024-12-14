@@ -3,10 +3,8 @@ let searchIndex; // FlexSearch index
 let filteredFiles = []; // Store filtered files based on the search query
 let currentIndex = 0; // Track the current index for pagination
 const batchSize = 10; // Number of items to load at a time
-// Global variable to store unique tags
-let uniqueTags = new Set();
+let uniqueTags = new Set(); // Global variable to store unique tags
 let selectedTags = []; // Track all selected tags
-
 
 // Initialize FlexSearch index
 function initializeIndex() {
@@ -17,10 +15,9 @@ function initializeIndex() {
         document: {
             id: "file",
             index: ["file", "tags", "description"],
-            store: ["file", "description", "header"]
+            store: ["file", "description", "header", "image"] // Include image in store
         }
     });
-
 }
 
 async function loadTags() {
@@ -38,7 +35,8 @@ async function loadTags() {
                 file: file,
                 tags: data.tags.join(" "), // Combine tags into a single string
                 description: data.description,
-                header: data.header // Add header for use in results
+                header: data.header,
+                image: data.image // Add image property
             });
         }
 
@@ -62,9 +60,7 @@ function searchFiles() {
     if (query) {
         const results = searchIndex.search(query, { limit: 100 }); // Retrieve up to 100 results for pagination
 
-        // Use a Set to track unique file IDs and avoid duplicates
         const uniqueFiles = new Set();
-
         results.forEach(result => {
             result.result.forEach(id => {
                 if (!uniqueFiles.has(id)) {
@@ -74,7 +70,8 @@ function searchFiles() {
                         filteredFiles.push({
                             file: data.file,
                             description: data.description,
-                            header: data.header // Ensure header is included
+                            header: data.header,
+                            image: data.image // Include image
                         });
                     }
                 }
@@ -85,24 +82,33 @@ function searchFiles() {
         filteredFiles = Object.entries(tagsData).map(([file, data]) => ({
             file,
             description: data.description,
-            header: data.header // Include header here as well
+            header: data.header,
+            image: data.image // Include image
         }));
     }
 
     loadMoreResults(); // Load the first batch of results
 }
 
-
 function loadMoreResults() {
     const resultsContainer = document.getElementById("results");
 
     // Get the next batch of files
     const nextBatch = filteredFiles.slice(currentIndex, currentIndex + batchSize);
-    nextBatch.forEach(({ file, description, header }) => {
+    nextBatch.forEach(({ file, description, header, image }) => {
         const link = document.createElement("a");
         link.href = `content/${file}`;
         const resultBlock = document.createElement("div");
         resultBlock.classList.add("result-block");
+
+        // Add a background image to the result block
+        const imageUrl = image // Fallback to a default image
+        resultBlock.style.backgroundImage = `url(/assets/imgs/${image})`;
+        resultBlock.style.backgroundSize = "cover";
+        resultBlock.style.backgroundPosition = "center";
+        resultBlock.style.color = "white"; // Ensure text is visible on the background
+        resultBlock.style.backgroundRepeat = "no-repeat"; // Ensure the image does not repeat
+
 
         const title = document.createElement("h2");
         title.textContent = header || file; // Use the header if available, fallback to file
@@ -112,12 +118,11 @@ function loadMoreResults() {
 
         resultBlock.appendChild(title);
         resultBlock.appendChild(desc);
-        link.appendChild(resultBlock)
+        link.appendChild(resultBlock);
         resultsContainer.appendChild(link);
     });
 
-    // Update the current index
-    currentIndex += batchSize;
+    currentIndex += batchSize; // Update the current index
 
     // Check if there are more items to load
     if (currentIndex < filteredFiles.length) {
@@ -125,7 +130,6 @@ function loadMoreResults() {
     }
 }
 
-// Function to observe the last item in the results list
 function observeLastItem() {
     const resultsContainer = document.getElementById("results");
     const items = resultsContainer.getElementsByClassName("result-block");
@@ -148,12 +152,11 @@ document.getElementById("field").addEventListener("input", searchFiles);
 function showFilterMenu() {
     const filterMenu = document.getElementById("filterMenu");
 
-    // Toggle visibility of the filter menu
     if (filterMenu.style.display === "none" || filterMenu.style.display === "") {
         filterMenu.style.display = "block"; // Show the filter menu
     } else {
         filterMenu.style.display = "none"; // Hide the filter menu
-        return; // Stop further execution to avoid regenerating buttons
+        return;
     }
 
     filterMenu.innerHTML = ""; // Clear existing buttons
@@ -162,85 +165,72 @@ function showFilterMenu() {
         const button = document.createElement("button");
         button.classList.add("filter-button");
         button.textContent = tag;
-        button.onclick = () => filterByTag(tag); // Attach click event for filtering
+        button.onclick = () => filterByTag(tag);
         filterMenu.appendChild(button);
-
     });
 
-    // Reapply highlights to the selected button
     updateFilterButtonHighlights();
 }
-
 
 function filterByTag(tag) {
     currentIndex = 0; // Reset pagination index
 
-    // Toggle the tag in the selectedTags array
     if (selectedTags.includes(tag)) {
-        // Remove the tag if it's already selected
         selectedTags = selectedTags.filter(t => t !== tag);
     } else {
-        // Add the tag if it's not already selected
         selectedTags.push(tag);
     }
 
-    // Filter files by selected tags
     if (selectedTags.length > 0) {
         filteredFiles = Object.entries(tagsData)
             .filter(([_, data]) =>
-                selectedTags.every(tag => data.tags.includes(tag)) // Match all selected tags
+                selectedTags.every(tag => data.tags.includes(tag))
             )
             .map(([file, data]) => ({
                 file,
                 description: data.description,
-                header: data.header
+                header: data.header,
+                image: data.image
             }));
     } else {
-        // Show all files if no tags are selected
         filteredFiles = Object.entries(tagsData).map(([file, data]) => ({
             file,
             description: data.description,
-            header: data.header
+            header: data.header,
+            image: data.image
         }));
     }
 
     const resultsContainer = document.getElementById("results");
-    resultsContainer.innerHTML = ""; // Clear previous results
-    loadMoreResults(); // Load filtered results
-
-    // Update button highlights
+    resultsContainer.innerHTML = "";
+    loadMoreResults();
     updateFilterButtonHighlights();
 }
-
 
 function updateFilterButtonHighlights() {
     const buttons = document.querySelectorAll(".filter-button");
     buttons.forEach(button => {
         if (selectedTags.includes(button.textContent)) {
-            button.classList.add("selected"); // Highlight the selected button
+            button.classList.add("selected");
         } else {
-            button.classList.remove("selected"); // Remove highlight from non-selected buttons
+            button.classList.remove("selected");
         }
     });
 }
 
 function clearSelectedTags() {
-    selectedTags = []; // Clear all selected tags
+    selectedTags = [];
     const resultsContainer = document.getElementById("results");
-    resultsContainer.innerHTML = ""; // Clear previous results
+    resultsContainer.innerHTML = "";
 
-    // Show all files
     filteredFiles = Object.entries(tagsData).map(([file, data]) => ({
         file,
         description: data.description,
-        header: data.header
+        header: data.header,
+        image: data.image
     }));
-    loadMoreResults(); // Load all results
-
-    updateFilterButtonHighlights(); // Update highlights
+    loadMoreResults();
+    updateFilterButtonHighlights();
 }
 
-
-// Attach event listener to the Filter button
 document.getElementById("button").addEventListener("click", showFilterMenu);
-
