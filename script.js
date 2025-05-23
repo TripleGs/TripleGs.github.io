@@ -257,15 +257,16 @@ document.addEventListener('DOMContentLoaded', () => {
             e.preventDefault();
 
             const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
             const message = document.getElementById('message').value.trim();
 
-            if (name && message) {
+            if (name && email && message) {
                 // Format the email with the user's message
                 const subject = `Message from ${name} via Portfolio`;
-                const body = `Name: ${name}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+                const body = `${message}%0D%0A%0D%0A${name}`;
 
                 // Open the user's email client with pre-populated fields
-                window.location.href = `mailto:josephgoss123@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+                window.location.href = `mailto:josephgoss123@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}&from=${encodeURIComponent(email)}`;
 
                 // Reset the form
                 contactForm.reset();
