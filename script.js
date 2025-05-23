@@ -248,20 +248,28 @@ const typeWriter = () => {
 // Start typing effect when page loads
 window.addEventListener('load', typeWriter);
 
-// Handle contact form submission
-document.querySelector('.contact-form').addEventListener('submit', function (e) {
-    e.preventDefault();
+// Handle contact form submissions
+document.addEventListener('DOMContentLoaded', () => {
+    const contactForm = document.getElementById('contact-form');
 
-    const name = this.querySelector('input[type="text"]').value;
-    const email = this.querySelector('input[type="email"]').value;
-    const message = this.querySelector('textarea').value;
+    if (contactForm) {
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
 
-    // Create mailto link with pre-populated fields
-    const mailtoLink = `mailto:josephgoss123@gmail.com?subject=Portfolio Contact from ${name}&body=From: ${name}%0D%0AEmail: ${email}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            const name = document.getElementById('name').value.trim();
+            const message = document.getElementById('message').value.trim();
 
-    // Open email client
-    window.location.href = mailtoLink;
+            if (name && message) {
+                // Format the email with the user's message
+                const subject = `Message from ${name} via Portfolio`;
+                const body = `Name: ${name}%0D%0A%0D%0AMessage:%0D%0A${message}`;
 
-    // Clear the form
-    this.reset();
+                // Open the user's email client with pre-populated fields
+                window.location.href = `mailto:josephgoss123@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+                // Reset the form
+                contactForm.reset();
+            }
+        });
+    }
 });
