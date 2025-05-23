@@ -1,206 +1,204 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <!-- Defines Screen Rendering -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Joseph Goss - Software Developer & Computer Science Graduate">
-
-    <!-- Defines Page Properties -->
-    <title>Joseph Goss | Portfolio</title>
-    <link rel="icon" href="/assets/imgs/icon.jpg">
-
-    <!-- CSS Import -->
-    <link rel="stylesheet" href="/styles/main.css">
-
-    <!-- JS Import -->
-    <script src="/src/components.js" defer></script>
-
-    <!-- Page Specific Styles -->
-    <style>
-        .hero {
-            background-color: var(--secondary-color);
-            color: var(--light-text);
-            padding: 4rem 1rem;
-            text-align: center;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            color: var(--light-text);
-        }
-
-        .hero-subtitle {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
-
-        .highlights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .highlight-card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
-
-        .highlight-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .highlight-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .button {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            margin-top: 1rem;
-            transition: var(--transition);
-        }
-
-        .button:hover {
-            background-color: var(--accent-color);
-            text-decoration: none;
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .highlights-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <title>Joseph Goss - Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
-
 <body>
-    <div class="center">
-        <!-- Components loaded by JavaScript -->
-        <nav class="navbar"></nav>
-        <div class="mobile-menu" id="mobileMenu"></div>
+    <div class="cursor"></div>
 
-        <div class="carousel"></div>
-
-        <div class="content-body">
-            <div class="center">
-                <h1>
-                    Welcome!
-                </h1>
-                <p>
-                    Thank you for visiting my portfolio! I'm a computer science graduate from Lebanon Valley College
-                    with a passion for creating efficient, innovative software solutions. This site showcases my
-                    projects, skills, and professional background.
-                </p>
-                <h2>
-                    Hire/Connect With Me
-                </h2>
-                <p>
-                    If you are interested in hiring me for a position or
-                    project, please visit the <a href="hireme.html">Hire Me</a>
-                    page for more information. I look forward to hearing from you!
-                </p>
-            </div>
+    <div class="floating-nav">
+        <a href="#home" class="floating-nav-item" title="Home">
+            <i class="fas fa-home"></i>
+        </a>
+        <a href="#about" class="floating-nav-item" title="About">
+            <i class="fas fa-user"></i>
+        </a>
+        <a href="#projects" class="floating-nav-item" title="Projects">
+            <i class="fas fa-code"></i>
+        </a>
+        <a href="#experience" class="floating-nav-item" title="Experience">
+            <i class="fas fa-briefcase"></i>
+        </a>
+        <a href="#contact" class="floating-nav-item" title="Contact">
+            <i class="fas fa-envelope"></i>
+        </a>
         </div>
 
-        <div class="footer"></div>
-    </div>
+    <main>
+        <section id="home" class="hero">
+            <div class="particles" id="particles"></div>
+            <div class="hero-content">
+                <h1 class="fade-in">Joseph Goss</h1>
+                <p class="subtitle fade-in">Software Developer & Creative Technologist</p>
+                <div class="cta-buttons fade-in">
+                    <a href="#projects" class="cta-button primary">View Projects</a>
+                    <a href="#contact" class="cta-button secondary">Get in Touch</a>
+                </div>
+            </div>
+        </section>
 
-    <!-- Add to your main.css -->
-    <style>
-        .hero {
-            background-color: var(--secondary-color);
-            color: var(--light-text);
-            padding: 4rem 1rem;
-            text-align: center;
-            position: relative;
-        }
+        <section id="about" class="about">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p>A results-driven computer scientist with expertise in data science, AI programming, and software development. Adept at leveraging Python, TensorFlow, and Flutter to deliver scalable innovative solutions. Proven ability to streamline processes, improve efficiency, and drive technical innovation in both remote and hybrid environments. Additionally, excels in prompt engineering and agent development, creating intelligent systems that enhance user interactions and automate complex tasks.</p>
+                    <div class="skills">
+                        <h3>Skills</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">React</span>
+                            <span class="skill-tag">Node.js</span>
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">AWS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            color: var(--light-text);
-        }
+        <section id="projects" class="projects">
+            <h2 class="section-title">Projects</h2>
+            <div class="project-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <h3>Project One</h3>
+                    <p>Coming Soon</p>
+                    <div class="project-tags">
+                        <span>React</span>
+                        <span>Node.js</span>
+                        <span>MongoDB</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <h3>Project Two</h3>
+                    <p>Coming Soon</p>
+                    <div class="project-tags">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <h3>Personal Portfolio Website</h3>
+                    <p>A modern, responsive portfolio website showcasing skills and projects.</p>
+                    <div class="project-tags">
+                        <span>HTML5</span>
+                        <span>CSS3</span>
+                        <span>JavaScript</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-        .hero-subtitle {
-            font-size: 1.25rem;
-            opacity: 0.9;
-            max-width: 600px;
-            margin: 0 auto;
-        }
+        <section id="experience" class="experience">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+        
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Clinical Data Analyst</h3>
+                        <p class="timeline-place">Penn State Health - Holy Spirit Medical Center</p>
+                        <p class="timeline-date">March 2024 - Present</p>
+                        <p>Automated analysis of 50,000+ data points to identify actionable insights for leadership, contributing to cost reduction and performance improvements at Penn State Health.</p>
+                    </div>
+                </div>
+        
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Freelance AI Trainer/Developer</h3>
+                        <p class="timeline-place">DataAnnotation (Remote)</p>
+                        <p class="timeline-date">February 2024 - Present</p>
+                        <p>Edited, trained, and refined advanced AI models for applications such as video game programming, data processing, and software development across Python, C++, Dart, Flutter, HTML, JS, and RESTful APIs.</p>
+                    </div>
+                </div>
+        
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Contract Software Developer</h3>
+                        <p class="timeline-place">GTP (Remote)</p>
+                        <p class="timeline-date">April 2024 - November 2024</p>
+                        <p>Enhanced project efficiency by over 400% using AI tools; developed RESTful APIs for photo uploads and streamlined deployment using SOLID principles.</p>
+                    </div>
+                </div>
+        
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Data Scientist Intern</h3>
+                        <p class="timeline-place">Penn State Health (Remote Internship)</p>
+                        <p class="timeline-date">June 2024 - August 2024</p>
+                        <p>Built Splunk dashboards reducing incident response time by 80%; developed predictive models using LSTM and scikit-learn; documented and analyzed large datasets.</p>
+                    </div>
+                </div>
+        
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3>Computer/Data Scientist Intern</h3>
+                        <p class="timeline-place">NSA (Internship)</p>
+                        <p class="timeline-date">May 2022 - August 2023</p>
+                        <p>Utilized Python and APIs to analyze data flows at the NSA; generated insights and created data visuals to inform decision-makers and non-technical stakeholders.</p>
+                    </div>
+                </div>
+        
+            </div>
+        </section>
+        
 
-        .highlights-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
+        <section id="contact" class="contact">
+            <h2 class="section-title">Get in Touch</h2>
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <p>josephgoss123@gmail.com</p>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <p>717-926-5870</p>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://github.com/TripleGs" class="social-link" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://www.linkedin.com/in/joseph-goss-a444a32ab" class="social-link" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <input type="text" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea placeholder="Your Message" required></textarea>
+                    </div>
+                    <button type="submit" class="cta-button primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
 
-        .highlight-card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 2rem;
-            box-shadow: var(--box-shadow);
-            transition: var(--transition);
-        }
+    <footer>
+        <p>&copy; 2024 Joseph Goss. All rights reserved.</p>
+    </footer>
 
-        .highlight-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-
-        .highlight-card h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-        }
-
-        .button {
-            display: inline-block;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 0.75rem 1.5rem;
-            border-radius: var(--border-radius);
-            font-weight: 600;
-            margin-top: 1rem;
-            transition: var(--transition);
-        }
-
-        .button:hover {
-            background-color: var(--accent-color);
-            text-decoration: none;
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-
-            .highlights-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
+    <script src="script.js"></script>
 </body>
-
-</html>
+</html> 
