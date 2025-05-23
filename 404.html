@@ -7,39 +7,91 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Defines Page Properties -->
-    <title>Joseph Goss</title>
+    <title>404 - Page Not Found | Joseph Goss</title>
     <link rel="icon" href="/assets/imgs/icon.jpg">
 
-    <!-- Defines Styles -->
-    <link rel="stylesheet" href="/styles/navbar.css">
-    <link rel="stylesheet" href="/styles/content_body.css">
-    <link rel="stylesheet" href="/styles/footer.css">
-    <link rel="stylesheet" href="/styles/overall.css">
+    <!-- Single CSS import -->
+    <link rel="stylesheet" href="/styles/main.css">
 
-    <!-- Loads the Navbar and Navbar Logic -->
-    <script src="/src/loaders/navbar_loader.js" defer></script>
-    <script src="/src/logic/navbar_logic.js"></script>
-    <script src="/src/loaders/mobile_menu_loader.js" defer></script>
+    <!-- Single JS import -->
+    <script src="/src/components.js" defer></script>
 
-    <!-- Loads the Footer -->
-    <script src="/src/loaders/footer_loader.js" defer></script>
+    <!-- Page Specific Styles -->
+    <style>
+        .error-container {
+            text-align: center;
+            padding: 5rem 1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .error-code {
+            font-size: 8rem;
+            color: var(--accent-color);
+            line-height: 1;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .error-message {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            color: var(--secondary-color);
+        }
+
+        .error-actions {
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            text-decoration: none;
+            margin: 0 0.5rem;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .btn:hover {
+            background-color: var(--accent-color);
+            transform: translateY(-2px);
+            text-decoration: none;
+            color: white;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+    </style>
 </head>
 
 <body>
-    <center>
-        <!-- Navbar and Mobile Menu-->
+    <div class="center">
+        <!-- Components loaded by JavaScript -->
         <nav class="navbar"></nav>
         <div class="mobile-menu" id="mobileMenu"></div>
 
         <div class="content-body">
-            <center>
-                <h1>Page Not Found</h1>
-                <p>The page you were looking for could not be found. Trying searching again on my <a
-                        href="/projects.html">Projects/Papers</a> page.</p>
-            </center>
+            <div class="center">
+                <h1>404 - Page Not Found</h1>
+                <p>Oops! The page you are looking for doesn't exist or has been moved.</p>
+                <p>Return to <a href="index.html">homepage</a>.</p>
+            </div>
         </div>
+
         <div class="footer"></div>
-    </center>
+    </div>
 </body>
 
 </html>

@@ -5,44 +5,231 @@
     <!-- Defines Screen Rendering -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Contact Joseph Goss - Software Developer for hire">
 
     <!-- Defines Page Properties -->
-    <title>Joseph Goss</title>
-    <link rel="icon" href="assets/imgs/icon.jpg">
+    <title>Contact | Joseph Goss</title>
+    <link rel="icon" href="/assets/imgs/icon.jpg">
 
-    <!-- Defines Styles -->
-    <link rel="stylesheet" href="/styles/navbar.css">
-    <link rel="stylesheet" href="/styles/content_body.css">
-    <link rel="stylesheet" href="/styles/footer.css">
-    <link rel="stylesheet" href="/styles/overall.css">
-    <link rel="stylesheet" href="/styles/index.css">
+    <!-- Single CSS import -->
+    <link rel="stylesheet" href="/styles/main.css">
 
-    <!-- Loads the Navbar and Navbar Logic -->
-    <script src="/src/loaders/navbar_loader.js" defer></script>
-    <script src="/src/logic/navbar_logic.js"></script>
-    <script src="/src/loaders/mobile_menu_loader.js" defer></script>
+    <!-- Single JS import -->
+    <script src="/src/components.js" defer></script>
 
-    <!-- Loads the Footer -->
-    <script src="/src/loaders/footer_loader.js" defer></script>
+    <!-- Page Specific Styles -->
+    <style>
+        .page-header {
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .page-header h1 {
+            color: var(--light-text);
+        }
+
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .contact-info {
+            padding: 2rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .contact-form {
+            padding: 2rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .contact-method {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+
+        .contact-icon {
+            background-color: var(--secondary-color);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .contact-detail {
+            flex: 1;
+        }
+
+        .contact-detail strong {
+            display: block;
+            color: var(--secondary-color);
+            margin-bottom: 0.25rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            color: var(--secondary-color);
+            font-weight: 600;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: var(--border-radius);
+            font-family: var(--font-body);
+            font-size: 1rem;
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .submit-btn:hover {
+            background-color: var(--accent-color);
+        }
+
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <center>
-        <!-- Navbar and Mobile Menu-->
+    <div class="center">
+        <!-- Components loaded by JavaScript -->
         <nav class="navbar"></nav>
         <div class="mobile-menu" id="mobileMenu"></div>
 
+        <!-- Page Header -->
+        <header class="page-header">
+            <div class="container">
+                <h1>Contact Me</h1>
+            </div>
+        </header>
+
         <div class="content-body">
-            <center>
-                <h1>Hire Me/Contact Me</h1>
-                <p>If you are intersted in hiring me, contacting me, or connecting in anyway, please feel free to reach out on through the form of communcation you are most comfortale. I'll be sure to get back to you soon:</p>
-                <p>Phone: (+1) 717-926-5870</p>
-                <p>Email: <em><a href="mailto:josephgoss123@gmail.com">josephgoss123@gmail.com</a></em></p>
-                <p>Additionally you can also reach out to me through LinkedIn or Instagram, both which can be found in the footer of this page. I look forward to hearing from you!</p>
-            </center>
+            <div class="container">
+                <p class="center">I'm currently available for freelance projects and job opportunities.
+                    Feel free to contact me through any of the methods below, and I'll get back to you as soon as
+                    possible.</p>
+
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h2>Get In Touch</h2>
+
+                        <div class="contact-method">
+                            <div class="contact-icon">📱</div>
+                            <div class="contact-detail">
+                                <strong>Phone</strong>
+                                <span>(+1) 717-926-5870</span>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="contact-icon">✉️</div>
+                            <div class="contact-detail">
+                                <strong>Email</strong>
+                                <a href="mailto:josephgoss123@gmail.com">josephgoss123@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="contact-icon">💼</div>
+                            <div class="contact-detail">
+                                <strong>LinkedIn</strong>
+                                <a href="https://www.linkedin.com/in/joseph-goss-a444a32ab" target="_blank">Joseph
+                                    Goss</a>
+                            </div>
+                        </div>
+
+                        <div class="contact-method">
+                            <div class="contact-icon">📸</div>
+                            <div class="contact-detail">
+                                <strong>Instagram</strong>
+                                <a href="https://www.instagram.com/josephgoss123?igsh=a2RuMzFsemJmb3V6"
+                                    target="_blank">@josephgoss123</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="contact-form">
+                        <h2>Send a Message</h2>
+
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" class="form-control" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" class="form-control" required></textarea>
+                            </div>
+
+                            <button type="submit" class="submit-btn">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
+
         <div class="footer"></div>
-    </center>
+    </div>
+
+    <!-- Simple form handling script -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            alert('Thank you for your message! This form is currently a demo. Please use the contact methods on the left to reach me directly.');
+        });
+    </script>
 </body>
 
 </html>

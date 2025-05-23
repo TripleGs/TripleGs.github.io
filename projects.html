@@ -7,8 +7,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- Defines Page Properties -->
-    <title>Joseph Goss</title>
+    <title>Projects - Joseph Goss</title>
     <link rel="icon" href="/assets/imgs/icon.jpg">
+
+    <!-- Single CSS import -->
+    <link rel="stylesheet" href="/styles/main.css">
+
+    <!-- Single JS import -->
+    <script src="/src/components.js" defer></script>
 
     <!-- Defines Styles -->
     <link rel="stylesheet" href="/styles/navbar.css">
@@ -32,14 +38,13 @@
 </head>
 
 <body>
-    <center>
-
-        <!-- Navbar and Mobile Menu-->
+    <div class="center">
+        <!-- Components loaded by JavaScript -->
         <nav class="navbar"></nav>
         <div class="mobile-menu" id="mobileMenu"></div>
 
         <div class="content-body">
-            <center>
+            <div class="center">
                 <h1>Projects/Papers</h1>
                 <p>Use the search/filter tool to view specific content, or
                     browse all the content. Enjoy, and I hope you find what
@@ -51,11 +56,11 @@
                     <!-- Filter buttons will be dynamically added here -->
                 </div>
                 <div id="results" class="results-container"></div>
-            </center>
+            </div>
         </div>
 
         <div class="footer"></div>
-    </center>
+    </div>
 </body>
 
 </html>

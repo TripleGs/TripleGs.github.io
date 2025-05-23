@@ -5,53 +5,238 @@
     <!-- Defines Screen Rendering -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Joseph Goss - Software Developer & Computer Science Graduate">
 
     <!-- Defines Page Properties -->
-    <title>Joseph Goss</title>
+    <title>About | Joseph Goss</title>
     <link rel="icon" href="/assets/imgs/icon.jpg">
 
-    <!-- Defines Styles -->
-    <link rel="stylesheet" href="/styles/navbar.css">
-    <link rel="stylesheet" href="/styles/content_body.css">
-    <link rel="stylesheet" href="/styles/footer.css">
-    <link rel="stylesheet" href="/styles/overall.css">
-    <link rel="stylesheet" href="/styles/index.css">
+    <!-- CSS Import -->
+    <link rel="stylesheet" href="/styles/main.css">
 
+    <!-- JS Import -->
+    <script src="/src/components.js" defer></script>
 
-    <!-- Loads the Navbar and Navbar Logic -->
-    <script src="/src/loaders/navbar_loader.js" defer></script>
-    <script src="/src/logic/navbar_logic.js"></script>
-    <script src="/src/loaders/mobile_menu_loader.js" defer></script>
+    <!-- Page Specific Styles -->
+    <style>
+        .page-header {
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+            padding: 2rem 1rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
 
-    <!-- Loads the Footer -->
-    <script src="/src/loaders/footer_loader.js" defer></script>
+        .page-header h1 {
+            color: var(--light-text);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .profile-image {
+            border-radius: 8px;
+            box-shadow: var(--box-shadow);
+            width: 100%;
+        }
+
+        .skill-tag {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 2rem auto;
+        }
+
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--primary-color);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+
+        .left {
+            left: 0;
+        }
+
+        .right {
+            left: 50%;
+        }
+
+        .left::after {
+            right: -12px;
+        }
+
+        .right::after {
+            left: -12px;
+        }
+
+        .timeline-content {
+            padding: 1.5rem;
+            background-color: white;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .timeline-content h3 {
+            margin-top: 0;
+            color: var(--primary-color);
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline::after {
+                left: 31px;
+            }
+
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+
+            .timeline-item::after {
+                left: 20px;
+            }
+
+            .left::after,
+            .right::after {
+                left: 20px;
+            }
+
+            .right {
+                left: 0;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <center>
-        <!-- Navbar and Mobile Menu-->
+    <div class="center">
+        <!-- Components loaded by JavaScript -->
         <nav class="navbar"></nav>
         <div class="mobile-menu" id="mobileMenu"></div>
 
-        <div class="content-body">
-            <center>
+        <!-- Page Header -->
+        <header class="page-header">
+            <div class="container">
                 <h1>About Me</h1>
-                <p>My name is Joseph Goss and I am a 2024 grad of Lebanon Valley College (LVC). I graduated with a degree in 
-                    computer science and a minor in political science. I enjoy playing dungeons and dragons, creating TTRPG content, 
-                    creating music, playing guitar, coding, and exploring the outdoors. 
-                </p>
-                <h2>What I'm Doing Now</h2>
-                <p>Right now I am trying to take the skills I learned from university and apply those to the real world while searching for a job. Though the job market is scarce right now, I'm not going to prevent that
-                    from using my degree to make some money, one of the perks of programming is that I can make practically anything digital, so I am apply that to my hobbies to make some money
-                    while in search of a more stable form of income. 
-                </p>
-                <h2>What I Plan To Do</h2>
-                <p>My plans for the future are to renovate a van with my fiancé, soon to be wife and travel across the country and explore it while we are young.
-                    When vanlife is cheaper than an apartment, it's hard to refute saving money while explore the country when the only other alternative is living in a concrete box. 
-                </p>
+            </div>
+        </header>
+
+        <div class="content-body">
+            <div class="container">
+                <div class="about-grid">
+                    <div>
+                        <img src="/assets/imgs/icon.jpg" alt="Joseph Goss" class="profile-image">
+                        <h3>Skills</h3>
+                        <div class="skills-container">
+                            <span class="skill-tag">JavaScript</span>
+                            <span class="skill-tag">HTML/CSS</span>
+                            <span class="skill-tag">Computer Science</span>
+                            <span class="skill-tag">Problem-Solving</span>
+                            <span class="skill-tag">Creative Thinking</span>
+                        </div>
+                    </div>
+                    <div>
+                        <h2>Who I Am</h2>
+                        <p>My name is Joseph Goss and I am a 2024 graduate of Lebanon Valley College (LVC) with a degree
+                            in
+                            computer science and a minor in political science. I enjoy playing dungeons and dragons,
+                            creating TTRPG content,
+                            creating music, playing guitar, coding, and exploring the outdoors.</p>
+
+                        <h2>What I'm Doing Now</h2>
+                        <p>Right now I am applying the skills I learned from university to real-world projects while
+                            searching for a job.
+                            Though the job market is challenging, I'm leveraging my programming abilities to develop
+                            digital solutions
+                            related to my hobbies while searching for stable employment.</p>
+
+                        <h2>Future Plans</h2>
+                        <p>I plan to renovate a van with my fiancé and travel across the country to explore it while
+                            we're young.
+                            This adventure will allow us to experience different cultures and landscapes while
+                            maintaining a flexible
+                            lifestyle that supports remote work.</p>
+                    </div>
+                </div>
+
+                <h2 class="center">Timeline</h2>
+                <div class="timeline">
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2024</div>
+                            <h3>LVC Graduation</h3>
+                            <p>Graduated from Lebanon Valley College with a Computer Science degree and Political
+                                Science minor.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item right">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2023</div>
+                            <h3>Major Project</h3>
+                            <p>Completed senior capstone project, demonstrating software development skills.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item left">
+                        <div class="timeline-content">
+                            <div class="timeline-date">2020</div>
+                            <h3>College Start</h3>
+                            <p>Began studies at Lebanon Valley College, focusing on Computer Science.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+
         <div class="footer"></div>
-    </center>
+    </div>
 </body>
 
 </html>

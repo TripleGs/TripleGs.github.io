@@ -5,52 +5,112 @@
     <!-- Defines Screen Rendering -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Joseph Goss - Software Developer & Computer Science Graduate">
 
     <!-- Defines Page Properties -->
-    <title>Joseph Goss</title>
+    <title>Joseph Goss | Portfolio</title>
     <link rel="icon" href="/assets/imgs/icon.jpg">
 
-    <!-- Defines Styles -->
-    <link rel="stylesheet" href="/styles/navbar.css">
-    <link rel="stylesheet" href="/styles/content_body.css">
-    <link rel="stylesheet" href="/styles/footer.css">
-    <link rel="stylesheet" href="/styles/overall.css">
-    <link rel="stylesheet" href="/styles/carousel.css">
-    <link rel="stylesheet" href="/styles/index.css">
+    <!-- CSS Import -->
+    <link rel="stylesheet" href="/styles/main.css">
 
-    <!-- Loads the Navbar and Navbar Logic -->
-    <script src="/src/loaders/navbar_loader.js" defer></script>
-    <script src="/src/logic/navbar_logic.js" defer></script>
-    <script src="/src/loaders/mobile_menu_loader.js" defer></script>
+    <!-- JS Import -->
+    <script src="/src/components.js" defer></script>
 
-    <!-- Loads the Carousel and Carousel Logic -->
-    <script src="/src/logic/carousel_logic.js" defer></script>
-    <script src="/src/loaders/carousel_loader.js" defer></script>
+    <!-- Page Specific Styles -->
+    <style>
+        .hero {
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+            padding: 4rem 1rem;
+            text-align: center;
+            position: relative;
+        }
 
-    <!-- Loads the Footer -->
-    <script src="/src/loaders/footer_loader.js" defer></script>
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--light-text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .highlight-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: var(--transition);
+        }
+
+        .button:hover {
+            background-color: var(--accent-color);
+            text-decoration: none;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 
 <body>
-    <center>
-        <!-- Navbar and Mobile Menu-->
+    <div class="center">
+        <!-- Components loaded by JavaScript -->
         <nav class="navbar"></nav>
         <div class="mobile-menu" id="mobileMenu"></div>
 
         <div class="carousel"></div>
 
         <div class="content-body">
-            <center>
+            <div class="center">
                 <h1>
                     Welcome!
                 </h1>
                 <p>
-                    Thank you for visiting my site! I am thrilled that you have taken time
-                    out of your day to explore my site and learn about my life. It's a work in
-                     progress while I juggle a billion other projects, but it gets the job done. 
-                    Whether you
-                    are a potential employer or a curious soul, I encourage you to explore
-                    my site. I hope you find what you are looking for!
+                    Thank you for visiting my portfolio! I'm a computer science graduate from Lebanon Valley College
+                    with a passion for creating efficient, innovative software solutions. This site showcases my
+                    projects, skills, and professional background.
                 </p>
                 <h2>
                     Hire/Connect With Me
@@ -60,11 +120,87 @@
                     project, please visit the <a href="hireme.html">Hire Me</a>
                     page for more information. I look forward to hearing from you!
                 </p>
-            </center>
+            </div>
         </div>
 
         <div class="footer"></div>
-    </center>
+    </div>
+
+    <!-- Add to your main.css -->
+    <style>
+        .hero {
+            background-color: var(--secondary-color);
+            color: var(--light-text);
+            padding: 4rem 1rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            color: var(--light-text);
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .highlights-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .highlight-card {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlight-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: var(--border-radius);
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: var(--transition);
+        }
+
+        .button:hover {
+            background-color: var(--accent-color);
+            text-decoration: none;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .highlights-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </body>
 
 </html>
