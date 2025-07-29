@@ -1,7 +1,8 @@
 :root {
-    --primary-color: #000000;
-    --secondary-color: #1a1a1a;
-    --accent-color: #00bfff;
+    --primary-color: #0a0a0a;
+    --secondary-color: #1d1d1d;
+    --accent-color: #00ffe1;
+    --accent-gradient: linear-gradient(45deg,#ff0066,#00ffe1);
     --text-color: #ffffff;
     --text-secondary: #b3b3b3;
     --transition: all 0.3s ease;
@@ -18,7 +19,7 @@ html {
 }
 
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Space Grotesk', 'Poppins', sans-serif;
     background-color: var(--primary-color);
     color: var(--text-color);
     line-height: 1.6;
@@ -65,15 +66,19 @@ body {
     border: 2px solid var(--accent-color);
     box-shadow: 0 4px 15px rgba(0, 191, 255, 0.2);
 }
-
 .floating-nav-item:hover {
-    background: var(--accent-color);
-    transform: scale(1.1);
-    box-shadow: 0 6px 20px rgba(0, 191, 255, 0.4);
+    background: var(--accent-gradient);
+    transform: scale(1.1) rotate(10deg);
+    box-shadow: 0 6px 20px rgba(255,0,102,0.4);
 }
 
 .floating-nav-item i {
     font-size: 1.3rem;
+    transition: transform 0.6s ease;
+}
+
+.floating-nav-item:hover i {
+    transform: rotate(360deg);
 }
 
 /* Navbar */
@@ -137,7 +142,9 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    background: var(--accent-gradient);
+    background-size: 200% 200%;
+    animation: gradientShift 10s ease infinite;
     position: relative;
     overflow: hidden;
 }
@@ -183,9 +190,10 @@ body {
 .hero h1 {
     font-size: 4rem;
     margin-bottom: 1rem;
-    background: linear-gradient(45deg, var(--text-color), var(--accent-color));
+    background: var(--accent-gradient);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 20px rgba(255,0,102,0.5);
 }
 
 .subtitle {
@@ -216,8 +224,9 @@ body {
 }
 
 .cta-button.primary {
-    background: var(--accent-color);
+    background: var(--accent-gradient);
     color: var(--text-color);
+    box-shadow: 0 0 10px rgba(255,0,102,0.4);
 }
 
 .cta-button.secondary {
@@ -250,7 +259,7 @@ section {
     transform: translateX(-50%);
     width: 50px;
     height: 3px;
-    background: var(--accent-color);
+    background: var(--accent-gradient);
 }
 
 /* Projects Section */
@@ -349,6 +358,18 @@ footer {
         transform: translateY(0);
     }
 }
+@keyframes gradientShift {
+    0% {
+        background-position: 0 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0 50%;
+    }
+}
+
 
 @keyframes circuitPulse {
     0% {
@@ -730,7 +751,7 @@ footer {
     border: 1px solid rgba(0, 191, 255, 0.1);
     border-radius: 5px;
     color: var(--text-color);
-    font-family: 'Poppins', sans-serif;
+    font-family: 'Space Grotesk', 'Poppins', sans-serif;
 }
 
 .form-group textarea {
