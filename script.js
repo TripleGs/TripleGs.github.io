@@ -13,7 +13,7 @@ const setupReveal = () => {
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.15 });
+    }, { threshold: 0.1 });
 
     revealElements.forEach(element => observer.observe(element));
 };
@@ -42,7 +42,7 @@ const setupTimeline = () => {
                 observer.unobserve(entry.target);
             }
         });
-    }, { threshold: 0.2 });
+    }, { threshold: 0.1 });
 
     items.forEach(item => {
         observer.observe(item);
