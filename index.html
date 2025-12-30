@@ -4,236 +4,474 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joseph Goss - Portfolio</title>
+    <title>Joseph Goss | Data Science, DevOps, AI Training</title>
     <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Nunito:wght@300;400;600;700&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 
 <body>
-    <div class="cursor"></div>
-
-    <div class="floating-nav">
-        <a href="#home" class="floating-nav-item" title="Home">
-            <i class="fas fa-home"></i>
-        </a>
-        <a href="#about" class="floating-nav-item" title="About">
-            <i class="fas fa-user"></i>
-        </a>
-        <a href="#experience" class="floating-nav-item" title="Experience">
-            <i class="fas fa-briefcase"></i>
-        </a>
-        <a href="#projects" class="floating-nav-item" title="Projects">
-            <i class="fas fa-code"></i>
-        </a>
-        <a href="#blog" class="floating-nav-item" title="Research & Blog">
-            <i class="fas fa-book"></i>
-        </a>
-        <a href="#contact" class="floating-nav-item" title="Contact">
-            <i class="fas fa-envelope"></i>
-        </a>
-    </div>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="#home">Joseph Goss</a>
+            <nav class="site-nav">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="blog.html">Blog</a>
+                <a href="#contact">Contact</a>
+            </nav>
+            <a class="btn primary" href="#contact">Work with me</a>
+        </div>
+    </header>
 
     <main>
         <section id="home" class="hero">
-            <div class="particles" id="particles"></div>
-            <div class="hero-content">
-                <h1 class="fade-in">Joseph Goss</h1>
-                <p class="subtitle fade-in">Software Developer & Creative Technologist</p>
-                <div class="cta-buttons fade-in">
-                    <a href="#projects" class="cta-button primary">View Projects</a>
-                    <a href="#contact" class="cta-button secondary">Get in Touch</a>
+            <div class="hero-backdrop" aria-hidden="true">
+                <span class="blob blob-1"></span>
+                <span class="blob blob-2"></span>
+                <span class="blob blob-3"></span>
+            </div>
+            <div class="container hero-grid">
+                <div class="hero-copy">
+                    <p class="eyebrow">Data Science, DevOps, and AI Training</p>
+                    <h1>Friendly, practical systems that make teams faster.</h1>
+                    <p class="lead">I specialize in building tools and applications that streamline existing workflows
+                        or data analysis tasks allowing you to spend more time on the things that matter most.
+                    </p>
+                </div>
+                <div class="hero-card">
+                    <h3>Who Is This For?</h3>
+                    <p>I built this site not only as a way for employers and clients to learn about me and what I offer,
+                        but so I can share my thoughts and experiences with the world.</p>
+
+                    <p style="margin-bottom: 1rem; text-indent: 1rem;">I hope that this website will serve as a way for
+                        me to share my
+                        experiences and thoughts with
+                        other experts and passionate minds in a way that allows us all to determine how to navigate the
+                        complexities of the modern advancements in technology, such as AI. </p>
+                    <div class="hero-card-actions">
+                        <a class="btn secondary" href="#experience">View My Experience</a>
+                        <a class="btn secondary" href="blog.html">Read My Blog</a>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="about" class="about">
-            <h2 class="section-title">About Me</h2>
-            <div class="about-content">
-                <div class="about-text">
-                    <p>A results-driven computer scientist with expertise in data science, AI programming, and software
-                        development. Adept at leveraging Python, TensorFlow, and Flutter to deliver scalable innovative
-                        solutions. Proven ability to streamline processes, improve efficiency, and drive technical
-                        innovation in both remote and hybrid environments. Additionally, excels in prompt engineering
-                        and agent development, creating intelligent systems that enhance user interactions and automate
-                        complex tasks.</p>
-                    <div class="skills">
-                        <h3>Skills</h3>
-                        <div class="skill-tags">
-                            <span class="skill-tag">JavaScript</span>
-                            <span class="skill-tag">Firebase</span>
-                            <span class="skill-tag">Node.js</span>
-                            <span class="skill-tag">Python</span>
-                            <span class="skill-tag">AI/Agents</span>
-                            <span class="skill-tag">Flutter</span>
-                            <span class="skill-tag">Dart</span>
+        <section id="about" class="section about reveal">
+            <div class="container">
+                <div class="about-personal">
+                    <div class="about-bio">
+                        <p class="eyebrow" style="display: flex; align-items: center; gap: 0.5rem;">
+                            <img src="assets/me.webp" alt="Joseph face"
+                                style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-soft);">
+                            About Me
+                        </p>
+                        <h2>More than just the code.</h2>
+                        <p>I'm a builder, a thinker, and a lifelong learner. I don't just write software; I create
+                            systems that solve real human problems.</p>
+                        <p>When I'm not at the keyboard, you might find me exploring new coffee shops, hiking up a
+                            mountain, or <a href="https://natalie-joe.web.app/" target="_blank"
+                                style="color: var(--accent); text-decoration: none; font-weight: 600;">traveling the
+                                country in a van</a> with my wife. I believe that the best technology fades into the
+                            background, leaving us more time to enjoy the world around us.</p>
+                    </div>
+                    <div class="about-image">
+                        <div class="image-collage">
+                            <img src="assets/steps.webp" alt="Hobbies" class="collage-img collage-back-left">
+                            <img src="assets/other.webp" alt="Interests" class="collage-img collage-back-right"
+                                style="rotate: 90deg;">
+                            <img src="assets/me_portrait.webp" alt="Joseph Goss" class="collage-img collage-front"
+                                style="rotate: 90deg;">
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="experience">
-            <h2 class="section-title">Experience</h2>
-            <div class="timeline">
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Clinical Data Analyst</h3>
-                        <p class="timeline-place">Penn State Health - Holy Spirit Medical Center</p>
-                        <p class="timeline-date">March 2024 - Present</p>
-                        <p>Automated analysis of 50,000+ data points to identify actionable insights for leadership,
-                            contributing to cost reduction and performance improvements at Penn State Health.</p>
-                    </div>
+        <section id="experience" class="section experience reveal">
+            <div class="container">
+                <div class="section-intro">
+                    <p class="eyebrow">Experience</p>
+                    <h2>A timeline of hands-on problem solving.</h2>
+                    <p>Recent roles that shaped how I build and deliver.</p>
                 </div>
 
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Freelance AI Trainer/Developer</h3>
-                        <p class="timeline-place">DataAnnotation (Remote)</p>
-                        <p class="timeline-date">February 2024 - Present</p>
-                        <p>Edited, trained, and refined advanced AI models for applications such as video game
-                            programming, data processing, and software development across Python, C++, Dart, Flutter,
-                            HTML, JS, and RESTful APIs.</p>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3>Founder</h3>
+                                <a href="https://joequest.web.app" target="_blank" class="company-logo"> <img
+                                        src="assets/joequest_icon.webp" alt="JoeQuest Logo">
+                                </a>
+                            </div>
+                            <a href="https://joequest.web.app" target="_blank" class="timeline-place">JoeQuest</a>
+                            <p class="timeline-date">January 2026 - Present</p>
+                            <ul class="timeline-list">
+                                <li>Building and managing a portfolio of creative technology ventures, game development
+                                    projects, and digital products.</li>
+                                <li>Overseeing end-to-end product development from 3D asset creation to full-stack
+                                    application deployment.</li>
+                            </ul>
+                            <div class="timeline-tags" aria-hidden="true">
+                                <span>Leadership</span>
+                                <span>Product</span>
+                                <span>Development</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3>DevOps AI Model Trainer</h3>
+                                <a href="https://www.dataannotation.tech" target="_blank" class="company-logo"><img
+                                        src="assets/dataannotation_logo.webp" alt="DataAnnotation Logo"></a>
+                            </div>
+                            <a href="https://www.dataannotation.tech" target="_blank"
+                                class="timeline-place">DataAnnotation (Remote Freelance)</a>
+                            <p class="timeline-date">February 2024 - Present</p>
+                            <ul class="timeline-list">
+                                <li>Created high-fidelity reinforcement training data by editing, ranking, and rewriting
+                                    model responses for multi-domain reasoning tasks.</li>
+                                <li>Developed and evaluated structured test cases for Deep Research LLMs, IDE agents,
+                                    and
+                                    reasoning architectures focused on debugging, data pipelines, and simulation logic.
+                                </li>
+                                <li>Strengthened multi-language compiler and execution performance across Python, C++,
+                                    Dart/Flutter, JavaScript, Go, and Rust.</li>
+                                <li>Improved conversational alignment by designing prompts that isolate weaknesses in
+                                    multi-turn reasoning, efficiency, and tool-use behaviors.</li>
+                            </ul>
+                            <div class="timeline-tags" aria-hidden="true">
+                                <span>LLM Training</span>
+                                <span>Prompting</span>
+                                <span>Python</span>
+                                <span>C++</span>
+                                <span>Dart/Flutter</span>
+                                <span>Go/Rust</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3>DevOps and Automation Engineer</h3>
+                                <a href="https://pareto.ai" target="_blank" class="company-logo"> <img
+                                        src="assets/pareto.webp" alt="Pareto AI Logo">
+                                </a>
+                            </div>
+                            <a href="https://pareto.ai" target="_blank" class="timeline-place">Pareto AI (Remote
+                                Contract)</a>
+                            <p class="timeline-date">March 2025 - November 2025</p>
+                            <ul class="timeline-list">
+                                <li>Designed and deployed automation scripts using Docker, GitHub, and Linux
+                                    environments
+                                    to handle end-to-end workflow orchestration.</li>
+                                <li>Contributed to internal AI tooling by developing challenging DevOps prompts, custom
+                                    evaluation criteria, and working code solutions that highlight LLM failure cases.
+                                </li>
+                                <li>Adapted quickly to shifting client requirements across 3+ time zones while aligning
+                                    engineers and stakeholders on deliverables.</li>
+                                <li>Improved developer efficiency by operationalizing reusable automation modules for AI
+                                    task execution.</li>
+                            </ul>
+                            <div class="timeline-tags" aria-hidden="true">
+                                <span>Docker</span>
+                                <span>GitHub</span>
+                                <span>Python</span>
+                                <span>DevOps</span>
+                                <span>Automation</span>
+                                <span>LLM Training</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3>Data Scientist</h3>
+                                <a href="https://www.pennstatehealth.org" target="_blank" class="company-logo"><img
+                                        src="assets/psh_logo.webp"></a>
+                            </div>
+                            <a href="https://www.pennstatehealth.org" target="_blank" class="timeline-place">Penn
+                                State
+                                Health (Hybrid Temp Position)</a>
+                            <p class="timeline-date">March 2025 - June 2025</p>
+                            <ul class="timeline-list">
+                                <li>Created code to automate data analysis of 50,000+ data points to surface cases
+                                    of
+                                    interest for leadership.</li>
+                                <li>Built dashboards and reports to automate data science and discovery processes.
+                                </li>
+                                <li>Created tools and educational materials enabling non-technical staff to continue
+                                    complex data processing operations.</li>
+                            </ul>
+                            <div class="timeline-tags" aria-hidden="true">
+                                <span>Data Analysis</span>
+                                <span>Dashboards</span>
+                                <span>Automation</span>
+                                <span>Data Viz</span>
+                                <span>Enablement</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3>Software Developer</h3>
+                                <a href="https://www.gtpcorp.com" target="_blank" class="company-logo"><img
+                                        src="assets/gtp_logo.webp"></a>
+                            </div>
+                            <a href="https://www.gtpcorp.com" target="_blank" class="timeline-place">Get The Picture
+                                Corporation (Hybrid Contract)</a>
+                            <p class="timeline-date">April 2024 - November 2024</p>
+                            <ul class="timeline-list">
+                                <li>Leveraged advanced prompting techniques with AI tools to boost project
+                                    productivity
+                                    by
+                                    over 400%.</li>
+                                <li>Developed and implemented a RESTful API to facilitate seamless photo uploading
+                                    and
+                                    processing.</li>
+                                <li>Streamlined regional deployment and updates by adhering to SOLID principles and
+                                    best
+                                    practices.</li>
+                            </ul>
+                            <div class="timeline-tags" aria-hidden="true">
+                                <span>Dart/Flutter</span>
+                                <span>REST APIs</span>
+                                <span>SOLID</span>
+                                <span>AI Tools</span>
+                                <span>Deployment</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3>Data Scientist Intern</h3>
+                                <a href="https://www.pennstatehealth.org" target="_blank" class="company-logo"> <img
+                                        src="assets/psh_logo.webp"></a>
+                            </div>
+                            <a href="https://www.pennstatehealth.org" target="_blank" class="timeline-place">Penn
+                                State
+                                Health (Remote Internship)</a>
+                            <p class="timeline-date">June 2024 - August 2024</p>
+                            <ul class="timeline-list">
+                                <li>Created Splunk dashboards that reduced incident response time from 30-60 minutes
+                                    to
+                                    about 5 minutes.</li>
+                                <li>Developed a predictive model with Python and LSTM networks to establish
+                                    baselines,
+                                    detect outliers, and forecast thousands of future values.</li>
+                                <li>Conducted data analysis and documented previously undocumented datasets.</li>
+                            </ul>
+                            <div class="timeline-tags" aria-hidden="true">
+                                <span>Splunk</span>
+                                <span>Python</span>
+                                <span>LSTM</span>
+                                <span>Forecasting</span>
+                                <span>Incident Response</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="timeline-item">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <div class="timeline-header">
+                                <h3>Data Scientist Intern</h3>
+                                <a href="https://www.nsa.gov" target="_blank" class="company-logo"><img
+                                        src="assets/nsa_logo.webp"></a>
+                            </div>
+                            <a href="https://www.nsa.gov" target="_blank" class="timeline-place">National Security
+                                Agency
+                                (In-Person Internship)</a>
+                            <p class="timeline-date">May 2022 - August 2023</p>
+                            <ul class="timeline-list">
+                                <li>Generated metrics using APIs and UIs to analyze trends and answer key questions.
+                                </li>
+                                <li>Created charts and graphs to communicate results to decision-makers.</li>
+                                <li>Utilized Python to retrieve, store, and explore data to visualize data flow
+                                    between
+                                    sources.</li>
+                                <li>Analyzed and formatted collected data for technical and non-technical
+                                    stakeholders;
+                                    presented findings informally and formally.</li>
+                            </ul>
+                            <div class="timeline-tags" aria-hidden="true">
+                                <span>Python</span>
+                                <span>APIs</span>
+                                <span>Metrics</span>
+                                <span>Data Viz</span>
+                                <span>Stakeholders</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Contract Software Developer</h3>
-                        <p class="timeline-place">GTP (Remote)</p>
-                        <p class="timeline-date">April 2024 - November 2024</p>
-                        <p>Enhanced project efficiency by over 400% using AI tools; developed RESTful APIs for photo
-                            uploads and streamlined deployment using SOLID principles.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Data Scientist Intern</h3>
-                        <p class="timeline-place">Penn State Health (Remote Internship)</p>
-                        <p class="timeline-date">June 2024 - August 2024</p>
-                        <p>Built Splunk dashboards reducing incident response time by 80%; developed predictive models
-                            using LSTM and scikit-learn; documented and analyzed large datasets.</p>
-                    </div>
-                </div>
-
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content">
-                        <h3>Computer/Data Scientist Intern</h3>
-                        <p class="timeline-place">NSA (Internship)</p>
-                        <p class="timeline-date">May 2022 - August 2023</p>
-                        <p>Utilized Python and APIs to analyze data flows at the NSA; generated insights and created
-                            data visuals to inform decision-makers and non-technical stakeholders.</p>
-                    </div>
-                </div>
-
             </div>
         </section>
 
-        <section id="projects" class="projects">
-            <h2 class="section-title">Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-code"></i>
-                    </div>
-                    <h3>Fantasy Map AI Agent</h3>
-                    <p>Coming Soon</p>
-                    <div class="project-tags">
-                        <span>Python</span>
-                        <span>Gemini</span>
-                        <span>APIs/SDKs</span>
-                    </div>
+        <section id="projects" class="section projects reveal">
+            <div class="container">
+                <div class="section-intro">
+                    <p class="eyebrow">Projects</p>
+                    <h2>Business, products, and experiments.</h2>
+                    <p>Selected work with room for collaboration.</p>
                 </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-mobile-alt"></i>
-                    </div>
-                    <h3>Hershey Photo Booth Kiosk</h3>
-                    <p>A photo booth kiosk and application for New York City Hershey Chocolate Stores that allows users
-                        to take photos and customize them boosting sales and customer engagement.</p>
-                    <div class="project-tags">
-                        <span>Dart and Flutter</span>
-                        <span>HTML5</span>
-                        <span>JavaScript</span>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-laptop-code"></i>
-                    </div>
-                    <h3>Personal Portfolio Website</h3>
-                    <p>This website: a modern, responsive portfolio website showcasing skills and projects.</p>
-                    <div class="project-tags">
-                        <span>HTML5</span>
-                        <span>CSS3</span>
-                        <span>JavaScript</span>
-                    </div>
+                <div class="project-grid">
+                    <article class="project-card">
+                        <div class="project-icon" style="background: transparent;">
+                            <img src="assets/joequest_icon.webp" alt="JoeQuest Icon"
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;">
+                        </div>
+                        <h3>JoeQuest</h3>
+                        <p>My small business for all my little hobbies and joys.</p>
+                        <div class="project-tags">
+                            <span>3D Modeling</span>
+                            <span>Applications Development</span>
+                            <span>Game Development</span>
+                            <span>Music</span>
+                        </div>
+                        <div class="project-actions">
+                            <a class="btn small ghost" href="https://joequest.web.app/" target="_blank">Visit site</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-icon" style="background: transparent;">
+                            <img src="assets/imagineit_icon.webp" alt="ImagineIt Icon"
+                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;">
+                        </div>
+                        <h3>ImagineIt</h3>
+                        <p>A local Tinkercad-like 3D design app for combining and aligning shapes.</p>
+                        <div class="project-tags">
+                            <span>3D Design</span>
+                            <span>Local App</span>
+                            <span>STL Support</span>
+                        </div>
+                        <div class="project-actions">
+                            <a class="btn small ghost" href="projects/imagineit.html">See details</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-icon" style="background: transparent;">
+                            <img src="assets/photobooth_icon.webp" alt="Hershey Photo Booth Icon"
+                                style="width: 100%; height: 100%; object-fit: contain; border-radius: 14px; padding: 8px 0;">
+                        </div>
+                        <h3>Hershey Photo Booth Kiosk</h3>
+                        <p>Photo booth kiosk for the Hershey Chocolate Stores including but not limiting the New York
+                            Time square store.</p>
+                        <div class="project-tags">
+                            <span>Dart/Flutter</span>
+                            <span>HTML5</span>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="project-actions">
+                            <a class="btn small ghost" href="projects/hershey-photobooth.html">See details</a>
+                        </div>
+                    </article>
+
+                    <article class="project-card">
+                        <div class="project-icon">
+                            <i class="fas fa-shuttle-van"></i>
+                        </div>
+                        <h3>Natalie & Joe Website (Vanlife Website)</h3>
+                        <p>A personal travel log and gallery documenting life on the road and how we got there.</p>
+                        <div class="project-tags">
+                            <span>Web App</span>
+                            <span>Travel</span>
+                        </div>
+                        <div class="project-actions">
+                            <a class="btn small ghost" href="https://natalie-joe.web.app/" target="_blank">Visit
+                                site</a>
+                        </div>
+                    </article>
                 </div>
             </div>
         </section>
 
-        <section id="blog" class="blog">
-            <h2 class="section-title">Research & Thoughts</h2>
-            <div class="blog-intro">
-            </div>
-            <div class="project-grid">
-                <div class="project-card">
-                    <div class="project-image">
-                        <i class="fas fa-brain"></i>
-                    </div>
-                    <h3>Research Paper</h3>
-                    <p>Coming Soon</p>
-                    <div class="project-tags">
-                        <span>AI</span>
-                        <span>Research</span>
-                        <span>Theory</span>
-                    </div>
+        <section id="blog" class="section blog reveal">
+            <div class="container">
+                <div class="section-intro">
+                    <p class="eyebrow">Blog</p>
+                    <h2>Writing & Thoughts</h2>
+                    <p>Notes on development, design, and life.</p>
+                </div>
+
+                <div style="text-align: center; padding: 4rem 0; color: var(--muted);">
+                    <i class="fas fa-feather-alt"
+                        style="font-size: 3rem; margin-bottom: 1.5rem; color: var(--accent-2);"></i>
+                    <h3 style="color: var(--ink); margin-bottom: 0.5rem;">Coming Soon</h3>
+                    <p>I'm currently curating my notes and research. Check back later!</p>
                 </div>
             </div>
         </section>
 
-        <section id="contact" class="contact">
-            <h2 class="section-title">Get in Touch</h2>
-            <div class="contact-content">
-                <div class="contact-info">
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
-                        <p>josephgoss123@gmail.com</p>
+        <section id="contact" class="section contact reveal">
+            <div class="container contact-grid">
+                <div class="contact-card">
+                    <p class="eyebrow">Contact</p>
+                    <h2>Ready to get started?</h2>
+                    <p>Whether you are interested in hiring or just want to chat, I'm here to help. Feel free to reach
+                        out in whatever method is most comfortable.</p>
+                    <div class="contact-actions">
+                        <a class="btn primary" href="mailto:josephgoss123@gmail.com">Email me</a>
+                        <a class="btn ghost" href="https://www.linkedin.com/in/joseph-goss-a444a32ab" target="_blank"
+                            rel="noreferrer">LinkedIn</a>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
-                        <p>717-926-5870</p>
-                    </div>
-                    <div class="social-links">
-                        <a href="https://github.com/TripleGs" class="social-link" target="_blank"><i
-                                class="fab fa-github"></i></a>
-                        <a href="https://www.linkedin.com/in/joseph-goss-a444a32ab" class="social-link"
-                            target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <div class="contact-details">
+                        <div>
+                            <span>Email</span>
+                            <a href="mailto:josephgoss123@gmail.com">josephgoss123@gmail.com</a>
+                        </div>
+                        <div>
+                            <span>Phone</span>
+                            <a href="tel:717-926-5870">717-926-5870</a>
+                        </div>
+                        <div>
+                            <span>GitHub</span>
+                            <a href="https://github.com/TripleGs" target="_blank" rel="noreferrer">@TripleGs</a>
+                        </div>
                     </div>
                 </div>
+
                 <form class="contact-form" id="contact-form">
                     <div class="form-group">
-                        <input type="text" id="name" placeholder="Your Name" required>
+                        <label for="name">Your name</label>
+                        <input type="text" id="name" placeholder="Jane Doe" required>
                     </div>
                     <div class="form-group">
-                        <textarea id="message" placeholder="Your Message" required></textarea>
+                        <label for="message">Message details</label>
+                        <textarea id="message" placeholder="Place your request, project details, or anything else here!"
+                            required></textarea>
                     </div>
-                    <button type="submit" class="cta-button primary">Send Message</button>
+                    <button type="submit" class="btn primary">Send message</button>
                 </form>
             </div>
         </section>
     </main>
 
-    <footer>
-        <p>&copy; 2024 Joseph Goss. All rights reserved.</p>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>Built with care. Powered by curiosity.</p>
+            <p>&copy; 2025 Joseph Goss</p>
+        </div>
     </footer>
 
     <script src="script.js"></script>

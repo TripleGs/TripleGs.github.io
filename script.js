@@ -1,277 +1,169 @@
-// Create misty background effect
-const createMistyBackground = () => {
-    const particlesContainer = document.getElementById('particles');
-    const particleCount = 15; // Fewer particles since they're larger
+document.documentElement.classList.add('js');
 
-    for (let i = 0; i < particleCount; i++) {
-        const particle = document.createElement('div');
-        particle.className = 'mist-particle';
-
-        // Random initial position
-        particle.style.left = Math.random() * 100 + '%';
-        particle.style.top = Math.random() * 100 + '%';
-
-        // Random size (larger for mist effect)
-        const size = Math.random() * 200 + 100;
-        particle.style.width = size + 'px';
-        particle.style.height = size + 'px';
-
-        // Random animation delay
-        particle.style.animationDelay = Math.random() * 8 + 's';
-
-        // Random animation duration
-        particle.style.animationDuration = (Math.random() * 4 + 6) + 's';
-
-        particlesContainer.appendChild(particle);
-    }
-};
-
-// Click effect
-const createClickEffect = (e) => {
-    const clickEffect = document.createElement('div');
-    clickEffect.className = 'click-effect';
-    clickEffect.style.left = e.clientX + 'px';
-    clickEffect.style.top = e.clientY + 'px';
-
-    document.body.appendChild(clickEffect);
-
-    // Remove the element after animation
-    clickEffect.addEventListener('animationend', () => {
-        clickEffect.remove();
-    });
-};
-
-// Create circuit board effect
-const createCircuitBackground = () => {
-    const hero = document.querySelector('.hero');
-    const nodeCount = 12;
-    const nodes = [];
-
-    // Create nodes
-    for (let i = 0; i < nodeCount; i++) {
-        const node = document.createElement('div');
-        node.className = 'circuit-node';
-
-        // Random initial position
-        node.style.left = Math.random() * 100 + '%';
-        node.style.top = Math.random() * 100 + '%';
-
-        // Random size
-        const size = Math.random() * 6 + 4;
-        node.style.width = size + 'px';
-        node.style.height = size + 'px';
-
-        // Random animation delay
-        node.style.animationDelay = Math.random() * 4 + 's';
-
-        hero.appendChild(node);
-        nodes.push(node);
+const setupReveal = () => {
+    const revealElements = document.querySelectorAll('.reveal');
+    if (!revealElements.length) {
+        return;
     }
 
-    // Create connecting lines between nodes
-    for (let i = 0; i < nodes.length; i++) {
-        for (let j = i + 1; j < nodes.length; j++) {
-            if (Math.random() < 0.3) { // 30% chance to create a line
-                const line = document.createElement('div');
-                line.className = 'circuit-line';
-
-                const node1 = nodes[i];
-                const node2 = nodes[j];
-
-                const x1 = parseFloat(node1.style.left);
-                const y1 = parseFloat(node1.style.top);
-                const x2 = parseFloat(node2.style.left);
-                const y2 = parseFloat(node2.style.top);
-
-                // Calculate line position and rotation
-                const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
-                const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
-
-                line.style.width = length + '%';
-                line.style.left = x1 + '%';
-                line.style.top = y1 + '%';
-                line.style.transform = `rotate(${angle}deg)`;
-                line.style.transformOrigin = '0 0';
-
-                // Random animation delay
-                line.style.animationDelay = Math.random() * 4 + 's';
-
-                hero.appendChild(line);
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
             }
-        }
-    }
-};
-
-// Initialize misty background and click effect
-window.addEventListener('load', () => {
-    createCircuitBackground();
-    createMistyBackground();
-    document.addEventListener('click', createClickEffect);
-});
-
-// Custom cursor
-const cursor = document.querySelector('.cursor');
-
-document.addEventListener('mousemove', (e) => {
-    cursor.style.left = e.clientX + 'px';
-    cursor.style.top = e.clientY + 'px';
-});
-
-document.addEventListener('mousedown', () => {
-    cursor.style.transform = 'translate(-50%, -50%) scale(0.8)';
-});
-
-document.addEventListener('mouseup', () => {
-    cursor.style.transform = 'translate(-50%, -50%) scale(1)';
-});
-
-// Smooth scroll for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        document.querySelector(this.getAttribute('href')).scrollIntoView({
-            behavior: 'smooth'
         });
+    }, { threshold: 0.15 });
+
+    revealElements.forEach(element => observer.observe(element));
+};
+
+const setupTimeline = () => {
+    const timeline = document.querySelector('.timeline');
+    if (!timeline) {
+        return;
+    }
+
+    const items = Array.from(timeline.querySelectorAll('.timeline-item'));
+
+    const updateProgress = () => {
+        const rect = timeline.getBoundingClientRect();
+        const windowHeight = window.innerHeight;
+        const total = rect.height;
+        const visible = Math.min(Math.max(windowHeight - rect.top, 0), total);
+        const progress = total ? (visible / total) * 100 : 0;
+        timeline.style.setProperty('--progress', `${progress}%`);
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    items.forEach(item => {
+        observer.observe(item);
     });
-});
 
-// Navbar background change on scroll
-const navbar = document.querySelector('.navbar');
-window.addEventListener('scroll', () => {
-    if (window.scrollY > 50) {
-        navbar.style.background = 'rgba(0, 0, 0, 0.95)';
-    } else {
-        navbar.style.background = 'rgba(0, 0, 0, 0.8)';
-    }
-});
-
-// Intersection Observer for fade-in animations
-const observerOptions = {
-    root: null,
-    rootMargin: '0px',
-    threshold: 0.1
+    window.addEventListener('scroll', updateProgress, { passive: true });
+    window.addEventListener('resize', updateProgress);
+    updateProgress();
 };
 
-const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            entry.target.classList.add('fade-in');
-            observer.unobserve(entry.target);
-        }
-    });
-}, observerOptions);
-
-// Observe all sections
-document.querySelectorAll('section').forEach(section => {
-    observer.observe(section);
-});
-
-// Add hover effect to project cards
-const createProjectCard = (title, description, image, link) => {
-    const card = document.createElement('div');
-    card.className = 'project-card';
-    card.innerHTML = `
-        <div class="project-image">
-            <img src="${image}" alt="${title}">
-        </div>
-        <div class="project-info">
-            <h3>${title}</h3>
-            <p>${description}</p>
-            <a href="${link}" class="project-link">View Project</a>
-        </div>
-    `;
-    return card;
-};
-
-// Add parallax effect to hero section
-const hero = document.querySelector('.hero');
-window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    hero.style.backgroundPositionY = scrolled * 0.5 + 'px';
-});
-
-// Add typing effect to subtitle
-const subtitle = document.querySelector('.subtitle');
-const ctaButtons = document.querySelector('.cta-buttons');
-const titles = [
-    "Software Developer & Creative Technologist",
-    "AI Engineer & Data Scientist",
-    "Full Stack Developer & Problem Solver",
-    "Prompt Engineer & AI Trainer"
-];
-let currentTitleIndex = 0;
-let isDeleting = false;
-let currentText = '';
-let typingSpeed = 100;
-let deletingSpeed = 50;
-let pauseTime = 2000;
-
-const typeWriter = () => {
-    const currentTitle = titles[currentTitleIndex];
-
-    if (isDeleting) {
-        // Deleting text
-        currentText = currentTitle.substring(0, currentText.length - 1);
-        typingSpeed = deletingSpeed;
-
-        // Move buttons up when text is being deleted
-        if (currentText.length < 5) {
-            ctaButtons.classList.add('move-up');
-        }
-    } else {
-        // Typing text
-        currentText = currentTitle.substring(0, currentText.length + 1);
-        typingSpeed = 100;
-
-        // Move buttons back down when typing starts
-        if (currentText.length < 5) {
-            ctaButtons.classList.remove('move-up');
-        }
-    }
-
-    subtitle.textContent = currentText;
-
-    if (!isDeleting && currentText === currentTitle) {
-        // Finished typing, pause before deleting
-        isDeleting = true;
-        typingSpeed = pauseTime;
-    } else if (isDeleting && currentText === '') {
-        // Finished deleting, move to next title
-        isDeleting = false;
-        currentTitleIndex = (currentTitleIndex + 1) % titles.length;
-        typingSpeed = 500; // Pause before starting next title
-    }
-
-    setTimeout(typeWriter, typingSpeed);
-};
-
-// Start typing effect when page loads
-window.addEventListener('load', typeWriter);
-
-// Handle contact form submissions
-document.addEventListener('DOMContentLoaded', () => {
+const setupContactForm = () => {
     const contactForm = document.getElementById('contact-form');
+    if (!contactForm) {
+        return;
+    }
 
-    if (contactForm) {
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
+    contactForm.addEventListener('submit', (event) => {
+        event.preventDefault();
 
-            const name = document.getElementById('name').value.trim();
-            const message = document.getElementById('message').value.trim();
+        const name = document.getElementById('name').value.trim();
+        const message = document.getElementById('message').value.trim();
 
-            if (name && message) {
-                // Format the email with the user's message
-                const subject = `Message from ${name} via Portfolio`;
-                const body = `${message}
+        if (name && message) {
+            const subject = `Message from ${name} via Portfolio`;
+            const body = `${message}\n\n${name}`;
+            window.location.href = `mailto:josephgoss123@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            contactForm.reset();
+        }
+    });
+};
 
-${name}`;
+const setupBlogIndex = () => {
+    const container = document.getElementById('blog-index');
+    if (!container) {
+        return;
+    }
 
-                // Open the user's email client with pre-populated fields
-                window.location.href = `mailto:josephgoss123@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    const searchInput = document.getElementById('blog-search');
+    const tagContainer = document.getElementById('blog-tags');
+    const count = document.getElementById('blog-count');
+    const cards = Array.from(container.querySelectorAll('.blog-card'));
 
-                // Reset the form
-                contactForm.reset();
+    if (!cards.length) {
+        return;
+    }
+
+    const getTags = (card) => {
+        const tagString = card.dataset.tags || '';
+        return tagString.split(',').map(tag => tag.trim()).filter(Boolean);
+    };
+
+    const tags = new Set();
+    cards.forEach(card => {
+        getTags(card).forEach(tag => tags.add(tag));
+    });
+
+    let activeTag = 'All';
+
+    const createTagButton = (tag) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.textContent = tag;
+        button.classList.toggle('is-active', tag === activeTag);
+        button.addEventListener('click', () => {
+            activeTag = tag;
+            Array.from(tagContainer.querySelectorAll('button')).forEach(btn => {
+                btn.classList.toggle('is-active', btn.textContent === activeTag);
+            });
+            render();
+        });
+        return button;
+    };
+
+    if (tagContainer) {
+        tagContainer.innerHTML = '';
+        tagContainer.appendChild(createTagButton('All'));
+        Array.from(tags).sort().forEach(tag => tagContainer.appendChild(createTagButton(tag)));
+    }
+
+    const render = () => {
+        const query = searchInput ? searchInput.value.trim().toLowerCase() : '';
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            const title = (card.dataset.title || '').toLowerCase();
+            const summary = (card.dataset.summary || '').toLowerCase();
+            const tagString = (card.dataset.tags || '').toLowerCase();
+            const matchesTag = activeTag === 'All' || tagString.split(',').map(tag => tag.trim()).includes(activeTag.toLowerCase());
+            const matchesQuery = !query || `${title} ${summary} ${tagString}`.includes(query);
+
+            if (matchesTag && matchesQuery) {
+                card.style.display = '';
+                visibleCount += 1;
+            } else {
+                card.style.display = 'none';
             }
         });
+
+        if (count) {
+            count.textContent = `${visibleCount} post${visibleCount === 1 ? '' : 's'} found`;
+        }
+    };
+
+    if (searchInput) {
+        searchInput.addEventListener('input', render);
     }
-});
+
+    render();
+};
+
+const setupPlaceholderLinks = () => {
+    const placeholders = document.querySelectorAll('a[data-link-placeholder="true"]');
+    placeholders.forEach(link => {
+        link.addEventListener('click', (event) => {
+            event.preventDefault();
+        });
+    });
+};
+
+setupReveal();
+setupTimeline();
+setupContactForm();
+setupBlogIndex();
+setupPlaceholderLinks();

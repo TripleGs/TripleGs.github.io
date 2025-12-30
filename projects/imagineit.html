@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ImagineIt App | Joseph Goss</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Nunito:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* Project specific styles */
+        .project-header {
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+
+        .project-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            aspect-ratio: 16/9;
+            background: var(--bg-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .text-block {
+            margin-bottom: 2rem;
+        }
+
+        .text-block h3 {
+            margin-bottom: 1rem;
+            color: var(--ink);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .back-link:hover {
+            color: var(--accent-dark);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="../index.html#home">Joseph Goss</a>
+            <nav class="site-nav">
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#experience">Experience</a>
+                <a href="../index.html#projects">Projects</a>
+                <a href="../index.html#contact">Contact</a>
+            </nav>
+            <a class="btn primary" href="../index.html#contact">Work with me</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <a href="../index.html#projects" class="back-link"><i class="fas fa-arrow-left"></i> Back to
+                    Projects</a>
+
+                <div class="project-header">
+                    <p class="eyebrow">Project Showcase</p>
+                    <h1>ImagineIt</h1>
+                    <p class="lead">Concept studio for new ideas, prototypes, and creative builds.</p>
+                </div>
+
+                <div class="project-content">
+                    <div class="text-block">
+                        <h3>Overview</h3>
+                        <p>ImagineIt is a powerful, locally-hosted 3D design application similar to Tinkercad. It
+                            empowers users to combine, align, and manipulate simple shapes directly on their own
+                            machine. The application supports uploading any STL file and comes with a library of basic
+                            shapes built-in. More features are currently in development and coming soon.</p>
+                    </div>
+
+                    <div class="text-block">
+                        <h3>Links & Downloads</h3>
+                        <p>Explore the source code on GitHub. A downloadable executable (EXE) will be added in a future
+                            update.</p>
+                        <div class="contact-actions" style="margin-top: 1rem;">
+                            <a class="btn primary" href="https://github.com/TripleGs/ImagineIt" target="_blank"><i
+                                    class="fab fa-github"></i> View on GitHub</a>
+                        </div>
+                    </div>
+
+                    <div class="text-block">
+                        <h3>Gallery</h3>
+                        <p>Sneak peeks and prototypes.</p>
+                        <div class="gallery-grid">
+                            <div class="gallery-item">
+                                <img src="../assets/imagineit1.webp" alt="ImagineIt Application Screenshot 1">
+                            </div>
+                            <div class="gallery-item">
+                                <img src="../assets/imagineit2.webp" alt="ImagineIt Application Screenshot 2">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact reveal">
+            <div class="container contact-grid">
+                <div class="contact-card">
+                    <p class="eyebrow">Contact</p>
+                    <h2>Have an idea?</h2>
+                    <p>Let's collaborate on the next big thing.</p>
+                    <div class="contact-actions">
+                        <a class="btn primary" href="mailto:josephgoss123@gmail.com">Email me</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>Built with care. Powered by curiosity.</p>
+            <p>&copy; 2025 Joseph Goss</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>

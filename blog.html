@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Joseph Goss</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Nunito:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="index.html">Joseph Goss</a>
+            <nav class="site-nav">
+                <a href="index.html#about">About</a>
+                <a href="index.html#experience">Experience</a>
+                <a href="index.html#projects">Projects</a>
+                <a href="blog.html">Blog</a>
+                <a href="index.html#contact">Contact</a>
+            </nav>
+            <a class="btn primary" href="index.html#contact">Work with me</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="section blog reveal">
+            <div class="container">
+                <div class="section-intro">
+                    <p class="eyebrow">Blog</p>
+                    <h1>All posts</h1>
+                    <p>Search, filter, and scan the archive. Each post opens on its own page.</p>
+                </div>
+
+                <div class="blog-search">
+                    <input type="search" id="blog-search" placeholder="Search by title, tag, or summary"
+                        aria-label="Search blog posts">
+                    <div class="blog-filter" id="blog-tags"></div>
+                    <p class="blog-count" id="blog-count"></p>
+                </div>
+
+                <div class="blog-grid" id="blog-index"></div>
+            </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>Built with care. Powered by curiosity.</p>
+            <p>&copy; 2025 Joseph Goss</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

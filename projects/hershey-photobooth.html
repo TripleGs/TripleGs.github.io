@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hershey Photo Booth Kiosk | Joseph Goss</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Nunito:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        /* Project specific styles */
+        .project-header {
+            padding: 8rem 0 4rem;
+            text-align: center;
+        }
+
+        .project-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem 0;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-item {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            aspect-ratio: 16/9;
+            background: var(--bg-alt);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .text-block {
+            margin-bottom: 2rem;
+        }
+
+        .text-block h3 {
+            margin-bottom: 1rem;
+            color: var(--ink);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            font-weight: 600;
+            color: var(--accent);
+        }
+
+        .back-link:hover {
+            color: var(--accent-dark);
+        }
+    </style>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="logo" href="../index.html#home">Joseph Goss</a>
+            <nav class="site-nav">
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#experience">Experience</a>
+                <a href="../index.html#projects">Projects</a>
+                <a href="../index.html#contact">Contact</a>
+            </nav>
+            <a class="btn primary" href="../index.html#contact">Work with me</a>
+        </div>
+    </header>
+
+    <main>
+        <section class="section">
+            <div class="container">
+                <a href="../index.html#projects" class="back-link"><i class="fas fa-arrow-left"></i> Back to
+                    Projects</a>
+
+                <div class="project-header">
+                    <p class="eyebrow">Project Showcase</p>
+                    <h1>Hershey Photo Booth Kiosk</h1>
+                    <p class="lead">A customized photo experience for retail engagement.</p>
+                </div>
+
+                <div class="project-content">
+                    <div class="text-block">
+                        <h3>Overview</h3>
+                        <p>I utilized the open-source <a href="https://github.com/flutter/photobooth" target="_blank"
+                                style="color: var(--accent);">Google Photobooth</a> as a foundation to create a custom
+                            retail experience. This enhanced application allows users to take or upload photos and
+                            customize them with unique designs. The seamless integration allows customers to purchase a
+                            Hershey's candy bar wrapped in their own personalized wrapper. The software is deployed on
+                            kiosks in the Hershey's Chocolate World store in New York Times Square and several other
+                            locations.</p>
+                    </div>
+
+                    <div class="text-block">
+                        <h3>Technical Details</h3>
+                        <p>Built using Flutter/Dart for cross-platform performance. The
+                            application connects to a robust cloud backend to handle high-resolution image processing
+                            and secure data storage.</p>
+                        <ul class="list" style="margin-top: 1rem;">
+                            <li><strong>Branded Experience:</strong> Integrated Hershey's specific assets including
+                                mascot characters and themed stickers.</li>
+                            <li><strong>Dynamic Content:</strong> Supports dynamically updating images and assets based
+                                on the specific kiosk location.</li>
+                            <li><strong>Customization:</strong> Added text editing capabilities allowing users to
+                                personalize their wrappers with names and messages.</li>
+                            <li><strong>Localization:</strong> Implemented multiple language support to accommodate
+                                international tourists.</li>
+                            <li><strong>Cloud Integration:</strong> Utilized AWS services via API for scalable image
+                                handling, storage, and processing.</li>
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact reveal">
+            <div class="container contact-grid">
+                <div class="contact-card">
+                    <p class="eyebrow">Contact</p>
+                    <h2>Interested in similar projects?</h2>
+                    <p>I can build custom interactive experiences for your brand.</p>
+                    <div class="contact-actions">
+                        <a class="btn primary" href="mailto:josephgoss123@gmail.com">Email me</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>Built with care. Powered by curiosity.</p>
+            <p>&copy; 2025 Joseph Goss</p>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+
+</html>
