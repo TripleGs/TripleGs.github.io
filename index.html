@@ -3,362 +3,188 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Joseph Goss | Data Science and DevOps</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Joseph Goss</title>
+    <meta name="description" content="Joseph Goss — Roam Community and Natalie's Journal: Second Story.">
+    <meta name="theme-color" content="#050608">
+    <meta property="og:title" content="Joseph Goss">
+    <meta property="og:description" content="Roam Community & Natalie's Journal: Second Story">
+    <link rel="icon"
+        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232f6fed'/%3E%3Cstop offset='.5' stop-color='%23ec5f9f'/%3E%3Cstop offset='1' stop-color='%23f2a541'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='url(%23g)'/%3E%3C/svg%3E">
+    <script>document.documentElement.classList.add('js');</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Bricolage Grotesque: Joseph's own sections. Inter + Dancing Script: Natalie's Journal's
+         fonts (the shop's body/wordmark face and its "Second Story" script). Roam's Archivo,
+         Public Sans and IBM Plex Mono are served from assets/fonts — see styles.css. -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Fraunces:wght@500;700&family=Nunito:wght@300;400;600;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,200..800&family=Dancing+Script:wght@400..700&family=Inter:wght@400..700&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="njl.css">
 </head>
 
 <body>
-    <header class="site-header">
-        <div class="container header-inner">
-            <a class="logo" href="#home">Joseph Goss</a>
-            <nav class="site-nav">
-                <a href="#about">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#projects">Projects</a>
-                <a href="#contact">Contact</a>
+    <div class="grain" aria-hidden="true"></div>
+
+    <!-- Mini logo bar: slides in once the big name has scrolled away -->
+    <nav class="topbar" aria-label="Sections">
+        <a class="tb-name" href="#top">Joseph Goss</a>
+        <a class="tb-icon" href="#roam" aria-label="Roam Community" data-section="roam"><img
+                src="assets/roam/logo.webp" alt=""></a>
+        <a class="tb-icon" href="#natalie" aria-label="Natalie's Journal: Second Story" data-section="natalie"><img
+                src="assets/nataliesjournal_icon.webp" alt=""></a>
+    </nav>
+
+    <!-- ============================================================ HERO -->
+    <header class="hero" id="top">
+        <canvas class="hero-canvas" aria-hidden="true"></canvas>
+        <div class="hero-inner">
+            <h1 class="name" aria-label="Joseph Goss"><span class="word">Joseph</span> <span class="word">Goss</span></h1>
+            <p class="intro">I build fun stuff and travel the country in a van with my wife, Natalie.</p>
+
+            <nav class="links" aria-label="Links">
+                <div class="link-row">
+                    <a class="bubble mag" href="https://github.com/TripleGs" target="_blank" rel="noopener"
+                        aria-label="GitHub" style="--i:0">
+                        <i class="fa-brands fa-github"></i>
+                        <span class="tip" aria-hidden="true">GitHub</span>
+                    </a>
+                    <a class="bubble mag" href="https://www.linkedin.com/in/joseph-goss-a444a32ab" target="_blank"
+                        rel="noopener" aria-label="LinkedIn" style="--i:1">
+                        <i class="fa-brands fa-linkedin-in"></i>
+                        <span class="tip" aria-hidden="true">LinkedIn</span>
+                    </a>
+                    <a class="bubble mag" href="https://www.instagram.com/josephgoss123" target="_blank" rel="noopener"
+                        aria-label="Instagram" style="--i:2">
+                        <i class="fa-brands fa-instagram"></i>
+                        <span class="tip" aria-hidden="true">Instagram</span>
+                    </a>
+                    <a class="bubble mag" href="mailto:josephgoss123@gmail.com" aria-label="Email" style="--i:3">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span class="tip" aria-hidden="true">Email</span>
+                    </a>
+                </div>
+                <div class="link-row">
+                    <a class="bubble bubble-biz mag" href="#roam" aria-label="Roam Community" style="--i:4">
+                        <img src="assets/roam/logo.webp" alt="" width="76" height="76">
+                        <span class="tip" aria-hidden="true">Roam Community</span>
+                    </a>
+                    <a class="bubble bubble-biz mag" href="#natalie" aria-label="Natalie's Journal: Second Story"
+                        style="--i:5">
+                        <img src="assets/nataliesjournal_icon.webp" alt="" width="76" height="76">
+                        <span class="tip" aria-hidden="true">Natalie's Journal</span>
+                    </a>
+                </div>
             </nav>
-            <a class="btn primary" href="#contact">Work with me</a>
         </div>
     </header>
 
     <main>
-        <section id="home" class="hero">
-            <div class="hero-backdrop" aria-hidden="true">
-                <span class="blob blob-1"></span>
-                <span class="blob blob-2"></span>
-                <span class="blob blob-3"></span>
-            </div>
-            <div class="container hero-grid">
-                <div class="hero-copy">
-                    <p class="eyebrow">Data Science and DevOps</p>
-                    <h1>Friendly, practical systems that make teams faster.</h1>
-                    <p class="lead">I specialize in building tools and applications that streamline existing workflows
-                        or data analysis tasks allowing you to spend more time on the things that matter most.
-                    </p>
-                </div>
-                <div class="hero-card">
-                    <h3>Who Is This For?</h3>
-                    <p>I built this site not only as a way for employers and clients to learn about me and what I offer,
-                        but so I can share my thoughts and experiences with the world.</p>
-
-                    <p style="margin-bottom: 1rem; text-indent: 1rem;">I hope that this website will serve as a way for
-                        me to share my
-                        experiences and thoughts with
-                        other experts and passionate minds in a way that allows us all to determine how to navigate the
-                        complexities of the modern advancements in technology.</p>
-                    <div class="hero-card-actions">
-                        <a class="btn secondary" href="#experience">View My Experience</a>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="about" class="section about reveal">
-            <div class="container">
-                <div class="about-personal">
-                    <div class="about-bio">
-                        <p class="eyebrow" style="display: flex; align-items: center; gap: 0.5rem;">
-                            <img src="assets/me.webp" alt="Joseph face"
-                                style="width: 30px; height: 30px; border-radius: 50%; object-fit: cover; border: 2px solid var(--accent-soft);">
-                            About Me
-                        </p>
-                        <h2>More than just the code.</h2>
-                        <p>I'm a builder, a thinker, and a lifelong learner. I don't just write software; I create
-                            systems that solve real human problems.</p>
-                        <p>When I'm not at the keyboard, you might find me exploring new coffee shops, hiking up a
-                            mountain, or traveling the country in a van with my wife. I believe that the best technology fades into the
-                            background, leaving us more time to enjoy the world around us.</p>
-                    </div>
-                    <div class="about-image">
-                        <div class="image-collage">
-                            <img src="assets/steps.webp" alt="Hobbies" class="collage-img collage-back-left">
-                            <img src="assets/other.webp" alt="Interests" class="collage-img collage-back-right"
-                                style="rotate: 90deg;">
-                            <img src="assets/me_portrait.webp" alt="Joseph Goss" class="collage-img collage-front"
-                                style="rotate: 90deg;">
+        <!-- ===================================================== ROAM -->
+        <section class="biz roam" id="roam" aria-label="Roam Community">
+            <canvas class="topo" aria-hidden="true"></canvas>
+            <div class="roam-inner">
+                <div class="stage" aria-hidden="true">
+                    <!-- six of the app's map layers, bottom to top; names as the app labels them -->
+                    <div class="stack">
+                        <div class="layer" data-name="Temperature averages" style="--z:0; --b:.78; --c:#f2a541; background-image:url(assets/roam/temperature.webp); background-position:40% 50%"></div>
+                        <div class="layer" data-name="Light pollution" style="--z:1; --b:.82; --c:#a07bff; background-image:url(assets/roam/light-pollution.webp); background-position:30% 50%"></div>
+                        <div class="layer" data-name="Fall foliage" style="--z:2; --b:.86; --c:#e0703a; background-image:url(assets/roam/foliage.webp); background-position:60% 50%"></div>
+                        <div class="layer" data-name="Tree cover" style="--z:3; --b:.9; --c:#3fae5a; background-image:url(assets/roam/tree-cover.webp); background-position:75% 50%"></div>
+                        <div class="layer" data-name="Cellular coverage" style="--z:4; --b:.95; --c:#ec5f9f; background-image:url(assets/roam/coverage-premium.webp); background-position:55% 50%"></div>
+                        <div class="layer" data-name="Campgrounds" style="--z:5; --c:#3fbf6a; background-image:url(assets/roam/campgrounds.webp); background-position:50% 42%"></div>
+                        <div class="top">
+                            <span class="pin"><svg viewBox="0 0 34 46">
+                                    <path d="M17 1C8.2 1 1 8 1 16.6 1 28.5 17 45 17 45s16-16.5 16-28.4C33 8 25.8 1 17 1z"
+                                        fill="#3fbf6a" stroke="#fff" stroke-width="2" />
+                                    <circle cx="17" cy="16.5" r="6" fill="#fff" />
+                                </svg></span>
                         </div>
+                    </div>
+                    <!-- names the layer under the cursor -->
+                    <div class="layer-tag"><span class="dot"></span><span class="txt"></span></div>
+                </div>
+
+                <div class="copy reveal">
+                    <p class="mono-label">iOS &middot; Android &middot; Web</p>
+                    <h2 class="roam-mark">Roam <span class="wordmark-sub">Community</span></h2>
+                    <p class="roam-tagline">Find a campsite with signal, shade and an open night</p>
+                    <a class="btn btn-roam mag" href="https://roam.community" target="_blank" rel="noopener">
+                        roam.community
+                        <svg class="arrow" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M7 17 17 7M8 7h9v9" />
+                        </svg>
+                    </a>
+                    <div class="socials">
+                        <a class="social mag" style="--hc:#0d84ff" href="https://apps.apple.com/us/app/roam-community/id6823726488"
+                            target="_blank" rel="noopener" aria-label="App Store" title="App Store"><i
+                                class="fa-brands fa-app-store-ios"></i></a>
+                        <a class="social mag" style="--hc:#01875f" href="https://play.google.com/store/apps/details?id=community.roam.app"
+                            target="_blank" rel="noopener" aria-label="Google Play" title="Google Play"><i
+                                class="fa-brands fa-google-play"></i></a>
+                        <a class="social mag" style="--hc:linear-gradient(45deg,#f9b233,#e1306c 50%,#833ab4)"
+                            href="https://www.instagram.com/roam.community.llc" target="_blank" rel="noopener"
+                            aria-label="Instagram" title="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a class="social mag tiktok" style="--hc:#111" href="https://www.tiktok.com/@roam.community.llc"
+                            target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><i
+                                class="fa-brands fa-tiktok"></i></a>
+                        <a class="social mag" style="--hc:#ff0033" href="https://www.youtube.com/@roamcommunity"
+                            target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><i
+                                class="fa-brands fa-youtube"></i></a>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="experience" class="section experience reveal">
-            <div class="container">
-                <div class="section-intro">
-                    <p class="eyebrow">Experience</p>
-                    <h2>A timeline of hands-on problem solving.</h2>
-                    <p>Recent roles that shaped how I build and deliver.</p>
-                </div>
-
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3>Data Scientist</h3>
-                                <a href="https://www.pennstatehealth.org" target="_blank" class="company-logo"><img
-                                        src="assets/psh_logo.webp"></a>
-                            </div>
-                            <a href="https://www.pennstatehealth.org" target="_blank" class="timeline-place">Penn
-                                State
-                                Health (Hybrid Temp Position)</a>
-                            <p class="timeline-date">March 2025 - June 2025</p>
-                            <ul class="timeline-list">
-                                <li>Created code to automate data analysis of 50,000+ data points to surface cases
-                                    of
-                                    interest for leadership.</li>
-                                <li>Built dashboards and reports to automate data science and discovery processes.
-                                </li>
-                                <li>Created tools and educational materials enabling non-technical staff to continue
-                                    complex data processing operations.</li>
-                            </ul>
-                            <div class="timeline-tags" aria-hidden="true">
-                                <span>Data Analysis</span>
-                                <span>Dashboards</span>
-                                <span>Automation</span>
-                                <span>Data Viz</span>
-                                <span>Enablement</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3>Software Developer</h3>
-                                <a href="https://www.gtpcorp.com" target="_blank" class="company-logo"><img
-                                        src="assets/gtp_logo.webp"></a>
-                            </div>
-                            <a href="https://www.gtpcorp.com" target="_blank" class="timeline-place">Get The Picture
-                                Corporation (Hybrid Contract)</a>
-                            <p class="timeline-date">April 2024 - November 2024</p>
-                            <ul class="timeline-list">
-                                <li>Developed and implemented a RESTful API to facilitate seamless photo uploading
-                                    and
-                                    processing.</li>
-                                <li>Streamlined regional deployment and updates by adhering to SOLID principles and
-                                    best
-                                    practices.</li>
-                            </ul>
-                            <div class="timeline-tags" aria-hidden="true">
-                                <span>Dart/Flutter</span>
-                                <span>REST APIs</span>
-                                <span>SOLID</span>
-                                <span>Deployment</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3>Data Scientist Intern</h3>
-                                <a href="https://www.pennstatehealth.org" target="_blank" class="company-logo"> <img
-                                        src="assets/psh_logo.webp"></a>
-                            </div>
-                            <a href="https://www.pennstatehealth.org" target="_blank" class="timeline-place">Penn
-                                State
-                                Health (Remote Internship)</a>
-                            <p class="timeline-date">June 2024 - August 2024</p>
-                            <ul class="timeline-list">
-                                <li>Created Splunk dashboards that reduced incident response time from 30-60 minutes
-                                    to
-                                    about 5 minutes.</li>
-                                <li>Developed a predictive model with Python and LSTM networks to establish
-                                    baselines,
-                                    detect outliers, and forecast thousands of future values.</li>
-                                <li>Conducted data analysis and documented previously undocumented datasets.</li>
-                            </ul>
-                            <div class="timeline-tags" aria-hidden="true">
-                                <span>Splunk</span>
-                                <span>Python</span>
-                                <span>LSTM</span>
-                                <span>Forecasting</span>
-                                <span>Incident Response</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-dot"></div>
-                        <div class="timeline-content">
-                            <div class="timeline-header">
-                                <h3>Data Scientist Intern</h3>
-                                <a href="https://www.nsa.gov" target="_blank" class="company-logo"><img
-                                        src="assets/nsa_logo.webp"></a>
-                            </div>
-                            <a href="https://www.nsa.gov" target="_blank" class="timeline-place">National Security
-                                Agency
-                                (In-Person Internship)</a>
-                            <p class="timeline-date">May 2022 - August 2023</p>
-                            <ul class="timeline-list">
-                                <li>Generated metrics using APIs and UIs to analyze trends and answer key questions.
-                                </li>
-                                <li>Created charts and graphs to communicate results to decision-makers.</li>
-                                <li>Utilized Python to retrieve, store, and explore data to visualize data flow
-                                    between
-                                    sources.</li>
-                                <li>Analyzed and formatted collected data for technical and non-technical
-                                    stakeholders;
-                                    presented findings informally and formally.</li>
-                            </ul>
-                            <div class="timeline-tags" aria-hidden="true">
-                                <span>Python</span>
-                                <span>APIs</span>
-                                <span>Metrics</span>
-                                <span>Data Viz</span>
-                                <span>Stakeholders</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        <!-- ================================================== NATALIE -->
+        <!-- Same component as Natalie's Shopify links page: njl.css + njl.js -->
+        <section class="njl njl--blush" id="natalie" aria-label="Natalie's Journal: Second Story" data-njl>
+            <div class="njl-glow" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="njl-cuts"></div>
+            <div class="njl-bubbles">
+                <a class="njl-bubble" draggable="false" data-name="Cape Cod" href="https://nataliesjournal.com/products/cape-cod" target="_blank" rel="noopener"><span class="njl-blob"><img draggable="false" src="assets/nj/cape-cod.webp" alt="Cape Cod hoodie"></span></a>
+                <a class="njl-bubble" draggable="false" data-name="Wizard Raccoon" href="https://nataliesjournal.com/products/racoon-wizard" target="_blank" rel="noopener"><span class="njl-blob"><img draggable="false" src="assets/nj/racoon-wizard.webp" alt="Patchwork Whimsical Wizard Raccoon Quarter Zip"></span></a>
+                <a class="njl-bubble" draggable="false" data-name="Luna Moth" href="https://nataliesjournal.com/products/make-art" target="_blank" rel="noopener"><span class="njl-blob"><img draggable="false" src="assets/nj/make-art.webp" alt="Patchwork Luna Moth and Make Art Crewneck"></span></a>
+                <a class="njl-bubble" draggable="false" data-name="Maui Blue Crab" href="https://nataliesjournal.com/products/maui-hawaii-blue-crab" target="_blank" rel="noopener"><span class="njl-blob"><img draggable="false" src="assets/nj/maui-hawaii-blue-crab.webp" alt="Maui Hawaii blue crab sweatshirt"></span></a>
+                <a class="njl-bubble" draggable="false" data-name="Fall Crewneck" href="https://nataliesjournal.com/products/fall-frolic" target="_blank" rel="noopener"><span class="njl-blob"><img draggable="false" src="assets/nj/fall-frolic.webp" alt="Patchwork Fall Crewneck"></span></a>
+                <a class="njl-bubble" draggable="false" data-name="SWIM" href="https://nataliesjournal.com/products/swim" target="_blank" rel="noopener"><span class="njl-blob"><img draggable="false" src="assets/nj/swim.webp" alt="SWIM sweatshirt"></span></a>
+                <a class="njl-bubble" draggable="false" data-name="Ocean City Bakini" href="https://nataliesjournal.com/products/ocean-city-bakini" target="_blank" rel="noopener"><span class="njl-blob"><img draggable="false" src="assets/nj/ocean-city-bakini.webp" alt="Ocean City Bakini zip hoodie"></span></a>
+                <a class="njl-bubble" draggable="false" data-name="Sword &amp; Flowers" href="https://nataliesjournal.com/products/sword-and-flowers" target="_blank" rel="noopener"><span class="njl-blob"><img draggable="false" src="assets/nj/sword-and-flowers.webp" alt="Upcycled Medieval Sword and Flowers Sweatshirt"></span></a>
+                <a class="njl-bubble" draggable="false" data-name="Fish or Be Fished" href="https://nataliesjournal.com/products/fishing" target="_blank" rel="noopener"><span class="njl-blob"><img draggable="false" src="assets/nj/fishing.webp" alt="Fish or be fished quarter zip"></span></a>
+                <a class="njl-bubble" draggable="false" data-name="Lighthouse" href="https://nataliesjournal.com/products/lighthouse-on-the-cape" target="_blank" rel="noopener"><span class="njl-blob"><img draggable="false" src="assets/nj/lighthouse-on-the-cape.webp" alt="Lighthouse on the Cape hoodie"></span></a>
+                <a class="njl-bubble" draggable="false" data-name="Waves" href="https://nataliesjournal.com/products/sport-shorts-waves" target="_blank" rel="noopener"><span class="njl-blob"><img draggable="false" src="assets/nj/sport-shorts-waves.webp" alt="Sport Shorts: Waves"></span></a>
+                <a class="njl-bubble" draggable="false" data-name="Locals Only" href="https://nataliesjournal.com/products/locals-only" target="_blank" rel="noopener"><span class="njl-blob"><img draggable="false" src="assets/nj/locals-only.webp" alt="Locals Only"></span></a>
+                <a class="njl-bubble" draggable="false" data-name="Out to Dry" href="https://nataliesjournal.com/products/sport-shorts-out-to-dry" target="_blank" rel="noopener"><span class="njl-blob"><img draggable="false" src="assets/nj/sport-shorts-out-to-dry.webp" alt="Sport Shorts: Out to Dry"></span></a>
             </div>
-        </section>
+            <canvas class="njl-scissors" aria-hidden="true"></canvas>
 
-        <section id="projects" class="section projects reveal">
-            <div class="container">
-                <div class="section-intro">
-                    <p class="eyebrow">Projects</p>
-                    <h2>Business, products, and experiments.</h2>
-                    <p>Selected work with room for collaboration.</p>
+            <div class="njl-card">
+                <img class="njl-logo" src="assets/nataliesjournal_icon.webp" alt="" width="84" height="84">
+                <h2 class="njl-mark"><span class="njl-name">Natalie's Journal:</span> <span class="njl-sub">Second Story</span></h2>
+                <p class="njl-tag">Every piece is repurposed to give it a second story.</p>
+                <div class="njl-links">
+                    <a class="njl-btn njl-btn--solid" href="https://nataliesjournal.com" target="_blank" rel="noopener">nataliesjournal.com <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></a>
                 </div>
-                <div class="project-grid">
-                    <article class="project-card">
-                        <div class="project-icon" style="background: transparent;">
-                            <img src="assets/roam_icon.webp" alt="Roam Icon"
-                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;">
-                        </div>
-                        <h3>Roam</h3>
-                        <p>A trip-planning map for outdoor travelers that layers cell coverage, tree canopy, campsite
-                            availability, and weather onto a single map.</p>
-                        <div class="project-tags">
-                            <span>Web App</span>
-                            <span>Mapping</span>
-                            <span>Trip Planning</span>
-                            <span>Weather</span>
-                        </div>
-                        <div class="project-actions">
-                            <a class="btn small ghost" href="https://roam.community" target="_blank">Visit site</a>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-icon" style="background: transparent;">
-                            <img src="assets/nataliesjournal_icon.webp" alt="Natalie's Journal Icon"
-                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;">
-                        </div>
-                        <h3>Natalie's Journal</h3>
-                        <p>An online shop for upcycled and repurposed clothing and accessories, giving every piece a
-                            "Second Story."</p>
-                        <div class="project-tags">
-                            <span>E-commerce</span>
-                            <span>Web App</span>
-                            <span>Sustainable Fashion</span>
-                        </div>
-                        <div class="project-actions">
-                            <a class="btn small ghost" href="https://nataliesjournal.com" target="_blank">Visit site</a>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-icon" style="background: transparent;">
-                            <img src="assets/imagineit_icon.webp" alt="ImagineIt Icon"
-                                style="width: 100%; height: 100%; object-fit: cover; border-radius: 14px;">
-                        </div>
-                        <h3>ImagineIt</h3>
-                        <p>A local Tinkercad-like 3D design app for combining and aligning shapes.</p>
-                        <div class="project-tags">
-                            <span>3D Design</span>
-                            <span>Local App</span>
-                            <span>STL Support</span>
-                        </div>
-                        <div class="project-actions">
-                            <a class="btn small ghost" href="projects/imagineit.html">See details</a>
-                        </div>
-                    </article>
-
-                    <article class="project-card">
-                        <div class="project-icon" style="background: transparent;">
-                            <img src="assets/photobooth_icon.webp" alt="Hershey Photo Booth Icon"
-                                style="width: 100%; height: 100%; object-fit: contain; border-radius: 14px; padding: 8px 0;">
-                        </div>
-                        <h3>Hershey Photo Booth Kiosk</h3>
-                        <p>Photo booth kiosk for the Hershey Chocolate Stores including but not limiting the New York
-                            Time square store.</p>
-                        <div class="project-tags">
-                            <span>Dart/Flutter</span>
-                            <span>HTML5</span>
-                            <span>JavaScript</span>
-                        </div>
-                        <div class="project-actions">
-                            <a class="btn small ghost" href="projects/hershey-photobooth.html">See details</a>
-                        </div>
-                    </article>
+                <div class="njl-socials">
+                    <a class="njl-social" style="--hc: linear-gradient(45deg, #f9b233, #e1306c 50%, #833ab4)" href="https://www.instagram.com/natalies_journal/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram"><svg viewBox="0 0 448 512" aria-hidden="true"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
+                    <a class="njl-social" style="--hc: #111" href="https://www.tiktok.com/@natalieee_37" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok"><svg viewBox="0 0 448 512" aria-hidden="true"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg></a>
+                    <a class="njl-social" style="--hc: #ff0033" href="https://www.youtube.com/@natalies-journal" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube"><svg viewBox="0 0 576 512" aria-hidden="true"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg></a>
+                    <a class="njl-social" style="--hc: #f1641e" href="https://www.etsy.com/shop/NataliesJournal" target="_blank" rel="noopener" aria-label="Etsy" title="Etsy"><svg viewBox="0 0 384 512" aria-hidden="true"><path d="M384 348c-1.75 10.75-13.75 110-15.5 132-117.879-4.299-219.895-4.743-368.5 0v-25.5c45.457-8.948 60.627-8.019 61-35.25 1.793-72.322 3.524-244.143 0-322-1.029-28.46-12.13-26.765-61-36v-25.5c73.886 2.358 255.933 8.551 362.999-3.75-3.5 38.25-7.750 126.5-7.75 126.5H332C320.947 115.665 313.241 68 277.25 68h-137c-10.25 0-10.75 3.5-10.75 9.75V241.5c58 .5 88.5-2.5 88.5-2.5 29.77-.951 27.56-8.502 40.75-65.251h25.75c-4.407 101.351-3.91 61.829-1.75 160.25H257c-9.155-40.086-9.065-61.045-39.501-61.5 0 0-21.5-2-88-2v139c0 26 14.25 38.25 44.25 38.25H263c63.636 0 66.564-24.996 98.751-99.75H384z"/></svg></a>
+                    <a class="njl-social" style="--hc: #43e660" href="https://linktr.ee/nataliesjournal" target="_blank" rel="noopener" aria-label="Linktree" title="Linktree"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m13.73635 5.85251 4.00467-4.11665 2.3248 2.3808-4.20064 4.00466h5.9085v3.30473h-5.9365l4.22865 4.10766-2.3248 2.3338L12.0005 12.099l-5.74052 5.76852-2.3248-2.3248 4.22864-4.10766h-5.9375V8.12132h5.9085L3.93417 4.11666l2.3248-2.3808 4.00468 4.11665V0h3.4727zm-3.4727 10.30614h3.4727V24h-3.4727z"/></svg></a>
                 </div>
-            </div>
-        </section>
-
-        <section id="contact" class="section contact reveal">
-            <div class="container contact-grid">
-                <div class="contact-card">
-                    <p class="eyebrow">Contact</p>
-                    <h2>Ready to get started?</h2>
-                    <p>Whether you are interested in hiring or just want to chat, I'm here to help. Feel free to reach
-                        out in whatever method is most comfortable.</p>
-                    <div class="contact-actions">
-                        <a class="btn primary" href="mailto:josephgoss123@gmail.com">Email me</a>
-                        <a class="btn ghost" href="https://www.linkedin.com/in/joseph-goss-a444a32ab" target="_blank"
-                            rel="noreferrer">LinkedIn</a>
-                    </div>
-                    <div class="contact-details">
-                        <div>
-                            <span>Email</span>
-                            <a href="mailto:josephgoss123@gmail.com">josephgoss123@gmail.com</a>
-                        </div>
-                        <div>
-                            <span>Phone</span>
-                            <a href="tel:717-926-5870">717-926-5870</a>
-                        </div>
-                        <div>
-                            <span>GitHub</span>
-                            <a href="https://github.com/TripleGs" target="_blank" rel="noreferrer">@TripleGs</a>
-                        </div>
-                    </div>
-                </div>
-
-                <form class="contact-form" id="contact-form">
-                    <div class="form-group">
-                        <label for="name">Your name</label>
-                        <input type="text" id="name" placeholder="Jane Doe" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message">Message details</label>
-                        <textarea id="message" placeholder="Place your request, project details, or anything else here!"
-                            required></textarea>
-                    </div>
-                    <button type="submit" class="btn primary">Send message</button>
-                </form>
+                <p class="njl-hint" aria-hidden="true">psst&hellip; try cutting out a circle</p>
             </div>
         </section>
     </main>
 
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <p>Built with care. Powered by curiosity.</p>
-            <p>&copy; 2025 Joseph Goss</p>
-        </div>
+    <footer class="foot">
+        <a href="#top" class="mag" aria-label="Back to top">&copy; 2026 Joseph Goss</a>
     </footer>
 
     <script src="script.js"></script>
+    <script src="njl.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,371 @@
+/* ==========================================================================
+   Natalie's Journal — bubbles & scissors
+   Shared by josephgoss.com (#natalie) and the Shopify links page
+   (NataliesJournal/nj-links.liquid inlines this file — run build.py there
+   after editing it).
+
+   - product photos float in jiggly bubbles you can shove, grab and throw
+   - on a mouse, the cursor is a pair of scissors: trace a loop and the
+     shape is cut out of the fabric, revealing one of the pieces
+   - click / tap the fabric to snip out a quick circle
+   ========================================================================== */
+
+.njl {
+    --njl-bg: radial-gradient(70% 60% at 50% 50%, #1a1216 0%, #0d0a0c 70%), #0d0a0c;
+    --njl-weave: rgba(255, 236, 225, .028);
+    --njl-glow-1: #d9998a;
+    --njl-glow-2: #8fb7d6;
+    --njl-glow-3: #e9ccc1;
+    --njl-glow-o: .34;
+    --njl-ink: #fff;
+    --njl-ink-dim: rgba(255, 244, 238, .68);
+    --njl-hint: rgba(233, 204, 193, .6);
+    --njl-card: rgba(22, 15, 18, .55);
+    --njl-card-line: rgba(233, 204, 193, .16);
+    --njl-sub: linear-gradient(100deg, #e9ccc1, #f4b8c6 35%, #cfe2f0 70%, #e9ccc1);
+    --njl-btn-bg: linear-gradient(120deg, #e9ccc1, #e1edf5);
+    --njl-btn-ink: #111;
+    --njl-btn-glow: rgba(233, 204, 193, .7);
+    --njl-outline: rgba(255, 255, 255, .28);
+    --njl-social-bg: rgba(255, 255, 255, .06);
+    --njl-social-line: rgba(255, 255, 255, .14);
+    --njl-tip: #fff4ee;
+    --njl-tip-shadow: 0 2px 10px rgba(0, 0, 0, .8);
+    --njl-shadow: rgba(0, 0, 0, .55);
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    min-height: calc(100svh - var(--header-height, 60px));
+    padding: clamp(90px, 13vh, 150px) 16px;
+    background: var(--njl-bg);
+    color: var(--njl-ink);
+    font-family: var(--font-body--family, Inter, sans-serif);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* light version, in the shop's blush and powder blue */
+.njl--blush {
+    --njl-bg: radial-gradient(70% 60% at 50% 45%, #fbf1ec 0%, #f1ddd5 75%), #f1ddd5;
+    --njl-weave: rgba(120, 80, 70, .05);
+    --njl-glow-1: #e9b8aa;
+    --njl-glow-2: #bcd6ea;
+    --njl-glow-3: #ffffff;
+    --njl-glow-o: .7;
+    --njl-ink: #141012;
+    --njl-ink-dim: rgba(20, 16, 18, .66);
+    --njl-hint: rgba(20, 16, 18, .45);
+    --njl-card: rgba(255, 255, 255, .55);
+    --njl-card-line: rgba(255, 255, 255, .8);
+    --njl-sub: linear-gradient(100deg, #b86a5c, #cf6f8e 40%, #5f8fbb 75%, #b86a5c);
+    --njl-btn-bg: #141012;
+    --njl-btn-ink: #fff;
+    --njl-btn-glow: rgba(20, 16, 18, .35);
+    --njl-outline: rgba(20, 16, 18, .25);
+    --njl-social-bg: rgba(255, 255, 255, .6);
+    --njl-social-line: rgba(20, 16, 18, .12);
+    --njl-tip: #141012;
+    --njl-tip-shadow: 0 1px 8px rgba(255, 255, 255, .9);
+    --njl-shadow: rgba(90, 50, 60, .28);
+}
+
+.njl *, .njl *::before, .njl *::after { box-sizing: border-box; }
+
+/* faint woven-fabric texture */
+.njl::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(0deg, var(--njl-weave) 0 1px, transparent 1px 5px),
+        repeating-linear-gradient(90deg, var(--njl-weave) 0 1px, transparent 1px 5px);
+}
+
+/* scissors replace the cursor over the bare fabric */
+.njl.is-cutting { cursor: none; }
+.njl-card { cursor: default; }
+
+.njl-glow { position: absolute; inset: 0; z-index: -2; pointer-events: none; }
+.njl-glow span {
+    position: absolute;
+    width: 46vmax;
+    height: 46vmax;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: var(--njl-glow-o);
+    animation: njl-drift 22s ease-in-out infinite alternate;
+}
+.njl-glow span:nth-child(1) { background: var(--njl-glow-1); left: -10%; top: -8%; }
+.njl-glow span:nth-child(2) { background: var(--njl-glow-2); right: -12%; bottom: -14%; animation-duration: 26s; animation-delay: -6s; }
+.njl-glow span:nth-child(3) { background: var(--njl-glow-3); left: 30%; top: 40%; width: 30vmax; height: 30vmax; opacity: calc(var(--njl-glow-o) * .45); animation-duration: 30s; animation-delay: -12s; }
+@keyframes njl-drift {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(12vw, 8vh) scale(1.15); }
+    66% { transform: translate(-6vw, 14vh) scale(.9); }
+    100% { transform: translate(8vw, -10vh) scale(1.1); }
+}
+
+/* ------------------------------------------------------------- bubbles */
+.njl-bubbles { position: absolute; inset: 0; z-index: 2; }
+.njl:not(.is-ready) .njl-bubble { visibility: hidden; }
+
+.njl-bubble {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--d, 140px);
+    height: var(--d, 140px);
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: transparent;
+    will-change: transform;
+    text-decoration: none;
+}
+.njl-bubble.is-dragging { cursor: grabbing; z-index: 2; }
+
+/* the bubble itself: a wobbling membrane with the photo floating inside */
+.njl-blob {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(255, 255, 255, .25);
+    box-shadow: 0 20px 40px -14px var(--njl-shadow);
+    animation: njl-wobble 6s ease-in-out infinite;
+    transition: scale .35s cubic-bezier(.34, 1.56, .64, 1);
+    will-change: transform, border-radius;
+}
+.njl-blob img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    scale: 1.08;
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
+/* rim and a little iridescence on top of the photo */
+.njl-blob::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 50%, transparent 58%, rgba(255, 255, 255, .22) 72%, rgba(255, 255, 255, .5) 100%);
+    box-shadow:
+        inset 0 0 0 2px rgba(255, 255, 255, .7),
+        inset 6px 0 10px rgba(255, 160, 200, .35),
+        inset -6px 0 10px rgba(130, 190, 255, .35),
+        inset 0 -8px 14px rgba(190, 255, 220, .2);
+}
+@keyframes njl-wobble {
+    0%, 100% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
+    25% { border-radius: 54% 46% 52% 48% / 47% 53% 47% 53%; }
+    50% { border-radius: 46% 54% 47% 53% / 53% 47% 54% 46%; }
+    75% { border-radius: 52% 48% 55% 45% / 49% 51% 46% 54%; }
+}
+
+/* bubbles blow up one after another the first time they come on screen */
+.njl:not(.is-in) .njl-blob { scale: 0; }
+.njl.is-in .njl-blob { animation: njl-inflate .9s cubic-bezier(.34, 1.56, .64, 1) backwards, njl-wobble 6s ease-in-out infinite; animation-delay: calc(var(--k, 0) * 70ms + 100ms), var(--wd, 0s); animation-duration: .9s, var(--wob, 6s); }
+@keyframes njl-inflate { from { scale: 0; } }
+
+.njl-bubble:hover .njl-blob { scale: 1.07; }
+.njl-bubble.is-dragging .njl-blob { scale: 1.12; }
+
+.njl-bubble::after {
+    content: attr(data-name);
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 6px);
+    translate: -50% -4px;
+    white-space: nowrap;
+    font-family: "Dancing Script", cursive;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--njl-tip);
+    text-shadow: var(--njl-tip-shadow);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s, translate .25s cubic-bezier(.2, .8, .2, 1);
+}
+.njl-bubble:hover::after { opacity: 1; translate: -50% 0; }
+.njl-bubble.is-dragging::after { opacity: 0; }
+
+/* ------------------------------------------------------------ cut-outs */
+.njl-cuts { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.njl-cut {
+    position: absolute;
+    display: block;
+    pointer-events: auto;
+    cursor: pointer;
+    rotate: var(--tilt, 0deg);
+    filter: drop-shadow(0 16px 18px var(--njl-shadow));
+    animation: njl-cut-in .6s cubic-bezier(.34, 1.56, .64, 1) backwards;
+    transition: translate .8s ease-in, rotate .8s ease-in, opacity .8s ease-in;
+    text-decoration: none;
+}
+.njl-cut.is-leaving { translate: 0 70px; rotate: calc(var(--tilt, 0deg) * -3); opacity: 0; pointer-events: none; }
+@keyframes njl-cut-in {
+    from { scale: .55; opacity: 0; }
+    60% { scale: 1.06; opacity: 1; }
+}
+.njl-cut-shape { position: absolute; inset: 0; display: block; }
+.njl-cut-shape img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.njl-cut-edge { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.njl-cut-edge path { fill: none; stroke: #fff; stroke-width: 3.5; stroke-linejoin: round; }
+.njl-cut-tag {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    translate: -50% 6px;
+    white-space: nowrap;
+    font-family: "Dancing Script", cursive;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--njl-tip);
+    text-shadow: var(--njl-tip-shadow);
+}
+
+.njl-scissors { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; }
+
+/* ------------------------------------------------------------- the card */
+.njl-card {
+    position: relative;
+    z-index: 4;
+    width: min(460px, 100%);
+    text-align: center;
+    padding: 34px 28px 24px;
+    border-radius: 34px;
+    background: var(--njl-card);
+    border: 1px solid var(--njl-card-line);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    backdrop-filter: blur(16px) saturate(1.2);
+    box-shadow: 0 40px 80px -30px var(--njl-shadow);
+}
+.njl-logo {
+    display: block;
+    width: 84px;
+    height: 84px;
+    margin: 0 auto;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e9ccc1;
+    box-shadow: 0 22px 44px -12px var(--njl-shadow);
+}
+
+/* the shop's header wordmark, scaled up: Inter 600 + Dancing Script */
+.njl-mark { margin: 16px 0 6px; line-height: 1; font-size: inherit; font-weight: inherit; letter-spacing: 0; }
+.njl-name {
+    display: block;
+    font-family: var(--font-body--family, Inter, sans-serif);
+    font-weight: 600;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    letter-spacing: -0.02em;
+    color: var(--njl-ink);
+}
+.njl-sub {
+    display: block;
+    padding: .06em .16em .14em;
+    font-family: "Dancing Script", cursive;
+    font-weight: 600;
+    font-size: clamp(3.1rem, 7vw, 4.8rem);
+    line-height: 1.05;
+    background: var(--njl-sub);
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: njl-sheen 9s ease-in-out infinite alternate;
+}
+@keyframes njl-sheen { to { background-position: 100% 0; } }
+
+.njl-tag {
+    margin: 0 0 24px;
+    font-size: clamp(.98rem, 1.5vw, 1.1rem);
+    line-height: 1.5;
+    color: var(--njl-ink-dim);
+    text-wrap: balance;
+}
+
+/* link buttons */
+.njl-links { display: grid; gap: 12px; }
+.njl-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 54px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-family: var(--font-body--family, Inter, sans-serif);
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: transform .3s cubic-bezier(.2, .8, .2, 1), box-shadow .3s, background-color .3s;
+}
+.njl-btn:hover { transform: scale(1.03); }
+.njl-btn--solid { background: var(--njl-btn-bg); color: var(--njl-btn-ink); box-shadow: 0 12px 40px -14px var(--njl-btn-glow); }
+.njl-btn--outline { background: transparent; color: var(--njl-ink); border: 1.5px solid var(--njl-outline); }
+.njl-btn--outline:hover { background: var(--njl-social-bg); }
+.njl-btn svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* socials */
+.njl-socials { display: flex; justify-content: center; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+.njl-social {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--njl-ink);
+    background: var(--njl-social-bg);
+    border: 1px solid var(--njl-social-line);
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform .3s cubic-bezier(.2, .8, .2, 1), color .3s, border-color .3s;
+}
+.njl-social svg { width: 20px; height: 20px; fill: currentColor; }
+.njl-social::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 50%;
+    background: var(--hc, #111);
+    opacity: 0;
+    transform: scale(.3);
+    transition: opacity .3s, transform .4s cubic-bezier(.2, .8, .2, 1);
+}
+.njl-social:hover { color: #fff; border-color: transparent; transform: scale(1.1); }
+.njl-social:hover::before { opacity: 1; transform: scale(1); }
+
+.njl-hint {
+    margin: 16px 0 0;
+    font-family: "Dancing Script", cursive;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: var(--njl-hint);
+}
+
+.njl a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+@media (max-width: 700px) {
+    .njl { padding: 130px 16px 230px; }
+    .njl-card { padding: 28px 18px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .njl *, .njl *::before, .njl *::after { animation: none !important; transition-duration: .01ms !important; }
+}
