@@ -425,7 +425,7 @@
             const breathe = reduce ? 0 : Math.sin(now * 0.0012) * 0.25;
             const k = clamp(0.08 * dt, 0, 1);
             // seven layers: a neat deck at rest, fanned out wide when in use
-            st.gap = lerp(st.gap, stackW * (open ? 0.12 : 0.035 * (1 + breathe)), k);
+            st.gap = lerp(st.gap, stackW * (open ? 0.135 : 0.035 * (1 + breathe)), k);
             st.rz = lerp(st.rz, -34 + nx * 16 + (open ? 10 : 0), k);
             st.rx = lerp(st.rx, 58 - ny * 8 - (open ? 6 : 0), k);
             stack.style.setProperty('--gap', `${st.gap.toFixed(2)}px`);
