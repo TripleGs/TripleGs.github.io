@@ -275,7 +275,7 @@
             layer.addEventListener('pointerenter', e => {
                 if (e.pointerType !== 'mouse') return;
                 clearTimeout(intent);
-                intent = setTimeout(() => setHot(layer), hot ? 140 : 40);
+                intent = setTimeout(() => setHot(layer), hot ? 90 : 20);
             });
             layer.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') clearTimeout(intent); });
             layer.addEventListener('pointerdown', e => {
@@ -424,8 +424,8 @@
             const open = st.open || st.hover || !!hot;
             const breathe = reduce ? 0 : Math.sin(now * 0.0012) * 0.25;
             const k = clamp(0.08 * dt, 0, 1);
-            // sixteen layers: a tight deck at rest, fanned out when in use
-            st.gap = lerp(st.gap, stackW * (open ? 0.05 : 0.011 * (1 + breathe)), k);
+            // seven layers: a neat deck at rest, fanned out wide when in use
+            st.gap = lerp(st.gap, stackW * (open ? 0.12 : 0.035 * (1 + breathe)), k);
             st.rz = lerp(st.rz, -34 + nx * 16 + (open ? 10 : 0), k);
             st.rx = lerp(st.rx, 58 - ny * 8 - (open ? 6 : 0), k);
             stack.style.setProperty('--gap', `${st.gap.toFixed(2)}px`);

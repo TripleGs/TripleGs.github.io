@@ -589,8 +589,8 @@ figure {
     --rz: -34deg;
     position: absolute;
     left: 50%;
-    top: 64%;
-    width: 76%;
+    top: 60%;
+    width: 80%;
     aspect-ratio: 1700 / 950;
     transform-style: preserve-3d;
     transform: translate(-50%, -50%) rotateX(var(--rx)) rotateZ(var(--rz));

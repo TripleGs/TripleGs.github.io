@@ -89,24 +89,15 @@
             <canvas class="topo" aria-hidden="true"></canvas>
             <div class="roam-inner">
                 <div class="stage">
-                    <!-- all 16 of the app's map layers, bottom to top, named and described as the app does -->
+                    <!-- 7 of the app's map layers, bottom to top, named and described as the app does -->
                     <div class="stack" aria-hidden="true">
-                        <div class="layer" data-name="Tides" data-desc="Predicted tide height at NOAA coastal stations. Not for navigation." style="--z:0; --b:0.70; background-image:url(assets/roam/layers/tides.webp)"></div>
-                        <div class="layer" data-name="Currents" data-desc="Tidal current direction and speed at NOAA stations. Predictions, not for navigation." style="--z:1; --b:0.72; background-image:url(assets/roam/layers/currents.webp)"></div>
-                        <div class="layer" data-name="Rivers" data-desc="Gauge flow and height against normal, about every 15 minutes, with flood stages." style="--z:2; --b:0.74; background-image:url(assets/roam/layers/rivers.webp)"></div>
-                        <div class="layer" data-name="Snow depth" data-desc="Snow on the ground this morning, in inches. NOAA&#x27;s daily model, lower 48." style="--z:3; --b:0.76; background-image:url(assets/roam/layers/snow.webp)"></div>
-                        <div class="layer" data-name="Noise" data-desc="How far roads, aircraft and towns carry on a summer day. NPS sound model, US." style="--z:4; --b:0.78; background-image:url(assets/roam/layers/noise.webp)"></div>
-                        <div class="layer" data-name="Light pollution" data-desc="How dark a clear, moonless night gets across the US, in Bortle classes." style="--z:5; --b:0.80; background-image:url(assets/roam/layers/night-sky.webp)"></div>
-                        <div class="layer" data-name="Alerts" data-desc="NWS warnings, wildfires and National Park closures, checked every few minutes." style="--z:6; --b:0.82; background-image:url(assets/roam/layers/alerts.webp)"></div>
-                        <div class="layer" data-name="Forecast" data-desc="The coming hours: rain, cloud, temperature, wind and wildfire smoke." style="--z:7; --b:0.84; background-image:url(assets/roam/layers/sky.webp)"></div>
-                        <div class="layer" data-name="Precipitation averages" data-desc="Typical rain and snowfall by month, NOAA 1991–2020." style="--z:8; --b:0.86; background-image:url(assets/roam/layers/precipitation.webp)"></div>
-                        <div class="layer" data-name="Temperature averages" data-desc="Typical highs and lows by month, NOAA 1991–2020." style="--z:9; --b:0.88; background-image:url(assets/roam/layers/temperature.webp)"></div>
-                        <div class="layer" data-name="Fall foliage" data-desc="Typical peak-colour week from 12 years of NASA satellite data." style="--z:10; --b:0.90; background-image:url(assets/roam/layers/foliage.webp)"></div>
-                        <div class="layer" data-name="Land ownership" data-desc="Who owns the ground: forests, BLM, parks, state and tribal. The rest is private." style="--z:11; --b:0.92; background-image:url(assets/roam/layers/land-status.webp)"></div>
-                        <div class="layer" data-name="Dispersed camping" data-desc="Where you can camp outside a campground, by the land manager&#x27;s own rules." style="--z:12; --b:0.94; background-image:url(assets/roam/layers/dispersed.webp)"></div>
-                        <div class="layer" data-name="Tree cover" data-desc="Where trees cover the ground across the US, at 1.2 m detail." style="--z:13; --b:0.96; background-image:url(assets/roam/layers/tree-cover.webp)"></div>
-                        <div class="layer" data-name="Cellular coverage" data-desc="Signal and coverage modeled by T-Mobile, AT&amp;T and Verizon for the FCC." style="--z:14; --b:0.98; background-image:url(assets/roam/layers/coverage-premium.webp)"></div>
-                        <div class="layer" data-name="Campgrounds" data-desc="Every campground we can place, by who runs it. Federal ones show availability." style="--z:15; --b:1.00; background-image:url(assets/roam/campgrounds.webp)"></div>
+                        <div class="layer" data-name="Temperature averages" data-desc="Typical highs and lows by month, NOAA 1991–2020." style="--z:0; --b:0.75; background-image:url(assets/roam/layers/temperature.webp)"></div>
+                        <div class="layer" data-name="Light pollution" data-desc="How dark a clear, moonless night gets across the US, in Bortle classes." style="--z:1; --b:0.79; background-image:url(assets/roam/layers/night-sky.webp)"></div>
+                        <div class="layer" data-name="Fall foliage" data-desc="Typical peak-colour week from 12 years of NASA satellite data." style="--z:2; --b:0.83; background-image:url(assets/roam/layers/foliage.webp)"></div>
+                        <div class="layer" data-name="Tree cover" data-desc="Where trees cover the ground across the US, at 1.2 m detail." style="--z:3; --b:0.88; background-image:url(assets/roam/layers/tree-cover.webp)"></div>
+                        <div class="layer" data-name="Dispersed camping" data-desc="Where you can camp outside a campground, by the land manager&#x27;s own rules." style="--z:4; --b:0.92; background-image:url(assets/roam/layers/dispersed.webp)"></div>
+                        <div class="layer" data-name="Cellular coverage" data-desc="Signal and coverage modeled by T-Mobile, AT&amp;T and Verizon for the FCC." style="--z:5; --b:0.96; background-image:url(assets/roam/layers/coverage-premium.webp)"></div>
+                        <div class="layer" data-name="Campgrounds" data-desc="Every campground we can place, by who runs it. Federal ones show availability." style="--z:6; --b:1.00; background-image:url(assets/roam/campgrounds.webp)"></div>
                     </div>
                     <!-- names the layer under the cursor -->
                     <a class="layer-tag" href="https://roam.community" target="_blank" rel="noopener">
