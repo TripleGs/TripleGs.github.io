@@ -144,10 +144,6 @@ figure {
 }
 
 .tb-name {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
-    margin-left: -12px;
     font-weight: 700;
     font-size: 1.05rem;
     letter-spacing: -.03em;
@@ -157,15 +153,6 @@ figure {
     -webkit-background-clip: text;
     background-clip: text;
     transition: color .3s;
-}
-
-/* Joseph's icon (the rock photo) as a round avatar */
-.tb-avatar {
-    width: 30px;
-    height: 30px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 1.5px solid rgba(255, 255, 255, .7);
 }
 
 .tb-name:hover {
