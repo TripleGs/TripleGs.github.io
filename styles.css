@@ -144,6 +144,10 @@ figure {
 }
 
 .tb-name {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    margin-left: -12px;
     font-weight: 700;
     font-size: 1.05rem;
     letter-spacing: -.03em;
@@ -153,6 +157,15 @@ figure {
     -webkit-background-clip: text;
     background-clip: text;
     transition: color .3s;
+}
+
+/* Joseph's icon (the rock photo) as a round avatar */
+.tb-avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 1.5px solid rgba(255, 255, 255, .7);
 }
 
 .tb-name:hover {
@@ -291,10 +304,16 @@ figure {
 }
 
 .link-row {
+    position: relative;
     display: flex;
     gap: 14px;
     justify-content: center;
     align-items: center;
+}
+
+/* the socials' tooltips hang down over the business icons, so that row draws on top */
+.link-row:first-child {
+    z-index: 2;
 }
 
 @keyframes fade-up {
@@ -570,8 +589,8 @@ figure {
     --rz: -34deg;
     position: absolute;
     left: 50%;
-    top: 56%;
-    width: 80%;
+    top: 64%;
+    width: 76%;
     aspect-ratio: 1700 / 950;
     transform-style: preserve-3d;
     transform: translate(-50%, -50%) rotateX(var(--rx)) rotateZ(var(--rz));
@@ -583,8 +602,8 @@ figure {
     border-radius: 16px;
     overflow: hidden;
     background-size: cover;
-    border: 2px solid rgba(255, 255, 255, .8);
-    box-shadow: 0 40px 70px -12px rgba(0, 0, 0, .65), 0 0 0 1px rgba(0, 0, 0, .3);
+    border: 1.5px solid rgba(255, 255, 255, .75);
+    box-shadow: 0 16px 30px -12px rgba(0, 0, 0, .7), 0 0 0 1px rgba(0, 0, 0, .3);
     transform: translateZ(calc(var(--z) * var(--gap)));
     filter: saturate(1.4) contrast(1.06) brightness(var(--b, 1));
     transition: filter .3s, border-color .3s, box-shadow .3s;
@@ -594,7 +613,7 @@ figure {
    moving it would slide it out from under the cursor. */
 .layer.is-hot {
     border-color: #fff;
-    box-shadow: 0 0 0 3px #fff, 0 0 34px 6px var(--c, #fff), 0 40px 70px -12px rgba(0, 0, 0, .65);
+    box-shadow: 0 0 0 3px #fff, 0 0 30px 4px rgba(255, 255, 255, .35), 0 16px 30px -12px rgba(0, 0, 0, .7);
     filter: saturate(1.5) contrast(1.06) brightness(1.08);
 }
 
@@ -609,76 +628,77 @@ figure {
     background: linear-gradient(160deg, rgba(255, 255, 255, .22), transparent 45%);
 }
 
-.top {
-    position: absolute;
-    inset: 0;
-    transform-style: preserve-3d;
-    transform: translateZ(calc(5 * var(--gap) + 2px));
-    pointer-events: none;
-}
-
-/* the pin stands on the top layer, counter-rotated to always face you */
-.pin {
-    position: absolute;
-    left: 38%;
-    top: 78%;
-    width: 8%;
-    aspect-ratio: 34 / 46;
-    margin: -10.82% 0 0 -4%;
-    transform-origin: 50% 100%;
-    transform: rotateZ(calc(var(--rz) * -1)) rotateX(calc(var(--rx) * -1));
-}
-
-.pin svg {
-    width: 100%;
-    height: 100%;
-    display: block;
-    overflow: visible;
-    filter: drop-shadow(0 8px 10px rgba(0, 0, 0, .5));
-    animation: pin-bob 2.6s ease-in-out infinite;
-}
-
-@keyframes pin-bob {
-    0%,
-    100% { transform: translateY(0); }
-    50% { transform: translateY(-10%); }
-}
-
-/* the name of the layer under the cursor */
+/* the layer under the cursor: its name, the app's one-line description of
+   it, and a link to Roam. It stays up while the cursor is anywhere on the
+   stage, so you can move down to the link. */
 .layer-tag {
     position: absolute;
-    right: 2%;
-    bottom: 6%;
-    display: inline-flex;
-    align-items: center;
-    gap: 10px;
-    padding: 11px 18px 11px 14px;
-    border-radius: 999px;
+    right: 0;
+    bottom: 0;
+    width: min(290px, 64%);
+    display: grid;
+    gap: 6px;
+    padding: 14px 16px 13px;
+    border-radius: 18px;
     background: rgba(14, 14, 16, .92);
     border: 1px solid rgba(255, 255, 255, .16);
     box-shadow: 0 24px 50px -12px rgba(0, 0, 0, .7);
-    font-family: var(--roam-head);
-    font-weight: 800;
-    font-size: 17px;
-    letter-spacing: .01em;
-    white-space: nowrap;
-    pointer-events: none;
+    color: #fff;
+    text-decoration: none;
     opacity: 0;
+    visibility: hidden;
     translate: 0 10px;
-    transition: opacity .25s, translate .3s var(--ease);
+    transition: opacity .25s, translate .3s var(--ease), visibility 0s .3s, border-color .25s;
 }
 
 .layer-tag.show {
     opacity: 1;
+    visibility: visible;
     translate: 0 0;
+    transition: opacity .25s, translate .3s var(--ease), visibility 0s, border-color .25s;
 }
 
-.layer-tag .dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--c, #3fbf6a);
-    box-shadow: 0 0 12px var(--c, #3fbf6a);
+.layer-tag:hover {
+    border-color: rgba(255, 255, 255, .4);
+}
+
+.lt-name {
+    font-family: var(--roam-head);
+    font-weight: 800;
+    font-size: 18px;
+    letter-spacing: .005em;
+    line-height: 1.15;
+}
+
+.lt-desc {
+    font-size: 13.5px;
+    line-height: 1.4;
+    color: rgba(255, 255, 255, .7);
+}
+
+.lt-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 2px;
+    font-size: 13.5px;
+    font-weight: 600;
+    color: #9dbcff;
+}
+
+.lt-link svg {
+    width: 14px;
+    height: 14px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.6;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    transition: transform .25s var(--ease);
+}
+
+.layer-tag:hover .lt-link svg {
+    transform: translate(2px, -2px);
 }
 
 .copy {
@@ -770,9 +790,10 @@ figure {
 @media (max-width: 600px) {
     .layer-tag {
         right: 50%;
-        bottom: 0;
+        bottom: -6px;
+        width: min(320px, 92%);
         translate: 50% 10px;
-        font-size: 15px;
+        text-align: left;
     }
 
     .layer-tag.show {

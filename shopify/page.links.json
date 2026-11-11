@@ -1,0 +1,20 @@
+{
+  "sections": {
+    "links": {
+      "type": "nj-links",
+      "blocks": {
+        "shop": {
+          "type": "link",
+          "settings": {
+            "label": "Shop the collection",
+            "link": "/",
+            "style": "solid"
+          }
+        }
+      },
+      "block_order": ["shop"],
+      "settings": {}
+    }
+  },
+  "order": ["links"]
+}

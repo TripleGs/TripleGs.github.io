@@ -1,0 +1,300 @@
+{%- comment -%}
+  Natalie's Journal — links page (a flashy link-in-bio for nataliesjournal.com/pages/links)
+
+  Product photos float in jiggly bubbles you can shove, grab and throw. On a
+  computer the cursor turns into scissors: trace a loop and that shape is cut
+  out of the fabric to reveal one of the pieces. Clicking or tapping the
+  fabric snips out a quick circle.
+
+  Everything a person would want to change is in the theme editor: the link
+  buttons (blocks), the travel-app button, the socials, the text, the style
+  (light / dark), and which collection the bubbles come from.
+
+  GENERATED FILE: nj-links.liquid is built by build.py from
+  nj-links.template.liquid plus the shared njl.css and njl.js (which also run
+  the Natalie section on josephgoss.com). Edit those, then run build.py.
+
+  Icons: Font Awesome Free 6.7.2 brand icons, CC BY 4.0 — https://fontawesome.com/license/free
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign source = s.collection
+  if source == blank
+    assign source = collections.all
+  endif
+  assign logo = s.logo | default: shop.brand.square_logo | default: shop.brand.logo
+-%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap">
+
+<style>
+{% raw %}
+/*NJL_CSS*/
+{% endraw %}
+</style>
+
+<section id="njl-{{ section.id }}" class="njl njl--{{ s.style }}" data-njl>
+  <div class="njl-glow" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="njl-cuts"></div>
+
+  <div class="njl-bubbles">
+    {%- assign shown = 0 -%}
+    {%- for product in source.products limit: 50 -%}
+      {%- if shown >= s.bubble_count -%}{%- break -%}{%- endif -%}
+      {%- unless product.available or s.show_sold -%}{%- continue -%}{%- endunless -%}
+      {%- if product.featured_image == blank -%}{%- continue -%}{%- endif -%}
+      <a class="njl-bubble" href="{{ product.url }}" draggable="false"
+         data-name="{{ product.title | truncate: 26 | escape }}"
+         data-big="{{ product.featured_image | image_url: width: 900 }}">
+        <span class="njl-blob">
+          <img src="{{ product.featured_image | image_url: width: 440 }}"
+               alt="{{ product.featured_image.alt | default: product.title | escape }}"
+               width="220" height="220" draggable="false" decoding="async">
+        </span>
+      </a>
+      {%- assign shown = shown | plus: 1 -%}
+    {%- endfor -%}
+  </div>
+
+  <canvas class="njl-scissors" aria-hidden="true"></canvas>
+
+  <div class="njl-card">
+    {%- if logo != blank -%}
+      <img class="njl-logo" src="{{ logo | image_url: width: 200 }}" alt="" width="84" height="84">
+    {%- endif -%}
+
+    <h1 class="njl-mark">
+      <span class="njl-name">{{ s.title | escape }}</span>
+      <span class="njl-sub">{{ s.script_title | escape }}</span>
+    </h1>
+
+    {%- if s.tagline != blank -%}
+      <p class="njl-tag">{{ s.tagline | escape }}</p>
+    {%- endif -%}
+
+    <div class="njl-links">
+      {%- for block in section.blocks -%}
+        {%- if block.settings.label != blank and block.settings.link != blank -%}
+          <a class="njl-btn njl-btn--{{ block.settings.style }}" href="{{ block.settings.link }}"
+            {%- if block.settings.link contains '://' %} target="_blank" rel="noopener"{% endif %}
+            {{ block.shopify_attributes }}>
+            {{ block.settings.label | escape }}
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if s.app_label != blank and s.app_link != blank -%}
+        <a class="njl-btn njl-btn--outline" href="{{ s.app_link | escape }}" target="_blank" rel="noopener">
+          {{ s.app_label | escape }}
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="njl-socials">
+      {%- if s.instagram != blank -%}
+        <a class="njl-social" style="--hc: linear-gradient(45deg, #f9b233, #e1306c 50%, #833ab4)" href="{{ s.instagram | escape }}" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+          <svg viewBox="0 0 448 512" aria-hidden="true"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+        </a>
+      {%- endif -%}
+      {%- if s.tiktok != blank -%}
+        <a class="njl-social" style="--hc: #111" href="{{ s.tiktok | escape }}" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
+          <svg viewBox="0 0 448 512" aria-hidden="true"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
+        </a>
+      {%- endif -%}
+      {%- if s.youtube != blank -%}
+        <a class="njl-social" style="--hc: #ff0033" href="{{ s.youtube | escape }}" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
+          <svg viewBox="0 0 576 512" aria-hidden="true"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+        </a>
+      {%- endif -%}
+      {%- if s.etsy != blank -%}
+        <a class="njl-social" style="--hc: #f1641e" href="{{ s.etsy | escape }}" target="_blank" rel="noopener" aria-label="Etsy" title="Etsy">
+          <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M384 348c-1.75 10.75-13.75 110-15.5 132-117.879-4.299-219.895-4.743-368.5 0v-25.5c45.457-8.948 60.627-8.019 61-35.25 1.793-72.322 3.524-244.143 0-322-1.029-28.46-12.13-26.765-61-36v-25.5c73.886 2.358 255.933 8.551 362.999-3.75-3.5 38.25-7.75 126.5-7.75 126.5H332C320.947 115.665 313.241 68 277.25 68h-137c-10.25 0-10.75 3.5-10.75 9.75V241.5c58 .5 88.5-2.5 88.5-2.5 29.77-.951 27.56-8.502 40.75-65.251h25.75c-4.407 101.351-3.91 61.829-1.75 160.25H257c-9.155-40.086-9.065-61.045-39.501-61.5 0 0-21.5-2-88-2v139c0 26 14.25 38.25 44.25 38.25H263c63.636 0 66.564-24.996 98.751-99.75H384z"/></svg>
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- if s.hint != blank -%}
+      <p class="njl-hint" aria-hidden="true">{{ s.hint | escape }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+{% raw %}
+/*NJL_JS*/
+{% endraw %}
+</script>
+
+{% schema %}
+{
+  "name": "Natalie's links",
+  "tag": "div",
+  "class": "njl-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Look"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Style",
+      "options": [
+        { "value": "blush", "label": "Light (blush)" },
+        { "value": "dusk", "label": "Dark (glowing)" }
+      ],
+      "default": "blush"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Round photo at the top",
+      "info": "Leave empty to use the store's logo from Settings → Brand."
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Natalie's Journal:"
+    },
+    {
+      "type": "text",
+      "id": "script_title",
+      "label": "Script title",
+      "default": "Second Story"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Every piece is repurposed to give it a second story."
+    },
+    {
+      "type": "header",
+      "content": "Floating bubbles"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Products from",
+      "info": "Leave empty to use every product in the store. Cut-outs reveal these same pieces."
+    },
+    {
+      "type": "range",
+      "id": "bubble_count",
+      "label": "Number of bubbles",
+      "min": 4,
+      "max": 16,
+      "step": 1,
+      "default": 13
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sold",
+      "label": "Include sold-out pieces",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "hint",
+      "label": "Little note under the buttons",
+      "default": "psst… try cutting out a circle"
+    },
+    {
+      "type": "header",
+      "content": "Travel app button",
+      "info": "Shown under the link buttons. Clear the text to hide it."
+    },
+    {
+      "type": "text",
+      "id": "app_label",
+      "label": "Button text",
+      "default": "Get our travel app"
+    },
+    {
+      "type": "text",
+      "id": "app_link",
+      "label": "Link",
+      "default": "https://roam.community"
+    },
+    {
+      "type": "header",
+      "content": "Socials",
+      "info": "Leave one empty to hide its icon."
+    },
+    {
+      "type": "text",
+      "id": "instagram",
+      "label": "Instagram link",
+      "default": "https://www.instagram.com/natalies_journal/"
+    },
+    {
+      "type": "text",
+      "id": "tiktok",
+      "label": "TikTok link",
+      "default": "https://www.tiktok.com/@natalieee_37"
+    },
+    {
+      "type": "text",
+      "id": "youtube",
+      "label": "YouTube link",
+      "default": "https://www.youtube.com/@natalies-journal"
+    },
+    {
+      "type": "text",
+      "id": "etsy",
+      "label": "Etsy link",
+      "default": "https://www.etsy.com/shop/NataliesJournal"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Button text",
+          "default": "Shop the collection"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Look",
+          "options": [
+            { "value": "solid", "label": "Filled" },
+            { "value": "outline", "label": "Outline" }
+          ],
+          "default": "outline"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Natalie's links",
+      "blocks": [
+        {
+          "type": "link",
+          "settings": {
+            "label": "Shop the collection",
+            "link": "/collections/all",
+            "style": "solid"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

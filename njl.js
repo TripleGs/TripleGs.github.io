@@ -493,7 +493,8 @@
             // bubble you get the normal grab cursor.
             const overUI = pointer.target && pointer.target.closest &&
                 pointer.target.closest('.njl-card, .njl-bubble, .njl-cut');
-            const tracing = inside && pointer.type === 'mouse' && !dragging && !reduce;
+            // (not switched off by Reduce motion: nothing here moves unless the visitor moves it)
+            const tracing = inside && pointer.type === 'mouse' && !dragging;
             const cutting = tracing && !overUI;
             root.classList.toggle('is-cutting', cutting);
             if (tracing) {

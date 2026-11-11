@@ -1,0 +1,3 @@
+# GitHub Pages: keep the Shopify section source (for Natalie's links page) off josephgoss.com
+exclude:
+  - shopify

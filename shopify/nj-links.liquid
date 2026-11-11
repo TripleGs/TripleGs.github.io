@@ -1,0 +1,1236 @@
+{%- comment -%}
+  Natalie's Journal — links page (a flashy link-in-bio for nataliesjournal.com/pages/links)
+
+  Product photos float in jiggly bubbles you can shove, grab and throw. On a
+  computer the cursor turns into scissors: trace a loop and that shape is cut
+  out of the fabric to reveal one of the pieces. Clicking or tapping the
+  fabric snips out a quick circle.
+
+  Everything a person would want to change is in the theme editor: the link
+  buttons (blocks), the travel-app button, the socials, the text, the style
+  (light / dark), and which collection the bubbles come from.
+
+  GENERATED FILE: nj-links.liquid is built by build.py from
+  nj-links.template.liquid plus the shared njl.css and njl.js (which also run
+  the Natalie section on josephgoss.com). Edit those, then run build.py.
+
+  Icons: Font Awesome Free 6.7.2 brand icons, CC BY 4.0 — https://fontawesome.com/license/free
+{%- endcomment -%}
+
+{%- liquid
+  assign s = section.settings
+  assign source = s.collection
+  if source == blank
+    assign source = collections.all
+  endif
+  assign logo = s.logo | default: shop.brand.square_logo | default: shop.brand.logo
+-%}
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600;700&display=swap">
+
+<style>
+{% raw %}
+/* ==========================================================================
+   Natalie's Journal — bubbles & scissors
+   Shared by josephgoss.com (#natalie) and the Shopify links page
+   (NataliesJournal/nj-links.liquid inlines this file — run build.py there
+   after editing it).
+
+   - product photos float in jiggly bubbles you can shove, grab and throw
+   - on a mouse, the cursor is a pair of scissors: trace a loop and the
+     shape is cut out of the fabric, revealing one of the pieces
+   - click / tap the fabric to snip out a quick circle
+   ========================================================================== */
+
+.njl {
+    --njl-bg: radial-gradient(70% 60% at 50% 50%, #1a1216 0%, #0d0a0c 70%), #0d0a0c;
+    --njl-weave: rgba(255, 236, 225, .028);
+    --njl-glow-1: #d9998a;
+    --njl-glow-2: #8fb7d6;
+    --njl-glow-3: #e9ccc1;
+    --njl-glow-o: .34;
+    --njl-ink: #fff;
+    --njl-ink-dim: rgba(255, 244, 238, .68);
+    --njl-hint: rgba(233, 204, 193, .6);
+    --njl-card: rgba(22, 15, 18, .55);
+    --njl-card-line: rgba(233, 204, 193, .16);
+    --njl-sub: linear-gradient(100deg, #e9ccc1, #f4b8c6 35%, #cfe2f0 70%, #e9ccc1);
+    --njl-btn-bg: linear-gradient(120deg, #e9ccc1, #e1edf5);
+    --njl-btn-ink: #111;
+    --njl-btn-glow: rgba(233, 204, 193, .7);
+    --njl-outline: rgba(255, 255, 255, .28);
+    --njl-social-bg: rgba(255, 255, 255, .06);
+    --njl-social-line: rgba(255, 255, 255, .14);
+    --njl-tip: #fff4ee;
+    --njl-tip-shadow: 0 2px 10px rgba(0, 0, 0, .8);
+    --njl-shadow: rgba(0, 0, 0, .55);
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: grid;
+    place-items: center;
+    min-height: calc(100svh - var(--header-height, 60px));
+    padding: clamp(90px, 13vh, 150px) 16px;
+    background: var(--njl-bg);
+    color: var(--njl-ink);
+    font-family: var(--font-body--family, Inter, sans-serif);
+    -webkit-font-smoothing: antialiased;
+}
+
+/* light version, in the shop's blush and powder blue */
+.njl--blush {
+    --njl-bg: radial-gradient(70% 60% at 50% 45%, #fbf1ec 0%, #f1ddd5 75%), #f1ddd5;
+    --njl-weave: rgba(120, 80, 70, .05);
+    --njl-glow-1: #e9b8aa;
+    --njl-glow-2: #bcd6ea;
+    --njl-glow-3: #ffffff;
+    --njl-glow-o: .7;
+    --njl-ink: #141012;
+    --njl-ink-dim: rgba(20, 16, 18, .66);
+    --njl-hint: rgba(20, 16, 18, .45);
+    --njl-card: rgba(255, 255, 255, .55);
+    --njl-card-line: rgba(255, 255, 255, .8);
+    --njl-sub: linear-gradient(100deg, #b86a5c, #cf6f8e 40%, #5f8fbb 75%, #b86a5c);
+    --njl-btn-bg: #141012;
+    --njl-btn-ink: #fff;
+    --njl-btn-glow: rgba(20, 16, 18, .35);
+    --njl-outline: rgba(20, 16, 18, .25);
+    --njl-social-bg: rgba(255, 255, 255, .6);
+    --njl-social-line: rgba(20, 16, 18, .12);
+    --njl-tip: #141012;
+    --njl-tip-shadow: 0 1px 8px rgba(255, 255, 255, .9);
+    --njl-shadow: rgba(90, 50, 60, .28);
+}
+
+.njl *, .njl *::before, .njl *::after { box-sizing: border-box; }
+
+/* faint woven-fabric texture */
+.njl::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+        repeating-linear-gradient(0deg, var(--njl-weave) 0 1px, transparent 1px 5px),
+        repeating-linear-gradient(90deg, var(--njl-weave) 0 1px, transparent 1px 5px);
+}
+
+/* scissors replace the cursor over the bare fabric */
+.njl.is-cutting { cursor: none; }
+.njl-card { cursor: default; }
+
+.njl-glow { position: absolute; inset: 0; z-index: -2; pointer-events: none; }
+.njl-glow span {
+    position: absolute;
+    width: 46vmax;
+    height: 46vmax;
+    border-radius: 50%;
+    filter: blur(70px);
+    opacity: var(--njl-glow-o);
+    animation: njl-drift 22s ease-in-out infinite alternate;
+}
+.njl-glow span:nth-child(1) { background: var(--njl-glow-1); left: -10%; top: -8%; }
+.njl-glow span:nth-child(2) { background: var(--njl-glow-2); right: -12%; bottom: -14%; animation-duration: 26s; animation-delay: -6s; }
+.njl-glow span:nth-child(3) { background: var(--njl-glow-3); left: 30%; top: 40%; width: 30vmax; height: 30vmax; opacity: calc(var(--njl-glow-o) * .45); animation-duration: 30s; animation-delay: -12s; }
+@keyframes njl-drift {
+    0% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(12vw, 8vh) scale(1.15); }
+    66% { transform: translate(-6vw, 14vh) scale(.9); }
+    100% { transform: translate(8vw, -10vh) scale(1.1); }
+}
+
+/* ------------------------------------------------------------- bubbles */
+.njl-bubbles { position: absolute; inset: 0; z-index: 2; }
+.njl:not(.is-ready) .njl-bubble { visibility: hidden; }
+
+.njl-bubble {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: var(--d, 140px);
+    height: var(--d, 140px);
+    cursor: grab;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-tap-highlight-color: transparent;
+    will-change: transform;
+    text-decoration: none;
+}
+.njl-bubble.is-dragging { cursor: grabbing; z-index: 2; }
+
+/* the bubble itself: a wobbling membrane with the photo floating inside */
+.njl-blob {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background: rgba(255, 255, 255, .25);
+    box-shadow: 0 20px 40px -14px var(--njl-shadow);
+    animation: njl-wobble 6s ease-in-out infinite;
+    transition: scale .35s cubic-bezier(.34, 1.56, .64, 1);
+    will-change: transform, border-radius;
+}
+.njl-blob img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    scale: 1.08;
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
+/* rim and a little iridescence on top of the photo */
+.njl-blob::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 50%, transparent 58%, rgba(255, 255, 255, .22) 72%, rgba(255, 255, 255, .5) 100%);
+    box-shadow:
+        inset 0 0 0 2px rgba(255, 255, 255, .7),
+        inset 6px 0 10px rgba(255, 160, 200, .35),
+        inset -6px 0 10px rgba(130, 190, 255, .35),
+        inset 0 -8px 14px rgba(190, 255, 220, .2);
+}
+@keyframes njl-wobble {
+    0%, 100% { border-radius: 50% 50% 50% 50% / 50% 50% 50% 50%; }
+    25% { border-radius: 54% 46% 52% 48% / 47% 53% 47% 53%; }
+    50% { border-radius: 46% 54% 47% 53% / 53% 47% 54% 46%; }
+    75% { border-radius: 52% 48% 55% 45% / 49% 51% 46% 54%; }
+}
+
+/* bubbles blow up one after another the first time they come on screen */
+.njl:not(.is-in) .njl-blob { scale: 0; }
+.njl.is-in .njl-blob { animation: njl-inflate .9s cubic-bezier(.34, 1.56, .64, 1) backwards, njl-wobble 6s ease-in-out infinite; animation-delay: calc(var(--k, 0) * 70ms + 100ms), var(--wd, 0s); animation-duration: .9s, var(--wob, 6s); }
+@keyframes njl-inflate { from { scale: 0; } }
+
+.njl-bubble:hover .njl-blob { scale: 1.07; }
+.njl-bubble.is-dragging .njl-blob { scale: 1.12; }
+
+.njl-bubble::after {
+    content: attr(data-name);
+    position: absolute;
+    left: 50%;
+    top: calc(100% + 6px);
+    translate: -50% -4px;
+    white-space: nowrap;
+    font-family: "Dancing Script", cursive;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--njl-tip);
+    text-shadow: var(--njl-tip-shadow);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s, translate .25s cubic-bezier(.2, .8, .2, 1);
+}
+.njl-bubble:hover::after { opacity: 1; translate: -50% 0; }
+.njl-bubble.is-dragging::after { opacity: 0; }
+
+/* ------------------------------------------------------------ cut-outs */
+.njl-cuts { position: absolute; inset: 0; z-index: 1; pointer-events: none; }
+.njl-cut {
+    position: absolute;
+    display: block;
+    pointer-events: auto;
+    cursor: pointer;
+    rotate: var(--tilt, 0deg);
+    filter: drop-shadow(0 16px 18px var(--njl-shadow));
+    animation: njl-cut-in .6s cubic-bezier(.34, 1.56, .64, 1) backwards;
+    transition: translate .8s ease-in, rotate .8s ease-in, opacity .8s ease-in;
+    text-decoration: none;
+}
+.njl-cut.is-leaving { translate: 0 70px; rotate: calc(var(--tilt, 0deg) * -3); opacity: 0; pointer-events: none; }
+@keyframes njl-cut-in {
+    from { scale: .55; opacity: 0; }
+    60% { scale: 1.06; opacity: 1; }
+}
+.njl-cut-shape { position: absolute; inset: 0; display: block; }
+.njl-cut-shape img { display: block; width: 100%; height: 100%; object-fit: cover; }
+.njl-cut-edge { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+.njl-cut-edge path { fill: none; stroke: #fff; stroke-width: 3.5; stroke-linejoin: round; }
+.njl-cut-tag {
+    position: absolute;
+    left: 50%;
+    top: 100%;
+    translate: -50% 6px;
+    white-space: nowrap;
+    font-family: "Dancing Script", cursive;
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--njl-tip);
+    text-shadow: var(--njl-tip-shadow);
+}
+
+.njl-scissors { position: absolute; inset: 0; width: 100%; height: 100%; z-index: 3; pointer-events: none; }
+
+/* ------------------------------------------------------------- the card */
+.njl-card {
+    position: relative;
+    z-index: 4;
+    width: min(460px, 100%);
+    text-align: center;
+    padding: 34px 28px 24px;
+    border-radius: 34px;
+    background: var(--njl-card);
+    border: 1px solid var(--njl-card-line);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    backdrop-filter: blur(16px) saturate(1.2);
+    box-shadow: 0 40px 80px -30px var(--njl-shadow);
+}
+.njl-logo {
+    display: block;
+    width: 84px;
+    height: 84px;
+    margin: 0 auto;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid #e9ccc1;
+    box-shadow: 0 22px 44px -12px var(--njl-shadow);
+}
+
+/* the shop's header wordmark, scaled up: Inter 600 + Dancing Script */
+.njl-mark { margin: 16px 0 6px; line-height: 1; font-size: inherit; font-weight: inherit; letter-spacing: 0; }
+.njl-name {
+    display: block;
+    font-family: var(--font-body--family, Inter, sans-serif);
+    font-weight: 600;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    letter-spacing: -0.02em;
+    color: var(--njl-ink);
+}
+.njl-sub {
+    display: block;
+    padding: .06em .16em .14em;
+    font-family: "Dancing Script", cursive;
+    font-weight: 600;
+    font-size: clamp(3.1rem, 7vw, 4.8rem);
+    line-height: 1.05;
+    background: var(--njl-sub);
+    background-size: 220% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: njl-sheen 9s ease-in-out infinite alternate;
+}
+@keyframes njl-sheen { to { background-position: 100% 0; } }
+
+.njl-tag {
+    margin: 0 0 24px;
+    font-size: clamp(.98rem, 1.5vw, 1.1rem);
+    line-height: 1.5;
+    color: var(--njl-ink-dim);
+    text-wrap: balance;
+}
+
+/* link buttons */
+.njl-links { display: grid; gap: 12px; }
+.njl-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 54px;
+    padding: 14px 22px;
+    border-radius: 999px;
+    font-family: var(--font-body--family, Inter, sans-serif);
+    font-weight: 600;
+    font-size: 1rem;
+    line-height: 1.2;
+    text-decoration: none;
+    transition: transform .3s cubic-bezier(.2, .8, .2, 1), box-shadow .3s, background-color .3s;
+}
+.njl-btn:hover { transform: scale(1.03); }
+.njl-btn--solid { background: var(--njl-btn-bg); color: var(--njl-btn-ink); box-shadow: 0 12px 40px -14px var(--njl-btn-glow); }
+.njl-btn--outline { background: transparent; color: var(--njl-ink); border: 1.5px solid var(--njl-outline); }
+.njl-btn--outline:hover { background: var(--njl-social-bg); }
+.njl-btn svg { width: 16px; height: 16px; flex: none; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+
+/* socials */
+.njl-socials { display: flex; justify-content: center; gap: 10px; margin-top: 22px; flex-wrap: wrap; }
+.njl-social {
+    position: relative;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: var(--njl-ink);
+    background: var(--njl-social-bg);
+    border: 1px solid var(--njl-social-line);
+    overflow: hidden;
+    isolation: isolate;
+    transition: transform .3s cubic-bezier(.2, .8, .2, 1), color .3s, border-color .3s;
+}
+.njl-social svg { width: 20px; height: 20px; fill: currentColor; }
+.njl-social::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    border-radius: 50%;
+    background: var(--hc, #111);
+    opacity: 0;
+    transform: scale(.3);
+    transition: opacity .3s, transform .4s cubic-bezier(.2, .8, .2, 1);
+}
+.njl-social:hover { color: #fff; border-color: transparent; transform: scale(1.1); }
+.njl-social:hover::before { opacity: 1; transform: scale(1); }
+
+.njl-hint {
+    margin: 16px 0 0;
+    font-family: "Dancing Script", cursive;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: var(--njl-hint);
+}
+
+.njl a:focus-visible { outline: 2px solid currentColor; outline-offset: 4px; }
+
+@media (max-width: 700px) {
+    .njl { padding: 130px 16px 230px; }
+    .njl-card { padding: 28px 18px 20px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .njl *, .njl *::before, .njl *::after { animation: none !important; transition-duration: .01ms !important; }
+}
+{% endraw %}
+</style>
+
+<section id="njl-{{ section.id }}" class="njl njl--{{ s.style }}" data-njl>
+  <div class="njl-glow" aria-hidden="true"><span></span><span></span><span></span></div>
+  <div class="njl-cuts"></div>
+
+  <div class="njl-bubbles">
+    {%- assign shown = 0 -%}
+    {%- for product in source.products limit: 50 -%}
+      {%- if shown >= s.bubble_count -%}{%- break -%}{%- endif -%}
+      {%- unless product.available or s.show_sold -%}{%- continue -%}{%- endunless -%}
+      {%- if product.featured_image == blank -%}{%- continue -%}{%- endif -%}
+      <a class="njl-bubble" href="{{ product.url }}" draggable="false"
+         data-name="{{ product.title | truncate: 26 | escape }}"
+         data-big="{{ product.featured_image | image_url: width: 900 }}">
+        <span class="njl-blob">
+          <img src="{{ product.featured_image | image_url: width: 440 }}"
+               alt="{{ product.featured_image.alt | default: product.title | escape }}"
+               width="220" height="220" draggable="false" decoding="async">
+        </span>
+      </a>
+      {%- assign shown = shown | plus: 1 -%}
+    {%- endfor -%}
+  </div>
+
+  <canvas class="njl-scissors" aria-hidden="true"></canvas>
+
+  <div class="njl-card">
+    {%- if logo != blank -%}
+      <img class="njl-logo" src="{{ logo | image_url: width: 200 }}" alt="" width="84" height="84">
+    {%- endif -%}
+
+    <h1 class="njl-mark">
+      <span class="njl-name">{{ s.title | escape }}</span>
+      <span class="njl-sub">{{ s.script_title | escape }}</span>
+    </h1>
+
+    {%- if s.tagline != blank -%}
+      <p class="njl-tag">{{ s.tagline | escape }}</p>
+    {%- endif -%}
+
+    <div class="njl-links">
+      {%- for block in section.blocks -%}
+        {%- if block.settings.label != blank and block.settings.link != blank -%}
+          <a class="njl-btn njl-btn--{{ block.settings.style }}" href="{{ block.settings.link }}"
+            {%- if block.settings.link contains '://' %} target="_blank" rel="noopener"{% endif %}
+            {{ block.shopify_attributes }}>
+            {{ block.settings.label | escape }}
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+          </a>
+        {%- endif -%}
+      {%- endfor -%}
+      {%- if s.app_label != blank and s.app_link != blank -%}
+        <a class="njl-btn njl-btn--outline" href="{{ s.app_link | escape }}" target="_blank" rel="noopener">
+          {{ s.app_label | escape }}
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
+      {%- endif -%}
+    </div>
+
+    <div class="njl-socials">
+      {%- if s.instagram != blank -%}
+        <a class="njl-social" style="--hc: linear-gradient(45deg, #f9b233, #e1306c 50%, #833ab4)" href="{{ s.instagram | escape }}" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+          <svg viewBox="0 0 448 512" aria-hidden="true"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+        </a>
+      {%- endif -%}
+      {%- if s.tiktok != blank -%}
+        <a class="njl-social" style="--hc: #111" href="{{ s.tiktok | escape }}" target="_blank" rel="noopener" aria-label="TikTok" title="TikTok">
+          <svg viewBox="0 0 448 512" aria-hidden="true"><path d="M448,209.91a210.06,210.06,0,0,1-122.77-39.25V349.38A162.55,162.55,0,1,1,185,188.31V278.2a74.62,74.62,0,1,0,52.23,71.18V0l88,0a121.18,121.18,0,0,0,1.86,22.17h0A122.18,122.18,0,0,0,381,102.39a121.43,121.43,0,0,0,67,20.14Z"/></svg>
+        </a>
+      {%- endif -%}
+      {%- if s.youtube != blank -%}
+        <a class="njl-social" style="--hc: #ff0033" href="{{ s.youtube | escape }}" target="_blank" rel="noopener" aria-label="YouTube" title="YouTube">
+          <svg viewBox="0 0 576 512" aria-hidden="true"><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"/></svg>
+        </a>
+      {%- endif -%}
+      {%- if s.etsy != blank -%}
+        <a class="njl-social" style="--hc: #f1641e" href="{{ s.etsy | escape }}" target="_blank" rel="noopener" aria-label="Etsy" title="Etsy">
+          <svg viewBox="0 0 384 512" aria-hidden="true"><path d="M384 348c-1.75 10.75-13.75 110-15.5 132-117.879-4.299-219.895-4.743-368.5 0v-25.5c45.457-8.948 60.627-8.019 61-35.25 1.793-72.322 3.524-244.143 0-322-1.029-28.46-12.13-26.765-61-36v-25.5c73.886 2.358 255.933 8.551 362.999-3.75-3.5 38.25-7.75 126.5-7.75 126.5H332C320.947 115.665 313.241 68 277.25 68h-137c-10.25 0-10.75 3.5-10.75 9.75V241.5c58 .5 88.5-2.5 88.5-2.5 29.77-.951 27.56-8.502 40.75-65.251h25.75c-4.407 101.351-3.91 61.829-1.75 160.25H257c-9.155-40.086-9.065-61.045-39.501-61.5 0 0-21.5-2-88-2v139c0 26 14.25 38.25 44.25 38.25H263c63.636 0 66.564-24.996 98.751-99.75H384z"/></svg>
+        </a>
+      {%- endif -%}
+    </div>
+
+    {%- if s.hint != blank -%}
+      <p class="njl-hint" aria-hidden="true">{{ s.hint | escape }}</p>
+    {%- endif -%}
+  </div>
+</section>
+
+<script>
+{% raw %}
+/* ==========================================================================
+   Natalie's Journal — bubbles & scissors
+   Shared by josephgoss.com and the Shopify links page (NataliesJournal/
+   nj-links.liquid inlines this file — run build.py there after editing it).
+
+   Markup it expects inside a [data-njl] element:
+     .njl-bubbles > a.njl-bubble[data-name][data-big?] > .njl-blob > img
+     .njl-cuts, canvas.njl-scissors, .njl-card
+   ========================================================================== */
+(() => {
+    'use strict';
+    if (window.__njlBoot) return; // one copy of the code, however many sections
+    window.__njlBoot = true;
+
+    const OFF = -99999;
+    const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const clamp = (v, a, b) => (v < a ? a : v > b ? b : v);
+    const lerp = (a, b, t) => a + (b - a) * t;
+
+    const pointer = { x: OFF, y: OFF, type: 'mouse', target: null };
+    const track = e => {
+        pointer.x = e.clientX;
+        pointer.y = e.clientY;
+        pointer.type = e.pointerType || 'mouse';
+        pointer.target = e.target;
+    };
+    addEventListener('pointermove', track, { passive: true });
+    addEventListener('pointerdown', track, { passive: true });
+    const release = e => { if (e.pointerType !== 'mouse') { pointer.x = OFF; pointer.y = OFF; } };
+    addEventListener('pointerup', release, { passive: true });
+    addEventListener('pointercancel', release, { passive: true });
+    document.documentElement.addEventListener('mouseleave', () => { pointer.x = OFF; pointer.y = OFF; });
+
+    // where segment AB crosses segment CD (strictly inside both), or null
+    function crossing(a, b, c, d) {
+        const r1x = b.x - a.x, r1y = b.y - a.y, r2x = d.x - c.x, r2y = d.y - c.y;
+        const den = r1x * r2y - r1y * r2x;
+        if (Math.abs(den) < 1e-9) return null;
+        const qx = c.x - a.x, qy = c.y - a.y;
+        const t = (qx * r2y - qy * r2x) / den;
+        const u = (qx * r1y - qy * r1x) / den;
+        if (t <= 0 || t >= 1 || u <= 0 || u >= 1) return null;
+        return { x: a.x + t * r1x, y: a.y + t * r1y };
+    }
+
+    function polyStats(poly) {
+        let area = 0, per = 0;
+        for (let i = 0; i < poly.length; i++) {
+            const a = poly[i], b = poly[(i + 1) % poly.length];
+            area += a.x * b.y - b.x * a.y;
+            per += Math.hypot(b.x - a.x, b.y - a.y);
+        }
+        return { area: Math.abs(area) / 2, per };
+    }
+
+    function init(root) {
+        if (root.__njl) return;
+        root.__njl = true;
+
+        const light = root.classList.contains('njl--blush');
+        const card = root.querySelector('.njl-card');
+        const cutsEl = root.querySelector('.njl-cuts');
+        const canvas = root.querySelector('.njl-scissors');
+        const ctx = canvas.getContext('2d');
+
+        const B = [...root.querySelectorAll('.njl-bubble')].map((el, i) => ({
+            el, blob: el.querySelector('.njl-blob'), i,
+            r: 60, x: 0, y: 0, vx: 0, vy: 0,
+            phase: Math.random() * Math.PI * 2,
+            sq: 0, sqv: 0, sqa: 0, shownSq: 1,
+            drag: null, on: true, placed: false, justDragged: false,
+        }));
+        B.forEach(b => {
+            b.el.style.setProperty('--k', b.i);
+            b.blob.style.setProperty('--wob', `${(5 + Math.random() * 3).toFixed(2)}s`);
+            b.blob.style.setProperty('--wd', `${(-Math.random() * 6).toFixed(2)}s`);
+            b.el.addEventListener('pointerenter', () => jiggle(b, 0.07, Math.random() * Math.PI));
+        });
+        const products = B.map(b => ({
+            href: b.el.href,
+            target: b.el.target,
+            name: b.el.dataset.name || '',
+            img: b.el.dataset.big || (b.el.querySelector('img') || {}).src,
+        })).filter(p => p.img);
+
+        let W = 0, H = 0, dpr = 1;
+        let rect = { l: 0, t: 0, r: 0, b: 0 };
+        let lastPx = OFF, lastPy = OFF;
+
+        function jiggle(b, amount, axis) {
+            b.sqa = axis;
+            b.sqv -= amount;
+        }
+
+        function cardRect() {
+            const sr = root.getBoundingClientRect(), cr = card.getBoundingClientRect();
+            rect = { l: cr.left - sr.left - 8, t: cr.top - sr.top - 8, r: cr.right - sr.left + 8, b: cr.bottom - sr.top + 8 };
+        }
+
+        function place(b) {
+            const live = B.filter(q => q.on && q.placed && q !== b);
+            let x = 0, y = 0;
+            for (let tries = 0; tries < 400; tries++) {
+                x = b.r + Math.random() * Math.max(1, W - 2 * b.r);
+                y = b.r + Math.random() * Math.max(1, H - 2 * b.r);
+                if (x > rect.l - b.r && x < rect.r + b.r && y > rect.t - b.r && y < rect.b + b.r) continue;
+                if (live.some(q => Math.hypot(q.x - x, q.y - y) < q.r + b.r + 8)) continue;
+                break;
+            }
+            b.x = x; b.y = y;
+            b.vx = (Math.random() - 0.5) * 2;
+            b.vy = (Math.random() - 0.5) * 2;
+            b.placed = true;
+        }
+
+        function render(b) {
+            b.el.style.transform = `translate3d(${(b.x - b.r).toFixed(1)}px, ${(b.y - b.r).toFixed(1)}px, 0)`;
+            if (Math.abs(b.sq - b.shownSq) > 0.002) {
+                b.shownSq = b.sq;
+                const a = b.sqa.toFixed(3);
+                b.blob.style.transform = `rotate(${a}rad) scale(${(1 + b.sq).toFixed(3)}, ${(1 - b.sq).toFixed(3)}) rotate(${-a}rad)`;
+            }
+        }
+
+        function resize() {
+            const oW = W, oH = H;
+            W = root.clientWidth;
+            H = root.clientHeight;
+            if (!W || !H) return;
+            dpr = Math.min(devicePixelRatio || 1, 2);
+            canvas.width = Math.round(W * dpr);
+            canvas.height = Math.round(H * dpr);
+            const mobile = W < 700;
+            const count = mobile ? 8 : W < 1100 ? 10 : B.length;
+            const base = mobile ? 40 : clamp(W / 22, 52, 82);
+            cardRect();
+            B.forEach((b, i) => {
+                b.on = i < count;
+                b.el.style.display = b.on ? '' : 'none';
+                b.r = base * (0.82 + (((i * 37) % 10) / 10) * 0.45);
+                b.el.style.setProperty('--d', `${Math.round(b.r * 2)}px`);
+                if (!b.on) return;
+                if (!b.placed || !oW) place(b);
+                else { b.x *= W / oW; b.y *= H / oH; }
+                render(b);
+            });
+            root.classList.add('is-ready');
+        }
+
+        // ---- grab & throw; a plain click still opens the product
+        B.forEach(b => {
+            b.el.addEventListener('pointerdown', e => {
+                if (e.button !== 0) return;
+                const sr = root.getBoundingClientRect();
+                b.justDragged = false;
+                b.drag = { ox: e.clientX - sr.left - b.x, oy: e.clientY - sr.top - b.y, sx: e.clientX, sy: e.clientY, moved: false };
+                track(e);
+                try { b.el.setPointerCapture(e.pointerId); } catch (_) { /* ignore */ }
+                b.el.classList.add('is-dragging');
+                jiggle(b, 0.12, Math.PI / 2);
+                e.preventDefault();
+            });
+            b.el.addEventListener('pointermove', e => {
+                if (b.drag && !b.drag.moved && Math.hypot(e.clientX - b.drag.sx, e.clientY - b.drag.sy) > 6) b.drag.moved = true;
+            });
+            const end = () => {
+                if (!b.drag) return;
+                b.justDragged = b.drag.moved;
+                b.drag = null;
+                b.el.classList.remove('is-dragging');
+            };
+            b.el.addEventListener('pointerup', end);
+            b.el.addEventListener('pointercancel', end);
+            b.el.addEventListener('lostpointercapture', end);
+            b.el.addEventListener('click', e => { if (b.justDragged) { e.preventDefault(); b.justDragged = false; } });
+        });
+
+        // ---- cut-outs: a shape snipped from the fabric reveals a piece
+        const cuts = [];
+        let lastPick = -1;
+        function pick() {
+            if (!products.length) return null;
+            let k;
+            do { k = (Math.random() * products.length) | 0; } while (products.length > 1 && k === lastPick);
+            lastPick = k;
+            return products[k];
+        }
+
+        function removeCut(c) {
+            const i = cuts.indexOf(c);
+            if (i < 0) return;
+            cuts.splice(i, 1);
+            c.el.classList.add('is-leaving');
+            setTimeout(() => c.el.remove(), 850);
+        }
+
+        function makeCut(poly) {
+            const prod = pick();
+            if (!prod) return;
+            let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+            for (const p of poly) {
+                minX = Math.min(minX, p.x); minY = Math.min(minY, p.y);
+                maxX = Math.max(maxX, p.x); maxY = Math.max(maxY, p.y);
+            }
+            const w = Math.max(1, maxX - minX), h = Math.max(1, maxY - minY);
+            const local = poly.map(p => [(p.x - minX).toFixed(1), (p.y - minY).toFixed(1)]);
+
+            const el = document.createElement('a');
+            el.className = 'njl-cut';
+            el.href = prod.href;
+            if (prod.target) { el.target = prod.target; el.rel = 'noopener'; }
+            el.setAttribute('aria-label', prod.name);
+            el.style.left = `${minX.toFixed(1)}px`;
+            el.style.top = `${minY.toFixed(1)}px`;
+            el.style.width = `${w.toFixed(1)}px`;
+            el.style.height = `${h.toFixed(1)}px`;
+            el.style.setProperty('--tilt', `${(Math.random() * 10 - 5).toFixed(1)}deg`);
+
+            const shape = document.createElement('span');
+            shape.className = 'njl-cut-shape';
+            shape.style.clipPath = `polygon(${local.map(([x, y]) => `${x}px ${y}px`).join(',')})`;
+            const img = document.createElement('img');
+            img.src = prod.img;
+            img.alt = '';
+            img.draggable = false;
+            shape.appendChild(img);
+
+            const svgNS = 'http://www.w3.org/2000/svg';
+            const svg = document.createElementNS(svgNS, 'svg');
+            svg.setAttribute('class', 'njl-cut-edge');
+            svg.setAttribute('viewBox', `0 0 ${w.toFixed(1)} ${h.toFixed(1)}`);
+            svg.setAttribute('aria-hidden', 'true');
+            const path = document.createElementNS(svgNS, 'path');
+            path.setAttribute('d', `M${local.map(([x, y]) => `${x} ${y}`).join('L')}Z`);
+            svg.appendChild(path);
+
+            const tag = document.createElement('span');
+            tag.className = 'njl-cut-tag';
+            tag.textContent = prod.name;
+
+            el.append(shape, svg, tag);
+            cutsEl.appendChild(el);
+
+            const c = { el, born: performance.now(), hold: false };
+            el.addEventListener('pointerenter', () => { c.hold = true; });
+            el.addEventListener('pointerleave', () => { c.hold = false; c.born = performance.now() - 1500; });
+            cuts.push(c);
+            while (cuts.length > 4) removeCut(cuts[0]);
+        }
+
+        // a hand-cut circle around a point (click / tap on the fabric)
+        function snip(x, y) {
+            const R = (W < 700 ? 58 : 76) * (0.85 + Math.random() * 0.3);
+            const f1 = Math.random() * 6.28, f2 = Math.random() * 6.28, N = 30;
+            const poly = [];
+            for (let i = 0; i < N; i++) {
+                const t = (i / N) * Math.PI * 2;
+                const r = R * (1 + 0.1 * Math.sin(3 * t + f1) + 0.06 * Math.sin(5 * t + f2));
+                poly.push({ x: clamp(x + Math.cos(t) * r, 0, W), y: clamp(y + Math.sin(t) * r, 0, H) });
+            }
+            makeCut(poly);
+        }
+
+        root.addEventListener('click', e => {
+            if (e.target.closest('a, .njl-card')) return;
+            const sr = root.getBoundingClientRect();
+            snip(e.clientX - sr.left, e.clientY - sr.top);
+        });
+
+        // ---- the scissors and their dashed cut line
+        const LIFE = 3500; // long enough for a slow, careful circle
+        let trail = [];       // points of the line still on screen
+        let strokeStart = 0;  // index where the current, unbroken stroke begins
+        const sc = { x: 0, y: 0, ang: 0, s: 0, vis: 0 };
+
+        function addPoint(x, y, now) {
+            const last = trail[trail.length - 1];
+            if (last && !last.brk) {
+                const seg = Math.hypot(x - last.x, y - last.y);
+                if (seg < 4) return;
+                sc.s += seg;
+                // rotate the scissors toward where they're heading
+                const ang = Math.atan2(y - last.y, x - last.x);
+                let d = ang - sc.ang;
+                d = Math.atan2(Math.sin(d), Math.cos(d));
+                sc.ang += d * 0.35;
+            }
+            const pt = { x, y, t: now, brk: false };
+            trail.push(pt);
+
+            // did the newest segment cross the current stroke? then a loop is closed
+            const n = trail.length;
+            if (n - strokeStart < 6) return;
+            const a = trail[n - 2], b = trail[n - 1];
+            for (let i = strokeStart; i < n - 4; i++) {
+                const hit = crossing(trail[i], trail[i + 1], a, b);
+                if (!hit) continue;
+                const poly = [hit, ...trail.slice(i + 1, n - 1)];
+                const { area, per } = polyStats(poly);
+                // big enough, and round-ish rather than a thin back-and-forth sliver
+                if (area > 3500 && area / (per * per) > 0.035) {
+                    makeCut(poly);
+                    trail = [{ x, y, t: now, brk: false }];
+                    strokeStart = 0;
+                }
+                return;
+            }
+        }
+
+        function breakStroke() {
+            const last = trail[trail.length - 1];
+            if (last && !last.brk) last.brk = true;
+            strokeStart = trail.length;
+        }
+
+        function drawScissors(x, y, ang, open, alpha) {
+            ctx.save();
+            ctx.globalAlpha = alpha;
+            ctx.translate(x, y);
+            ctx.rotate(ang);
+            ctx.scale(1.4, 1.4);
+            ctx.shadowColor = 'rgba(40,20,30,.35)';
+            ctx.shadowBlur = 6;
+            ctx.shadowOffsetY = 3;
+            for (const side of [1, -1]) {
+                ctx.save();
+                ctx.rotate(-side * open);
+                ctx.scale(1, side);
+                // blade, from the pivot forward
+                const g = ctx.createLinearGradient(0, -4, 0, 2);
+                g.addColorStop(0, '#f4f6f8');
+                g.addColorStop(1, '#9aa3ad');
+                ctx.fillStyle = g;
+                ctx.strokeStyle = 'rgba(60,64,72,.85)';
+                ctx.lineWidth = 1;
+                ctx.beginPath();
+                ctx.moveTo(-3, 1.5);
+                ctx.quadraticCurveTo(10, -5, 30, -0.6);
+                ctx.lineTo(30, 0.4);
+                ctx.quadraticCurveTo(14, 1.6, -3, 1.5);
+                ctx.closePath();
+                ctx.fill();
+                ctx.stroke();
+                // handle, behind the pivot on the other side
+                ctx.strokeStyle = light ? '#d65f7a' : '#f4b8c6';
+                ctx.lineWidth = 3.2;
+                ctx.beginPath();
+                ctx.moveTo(-2, 1.5);
+                ctx.lineTo(-9, 6);
+                ctx.stroke();
+                ctx.beginPath();
+                ctx.ellipse(-16, 8.5, 7.5, 5.5, -0.35, 0, Math.PI * 2);
+                ctx.stroke();
+                ctx.restore();
+            }
+            // pivot screw
+            ctx.fillStyle = '#5b6068';
+            ctx.beginPath();
+            ctx.arc(0, 0, 1.8, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+        }
+
+        function tick(now, dt) {
+            const sr = root.getBoundingClientRect();
+            const px = pointer.x - sr.left, py = pointer.y - sr.top;
+            const inside = px >= 0 && py >= 0 && px <= W && py <= H;
+            const pvx = inside && lastPx !== OFF ? (px - lastPx) / dt : 0;
+            const pvy = inside && lastPy !== OFF ? (py - lastPy) / dt : 0;
+            lastPx = inside ? px : OFF;
+            lastPy = inside ? py : OFF;
+            cardRect();
+
+            const live = B.filter(b => b.on);
+            const dragging = live.some(b => b.drag);
+            const damp = Math.pow(0.986, dt);
+
+            for (const b of live) {
+                if (b.drag) {
+                    if (pointer.x !== OFF) {
+                        const tx = clamp(px - b.drag.ox, b.r, W - b.r);
+                        const ty = clamp(py - b.drag.oy, b.r, H - b.r);
+                        b.vx = lerp(b.vx, (tx - b.x) / dt, 0.5);
+                        b.vy = lerp(b.vy, (ty - b.y) / dt, 0.5);
+                        b.x = tx; b.y = ty;
+                        // stretch along the direction it's being pulled
+                        const sp = Math.hypot(b.vx, b.vy);
+                        if (sp > 0.5) {
+                            b.sqa = Math.atan2(b.vy, b.vx);
+                            b.sqv += (clamp(sp * 0.006, 0, 0.16) - b.sq) * 0.25;
+                        }
+                    }
+                } else {
+                    if (!reduce) {
+                        b.vx += Math.cos(now * 0.00055 + b.phase) * 0.016 * dt;
+                        b.vy += Math.sin(now * 0.00047 + b.phase * 1.7) * 0.016 * dt;
+                    }
+                    // a fast cursor brushes bubbles aside; a slow one lets you hover and click
+                    if (inside && !dragging) {
+                        const dx = b.x - px, dy = b.y - py, d = Math.hypot(dx, dy), R = b.r + 40;
+                        if (d < b.r) { b.vx *= 0.88; b.vy *= 0.88; }
+                        const speed = Math.hypot(pvx, pvy);
+                        if (d < R && speed > 3) {
+                            const f = (1 - d / R) * 0.22;
+                            b.vx += pvx * f;
+                            b.vy += pvy * f;
+                            jiggle(b, clamp(speed * 0.004, 0, 0.08), Math.atan2(pvy, pvx));
+                        }
+                    }
+                    b.vx *= damp; b.vy *= damp;
+                    const sp = Math.hypot(b.vx, b.vy);
+                    if (sp > 36) { b.vx *= 36 / sp; b.vy *= 36 / sp; }
+                    b.x += b.vx * dt;
+                    b.y += b.vy * dt;
+                }
+            }
+
+            // bubble vs bubble — they squash where they meet
+            for (let i = 0; i < live.length; i++) {
+                for (let j = i + 1; j < live.length; j++) {
+                    const a = live[i], b = live[j];
+                    const dx = b.x - a.x, dy = b.y - a.y, min = a.r + b.r + 6, d2 = dx * dx + dy * dy;
+                    if (d2 >= min * min) continue;
+                    const d = Math.sqrt(d2) || 0.01, nx = dx / d, ny = dy / d, ov = min - d;
+                    const wa = a.drag ? 0 : b.drag ? 1 : 0.5, wb = b.drag ? 0 : a.drag ? 1 : 0.5;
+                    a.x -= nx * ov * wa; a.y -= ny * ov * wa;
+                    b.x += nx * ov * wb; b.y += ny * ov * wb;
+                    const rv = (b.vx - a.vx) * nx + (b.vy - a.vy) * ny;
+                    if (rv < 0) {
+                        const e = 0.7;
+                        if (a.drag) { b.vx -= (1 + e) * rv * nx; b.vy -= (1 + e) * rv * ny; }
+                        else if (b.drag) { a.vx += (1 + e) * rv * nx; a.vy += (1 + e) * rv * ny; }
+                        else {
+                            const jj = (-(1 + e) * rv) / 2;
+                            a.vx -= jj * nx; a.vy -= jj * ny;
+                            b.vx += jj * nx; b.vy += jj * ny;
+                        }
+                        const amt = clamp(-rv * 0.02, 0, 0.14), axis = Math.atan2(ny, nx);
+                        jiggle(a, amt, axis);
+                        jiggle(b, amt, axis);
+                    }
+                }
+            }
+
+            // bubble vs card and walls, then the wobble spring
+            for (const b of live) {
+                if (!b.drag) {
+                    const qx = clamp(b.x, rect.l, rect.r), qy = clamp(b.y, rect.t, rect.b);
+                    const dx = b.x - qx, dy = b.y - qy, d2 = dx * dx + dy * dy;
+                    if (d2 < b.r * b.r) {
+                        let nx, ny;
+                        if (d2 > 0.0001) {
+                            const d = Math.sqrt(d2);
+                            nx = dx / d; ny = dy / d;
+                            b.x += nx * (b.r - d) * 0.5;
+                            b.y += ny * (b.r - d) * 0.5;
+                        } else {
+                            const dl = b.x - rect.l, dr = rect.r - b.x, du = b.y - rect.t, dd = rect.b - b.y;
+                            const m = Math.min(dl, dr, du, dd);
+                            nx = m === dl ? -1 : m === dr ? 1 : 0;
+                            ny = m === du ? -1 : m === dd ? 1 : 0;
+                            if (!nx && !ny) ny = 1;
+                            b.vx += nx * 3 * dt;
+                            b.vy += ny * 3 * dt;
+                        }
+                        const vn = b.vx * nx + b.vy * ny;
+                        if (vn < 0) {
+                            b.vx -= 1.7 * vn * nx; b.vy -= 1.7 * vn * ny;
+                            jiggle(b, clamp(-vn * 0.02, 0, 0.12), Math.atan2(ny, nx));
+                        }
+                    }
+                    const wallHit = (v, axis) => jiggle(b, clamp(Math.abs(v) * 0.02, 0, 0.12), axis);
+                    if (b.x < b.r) { b.x = b.r; wallHit(b.vx, 0); b.vx = Math.abs(b.vx) * 0.75; }
+                    else if (b.x > W - b.r) { b.x = W - b.r; wallHit(b.vx, 0); b.vx = -Math.abs(b.vx) * 0.75; }
+                    if (b.y < b.r) { b.y = b.r; wallHit(b.vy, Math.PI / 2); b.vy = Math.abs(b.vy) * 0.75; }
+                    else if (b.y > H - b.r) { b.y = H - b.r; wallHit(b.vy, Math.PI / 2); b.vy = -Math.abs(b.vy) * 0.75; }
+                }
+                // jelly spring: overshoots a few times, then settles
+                b.sqv += -b.sq * 0.2 * dt;
+                b.sqv *= Math.pow(0.82, dt);
+                b.sq = clamp(b.sq + b.sqv * dt, -0.24, 0.24);
+                render(b);
+            }
+
+            // ---- cut-outs fade away after a while (not while hovered)
+            for (const c of [...cuts]) {
+                if (!c.hold && now - c.born > 4200) removeCut(c);
+            }
+
+            // ---- scissors: only for a mouse. The line keeps going over bubbles
+            // and the card (so a bubble drifting into the way doesn't spoil a
+            // loop), but the scissors only show over the bare fabric — over a
+            // bubble you get the normal grab cursor.
+            const overUI = pointer.target && pointer.target.closest &&
+                pointer.target.closest('.njl-card, .njl-bubble, .njl-cut');
+            // (not switched off by Reduce motion: nothing here moves unless the visitor moves it)
+            const tracing = inside && pointer.type === 'mouse' && !dragging;
+            const cutting = tracing && !overUI;
+            root.classList.toggle('is-cutting', cutting);
+            if (tracing) {
+                sc.x = px; sc.y = py;
+                addPoint(px, py, now);
+            } else {
+                breakStroke();
+            }
+            sc.vis = lerp(sc.vis, cutting ? 1 : 0, clamp(0.3 * dt, 0, 1));
+
+            // drop expired points from the front of the line
+            let drop = 0;
+            while (drop < trail.length && now - trail[drop].t > LIFE) drop++;
+            if (drop) {
+                trail = trail.slice(drop);
+                strokeStart = Math.max(0, strokeStart - drop);
+            }
+
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+            ctx.clearRect(0, 0, W, H);
+            if (trail.length > 1) {
+                ctx.lineCap = 'round';
+                ctx.lineWidth = 1.8;
+                ctx.setLineDash([7, 6]);
+                ctx.strokeStyle = light ? 'rgba(40,24,30,.8)' : 'rgba(255,244,236,.85)';
+                for (let i = 1; i < trail.length; i++) {
+                    const a = trail[i - 1], b = trail[i];
+                    if (a.brk) continue;
+                    const life = 1 - (now - b.t) / LIFE;
+                    ctx.globalAlpha = clamp(life, 0, 1);
+                    ctx.beginPath();
+                    ctx.moveTo(a.x, a.y);
+                    ctx.lineTo(b.x, b.y);
+                    ctx.stroke();
+                }
+                ctx.setLineDash([]);
+                ctx.globalAlpha = 1;
+            }
+            if (sc.vis > 0.02) {
+                const open = 0.1 + 0.26 * (0.5 + 0.5 * Math.sin(sc.s / 9));
+                drawScissors(sc.x, sc.y, sc.ang, open, sc.vis);
+            }
+        }
+
+        // run only while on screen; stop for good if the section is removed
+        let active = false;
+        const io = new IntersectionObserver(([e]) => {
+            active = e.isIntersecting;
+            if (active) root.classList.add('is-in');
+        }, { rootMargin: '80px' });
+        io.observe(root);
+        const ro = new ResizeObserver(resize);
+        ro.observe(root);
+        let last = performance.now();
+        function frame(now) {
+            if (!root.isConnected) { io.disconnect(); ro.disconnect(); return; }
+            const dt = clamp((now - last) / 16.667, 0.25, 3);
+            last = now;
+            if (active && W) tick(now, dt);
+            requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+    }
+
+    const boot = (scope = document) => scope.querySelectorAll('[data-njl]').forEach(init);
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => boot());
+    else boot();
+    // the Shopify theme editor re-renders a section when its settings change
+    document.addEventListener('shopify:section:load', e => boot(e.target));
+})();
+{% endraw %}
+</script>
+
+{% schema %}
+{
+  "name": "Natalie's links",
+  "tag": "div",
+  "class": "njl-section",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Look"
+    },
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Style",
+      "options": [
+        { "value": "blush", "label": "Light (blush)" },
+        { "value": "dusk", "label": "Dark (glowing)" }
+      ],
+      "default": "blush"
+    },
+    {
+      "type": "image_picker",
+      "id": "logo",
+      "label": "Round photo at the top",
+      "info": "Leave empty to use the store's logo from Settings → Brand."
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Title",
+      "default": "Natalie's Journal:"
+    },
+    {
+      "type": "text",
+      "id": "script_title",
+      "label": "Script title",
+      "default": "Second Story"
+    },
+    {
+      "type": "text",
+      "id": "tagline",
+      "label": "Tagline",
+      "default": "Every piece is repurposed to give it a second story."
+    },
+    {
+      "type": "header",
+      "content": "Floating bubbles"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Products from",
+      "info": "Leave empty to use every product in the store. Cut-outs reveal these same pieces."
+    },
+    {
+      "type": "range",
+      "id": "bubble_count",
+      "label": "Number of bubbles",
+      "min": 4,
+      "max": 16,
+      "step": 1,
+      "default": 13
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sold",
+      "label": "Include sold-out pieces",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "hint",
+      "label": "Little note under the buttons",
+      "default": "psst… try cutting out a circle"
+    },
+    {
+      "type": "header",
+      "content": "Travel app button",
+      "info": "Shown under the link buttons. Clear the text to hide it."
+    },
+    {
+      "type": "text",
+      "id": "app_label",
+      "label": "Button text",
+      "default": "Get our travel app"
+    },
+    {
+      "type": "text",
+      "id": "app_link",
+      "label": "Link",
+      "default": "https://roam.community"
+    },
+    {
+      "type": "header",
+      "content": "Socials",
+      "info": "Leave one empty to hide its icon."
+    },
+    {
+      "type": "text",
+      "id": "instagram",
+      "label": "Instagram link",
+      "default": "https://www.instagram.com/natalies_journal/"
+    },
+    {
+      "type": "text",
+      "id": "tiktok",
+      "label": "TikTok link",
+      "default": "https://www.tiktok.com/@natalieee_37"
+    },
+    {
+      "type": "text",
+      "id": "youtube",
+      "label": "YouTube link",
+      "default": "https://www.youtube.com/@natalies-journal"
+    },
+    {
+      "type": "text",
+      "id": "etsy",
+      "label": "Etsy link",
+      "default": "https://www.etsy.com/shop/NataliesJournal"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "link",
+      "name": "Link button",
+      "settings": [
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Button text",
+          "default": "Shop the collection"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Look",
+          "options": [
+            { "value": "solid", "label": "Filled" },
+            { "value": "outline", "label": "Outline" }
+          ],
+          "default": "outline"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Natalie's links",
+      "blocks": [
+        {
+          "type": "link",
+          "settings": {
+            "label": "Shop the collection",
+            "link": "/collections/all",
+            "style": "solid"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

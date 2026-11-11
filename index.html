@@ -9,8 +9,10 @@
     <meta name="theme-color" content="#050608">
     <meta property="og:title" content="Joseph Goss">
     <meta property="og:description" content="Roam Community & Natalie's Journal: Second Story">
-    <link rel="icon"
-        href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%232f6fed'/%3E%3Cstop offset='.5' stop-color='%23ec5f9f'/%3E%3Cstop offset='1' stop-color='%23f2a541'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='30' fill='url(%23g)'/%3E%3C/svg%3E">
+    <!-- Joseph's icon: the rock photo, in a circle -->
+    <link rel="icon" type="image/png" sizes="64x64" href="assets/icon/favicon.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/icon/icon-192.png">
+    <link rel="apple-touch-icon" href="assets/icon/apple-touch-icon.png">
     <script>document.documentElement.classList.add('js');</script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +32,7 @@
 
     <!-- Mini logo bar: slides in once the big name has scrolled away -->
     <nav class="topbar" aria-label="Sections">
-        <a class="tb-name" href="#top">Joseph Goss</a>
+        <a class="tb-name" href="#top"><img class="tb-avatar" src="assets/icon/avatar.webp" alt="" width="30" height="30"><span>Joseph Goss</span></a>
         <a class="tb-icon" href="#roam" aria-label="Roam Community" data-section="roam"><img
                 src="assets/roam/logo.webp" alt=""></a>
         <a class="tb-icon" href="#natalie" aria-label="Natalie's Journal: Second Story" data-section="natalie"><img
@@ -86,25 +88,32 @@
         <section class="biz roam" id="roam" aria-label="Roam Community">
             <canvas class="topo" aria-hidden="true"></canvas>
             <div class="roam-inner">
-                <div class="stage" aria-hidden="true">
-                    <!-- six of the app's map layers, bottom to top; names as the app labels them -->
-                    <div class="stack">
-                        <div class="layer" data-name="Temperature averages" style="--z:0; --b:.78; --c:#f2a541; background-image:url(assets/roam/temperature.webp); background-position:40% 50%"></div>
-                        <div class="layer" data-name="Light pollution" style="--z:1; --b:.82; --c:#a07bff; background-image:url(assets/roam/light-pollution.webp); background-position:30% 50%"></div>
-                        <div class="layer" data-name="Fall foliage" style="--z:2; --b:.86; --c:#e0703a; background-image:url(assets/roam/foliage.webp); background-position:60% 50%"></div>
-                        <div class="layer" data-name="Tree cover" style="--z:3; --b:.9; --c:#3fae5a; background-image:url(assets/roam/tree-cover.webp); background-position:75% 50%"></div>
-                        <div class="layer" data-name="Cellular coverage" style="--z:4; --b:.95; --c:#ec5f9f; background-image:url(assets/roam/coverage-premium.webp); background-position:55% 50%"></div>
-                        <div class="layer" data-name="Campgrounds" style="--z:5; --c:#3fbf6a; background-image:url(assets/roam/campgrounds.webp); background-position:50% 42%"></div>
-                        <div class="top">
-                            <span class="pin"><svg viewBox="0 0 34 46">
-                                    <path d="M17 1C8.2 1 1 8 1 16.6 1 28.5 17 45 17 45s16-16.5 16-28.4C33 8 25.8 1 17 1z"
-                                        fill="#3fbf6a" stroke="#fff" stroke-width="2" />
-                                    <circle cx="17" cy="16.5" r="6" fill="#fff" />
-                                </svg></span>
-                        </div>
+                <div class="stage">
+                    <!-- all 16 of the app's map layers, bottom to top, named and described as the app does -->
+                    <div class="stack" aria-hidden="true">
+                        <div class="layer" data-name="Tides" data-desc="Predicted tide height at NOAA coastal stations. Not for navigation." style="--z:0; --b:0.70; background-image:url(assets/roam/layers/tides.webp)"></div>
+                        <div class="layer" data-name="Currents" data-desc="Tidal current direction and speed at NOAA stations. Predictions, not for navigation." style="--z:1; --b:0.72; background-image:url(assets/roam/layers/currents.webp)"></div>
+                        <div class="layer" data-name="Rivers" data-desc="Gauge flow and height against normal, about every 15 minutes, with flood stages." style="--z:2; --b:0.74; background-image:url(assets/roam/layers/rivers.webp)"></div>
+                        <div class="layer" data-name="Snow depth" data-desc="Snow on the ground this morning, in inches. NOAA&#x27;s daily model, lower 48." style="--z:3; --b:0.76; background-image:url(assets/roam/layers/snow.webp)"></div>
+                        <div class="layer" data-name="Noise" data-desc="How far roads, aircraft and towns carry on a summer day. NPS sound model, US." style="--z:4; --b:0.78; background-image:url(assets/roam/layers/noise.webp)"></div>
+                        <div class="layer" data-name="Light pollution" data-desc="How dark a clear, moonless night gets across the US, in Bortle classes." style="--z:5; --b:0.80; background-image:url(assets/roam/layers/night-sky.webp)"></div>
+                        <div class="layer" data-name="Alerts" data-desc="NWS warnings, wildfires and National Park closures, checked every few minutes." style="--z:6; --b:0.82; background-image:url(assets/roam/layers/alerts.webp)"></div>
+                        <div class="layer" data-name="Forecast" data-desc="The coming hours: rain, cloud, temperature, wind and wildfire smoke." style="--z:7; --b:0.84; background-image:url(assets/roam/layers/sky.webp)"></div>
+                        <div class="layer" data-name="Precipitation averages" data-desc="Typical rain and snowfall by month, NOAA 1991–2020." style="--z:8; --b:0.86; background-image:url(assets/roam/layers/precipitation.webp)"></div>
+                        <div class="layer" data-name="Temperature averages" data-desc="Typical highs and lows by month, NOAA 1991–2020." style="--z:9; --b:0.88; background-image:url(assets/roam/layers/temperature.webp)"></div>
+                        <div class="layer" data-name="Fall foliage" data-desc="Typical peak-colour week from 12 years of NASA satellite data." style="--z:10; --b:0.90; background-image:url(assets/roam/layers/foliage.webp)"></div>
+                        <div class="layer" data-name="Land ownership" data-desc="Who owns the ground: forests, BLM, parks, state and tribal. The rest is private." style="--z:11; --b:0.92; background-image:url(assets/roam/layers/land-status.webp)"></div>
+                        <div class="layer" data-name="Dispersed camping" data-desc="Where you can camp outside a campground, by the land manager&#x27;s own rules." style="--z:12; --b:0.94; background-image:url(assets/roam/layers/dispersed.webp)"></div>
+                        <div class="layer" data-name="Tree cover" data-desc="Where trees cover the ground across the US, at 1.2 m detail." style="--z:13; --b:0.96; background-image:url(assets/roam/layers/tree-cover.webp)"></div>
+                        <div class="layer" data-name="Cellular coverage" data-desc="Signal and coverage modeled by T-Mobile, AT&amp;T and Verizon for the FCC." style="--z:14; --b:0.98; background-image:url(assets/roam/layers/coverage-premium.webp)"></div>
+                        <div class="layer" data-name="Campgrounds" data-desc="Every campground we can place, by who runs it. Federal ones show availability." style="--z:15; --b:1.00; background-image:url(assets/roam/campgrounds.webp)"></div>
                     </div>
                     <!-- names the layer under the cursor -->
-                    <div class="layer-tag"><span class="dot"></span><span class="txt"></span></div>
+                    <a class="layer-tag" href="https://roam.community" target="_blank" rel="noopener">
+                        <span class="lt-name"></span>
+                        <span class="lt-desc"></span>
+                        <span class="lt-link">Check out this layer <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg></span>
+                    </a>
                 </div>
 
                 <div class="copy reveal">

@@ -237,11 +237,14 @@
         const stage = $('.stage', root);
         const stack = $('.stack', root);
         const tag = $('.layer-tag', root);
-        const tagText = $('.txt', tag);
+        const tagName = $('.lt-name', tag);
+        const tagDesc = $('.lt-desc', tag);
         const layers = $$('.layer', stack);
 
-        // hovering a layer (or tapping one) lifts it and shows its name
-        let hot = null, hotTimer = 0;
+        // The layer under the cursor lights up and the label names it. A layer
+        // has to be rested on for a moment before it takes over, so sweeping
+        // down to the label's link doesn't switch layers on the way.
+        let hot = null, intent = 0, idle = 0;
         function setHot(layer) {
             if (hot === layer) return;
             if (hot) hot.classList.remove('is-hot');
@@ -249,20 +252,39 @@
             stack.classList.toggle('has-hot', !!layer);
             if (layer) {
                 layer.classList.add('is-hot');
-                tagText.textContent = layer.dataset.name;
-                tag.style.setProperty('--c', layer.style.getPropertyValue('--c'));
+                tagName.textContent = layer.dataset.name;
+                tagDesc.textContent = layer.dataset.desc;
+                tag.setAttribute('aria-label', `${layer.dataset.name} on Roam Community`);
             }
             tag.classList.toggle('show', !!layer);
         }
+        // fold everything back up
+        function collapse() {
+            clearTimeout(intent);
+            clearTimeout(idle);
+            st.open = false;
+            st.hover = false;
+            setHot(null);
+        }
+        // on a touch screen, fold up again after a while with no taps
+        function touchIdle() {
+            clearTimeout(idle);
+            idle = setTimeout(collapse, 6000);
+        }
         layers.forEach(layer => {
-            layer.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') setHot(layer); });
+            layer.addEventListener('pointerenter', e => {
+                if (e.pointerType !== 'mouse') return;
+                clearTimeout(intent);
+                intent = setTimeout(() => setHot(layer), hot ? 140 : 40);
+            });
+            layer.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') clearTimeout(intent); });
             layer.addEventListener('pointerdown', e => {
-                if (e.pointerType === 'mouse') return;
+                if (e.pointerType === 'mouse' || !st.open) return;
                 setHot(layer);
-                clearTimeout(hotTimer);
-                hotTimer = setTimeout(() => setHot(null), 2200);
+                touchIdle();
             });
         });
+        tag.addEventListener('pointerenter', () => clearTimeout(intent));
 
         const STEP = 0.085, BASE = -3, NLEV = Math.ceil(7.5 / STEP);
         const pts = new Float32Array(8);
@@ -275,18 +297,19 @@
         const st = { rx: 58, rz: -34, gap: 20, open: false, hover: false };
         let stackW = 400;
 
+        // a mouse spreads the stack while it's over it, and leaving folds it up
         stage.addEventListener('pointerenter', e => { if (e.pointerType === 'mouse') st.hover = true; });
-        stage.addEventListener('pointerleave', e => {
-            st.hover = false;
-            if (e.pointerType === 'mouse') setHot(null);
+        stage.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') collapse(); });
+        // a tap spreads it (later taps name the layer tapped); tapping anywhere
+        // else in the section, or leaving it alone for a bit, folds it up
+        stage.addEventListener('click', e => {
+            if (pointer.type === 'mouse' || e.target.closest('.layer-tag')) return;
+            st.open = true;
+            touchIdle();
         });
-        stack.addEventListener('pointerleave', e => { if (e.pointerType === 'mouse') setHot(null); });
-        // a tap opens the stack (and then names the layer tapped); tapping
-        // anywhere else in the section closes it again
-        stage.addEventListener('click', () => { st.open = true; });
         root.addEventListener('click', e => {
             if (e.target.closest('a, .stage')) return;
-            st.open = false;
+            collapse();
             const r = root.getBoundingClientRect();
             ripples.push({ x: e.clientX - r.left, y: e.clientY - r.top, t: performance.now() });
             if (ripples.length > 5) ripples.shift();
@@ -401,8 +424,8 @@
             const open = st.open || st.hover || !!hot;
             const breathe = reduce ? 0 : Math.sin(now * 0.0012) * 0.25;
             const k = clamp(0.08 * dt, 0, 1);
-            // six layers: five gaps between them
-            st.gap = lerp(st.gap, stackW * (open ? 0.135 : 0.045 * (1 + breathe)), k);
+            // sixteen layers: a tight deck at rest, fanned out when in use
+            st.gap = lerp(st.gap, stackW * (open ? 0.05 : 0.011 * (1 + breathe)), k);
             st.rz = lerp(st.rz, -34 + nx * 16 + (open ? 10 : 0), k);
             st.rx = lerp(st.rx, 58 - ny * 8 - (open ? 6 : 0), k);
             stack.style.setProperty('--gap', `${st.gap.toFixed(2)}px`);
